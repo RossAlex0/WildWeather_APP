@@ -1,35 +1,35 @@
-import { Text, View, TextInput, Pressable } from "react-native";
 import { useState } from "react";
+import { Text, View, TextInput, Pressable } from "react-native";
+import { MaterialIcons } from '@expo/vector-icons'; 
+
 
 import ButtonConfirm from "../components/ButtonConfirm";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 
 export default function OnBoardingName(){
-    const[name, setName] = useState("")
+    const[city, setCity] = useState("")
     const[inputValue, setInputValue] = useState("")
 
     return (
         <View style={stylesOnBoarding.global}>
         <View style={stylesOnBoarding.containerName}>
-            <View style={stylesOnBoarding.containerTextName}>
-                <Text style={stylesOnBoarding.textNameTitle}>What's your name?</Text>
-                <Text style={stylesOnBoarding.textName}>Let's personalize your expérience.</Text>                               
+            <View style={stylesOnBoarding.containerTextCity}>
+                <Text style={stylesOnBoarding.textNameTitle}>Thank you, Alex.</Text>
+                <Text style={stylesOnBoarding.textNameTitle}>Where do you live?</Text>                               
             </View>
             <View style={stylesOnBoarding.containerInput}>
+            <MaterialIcons style={stylesOnBoarding.searchIcon} name="search" size={28} color="#0E0C5E"/>
                 <TextInput 
-                placeholder="Enter your name here" 
+                placeholder="Research" 
                 onChangeText={(text) => setInputValue(text)}
                 value={inputValue}
                 style={stylesOnBoarding.inputName} />
             </View>
-            <View style={stylesOnBoarding.containerButton}>
+            <View style={stylesOnBoarding.containerButtonCity}>
                 <Pressable style={stylesOnBoarding.buttonName}>
                     <ButtonConfirm texte="Confirm" />
                 </Pressable>
-                <Pressable style={stylesOnBoarding.buttonNameSkip}>                    
-                    <Text>Skip</Text>
-                </Pressable> 
             </View>
         </View>
         </View>
