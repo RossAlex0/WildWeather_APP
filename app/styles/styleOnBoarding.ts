@@ -66,6 +66,7 @@ const stylesOnBoarding = StyleSheet.create({
           marginTop: '20%',
           width: '100%',
           display: 'flex',
+          marginBottom: 16,
           gap: 8
         },
         textNameTitle:{
@@ -83,15 +84,17 @@ const stylesOnBoarding = StyleSheet.create({
           width: '100%',
           display: 'flex',
           alignItems: 'center',
+          justifyContent: 'center',
           marginBottom: 120
         },
         inputName:{
           height: 48,
           width: '100%',
-          borderColor: '#8C8C8C',
+          borderColor: '#E4E4E4',
           borderWidth: 1,
           borderRadius: 8,
-          paddingLeft: 8
+          paddingLeft: 48,
+          fontSize: 18
         },
         containerButton:{
           width: '100%',
@@ -108,6 +111,21 @@ const stylesOnBoarding = StyleSheet.create({
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+        },
+        // SECTION onBoardingCity        
+        containerTextCity:{
+          marginTop: '20%',
+          width: '100%',
+          display: 'flex',
+          marginBottom: 16,
+        },
+        containerButtonCity:{
+          width: '100%',
+          marginBottom: 72
+        },
+        searchIcon:{
+          position: 'absolute',
+          left: 8          
         }
 })
 
