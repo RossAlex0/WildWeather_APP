@@ -13,7 +13,7 @@ export default function App() {
   return (
     
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='OnBoardingCity'>
+      <Stack.Navigator initialRouteName='OnBoarding'>
         <Stack.Screen name='OnBoarding' component={OnBoarding}
          options={{ headerShown: false }}/>
         <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>

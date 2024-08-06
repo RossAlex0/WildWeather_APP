@@ -1,10 +1,14 @@
-import { Image, Text, View } from 'react-native';
+import { Image, Text, View, Pressable } from 'react-native';
 
 import ButtonConfirm from '../components/ButtonConfirm';
 
 import stylesOnBoarding from '../styles/styleOnBoarding';
 
-export default function OnBoarding() {
+export default function OnBoarding({ navigation }:{
+    navigation :{
+    navigate : (screen: string) => void
+}
+}) {
     
     return(
     <View style={stylesOnBoarding.global}>
@@ -13,7 +17,6 @@ export default function OnBoarding() {
                 <Image
                 source={require('../../assets/icon.png')}
                 style={stylesOnBoarding.image}
-                alt='WildWeather, soleil, vague et flocon de neige'
                 />
                 <Text 
                 style={stylesOnBoarding.title}>
@@ -26,9 +29,17 @@ export default function OnBoarding() {
                                
                 <Text style={stylesOnBoarding.texte} >Don't let the weather surprise you.</Text>                
             </View>
-            <ButtonConfirm texte="Let's go !"/>
+            <View style={stylesOnBoarding.button}>
+                <Pressable  
+                style={({ pressed }) => [
+                stylesOnBoarding.button,
+                { opacity: pressed ? 0.2 : 1}]} 
+                onPress={() => navigation.navigate('OnBoardingName')}>
+                    <ButtonConfirm texte="Let's go !" />
+                </Pressable>
+            </View>
         </View>
-        </View>
+    </View>
     
     )
 }
