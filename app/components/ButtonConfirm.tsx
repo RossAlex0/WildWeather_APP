@@ -1,12 +1,12 @@
 import React from "react";
-import { TouchableOpacity , StyleSheet, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 
 
 
 export default function ButtonConfirm({ texte }: {texte : string}){
 
-    return <TouchableOpacity  style={styles.button}>
+    return <>
         <LinearGradient
         colors={['#F58B3F', '#F39D36', '#F1AE2C']}
         start={{ x: 0, y: 0 }} 
@@ -14,15 +14,11 @@ export default function ButtonConfirm({ texte }: {texte : string}){
         style={styles.gradient}>
         <Text style={styles.btnText}>{texte}</Text>
       </LinearGradient>
-    </TouchableOpacity >
+    </>
     
 }
 
 const styles = StyleSheet.create({
-    button:{
-        height: 48,
-        width: "100%",
-    },
     gradient:{
         height: "100%",
         width: "100%",

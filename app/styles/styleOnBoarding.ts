@@ -48,6 +48,10 @@ const stylesOnBoarding = StyleSheet.create({
           color: colors.primaryColor,
           fontSize: 24
         },
+        button:{
+          height: 48,
+          width: '100%'
+        },
         // SECTION onBoardingName
         containerName:{
           backgroundColor: '#FFF',
@@ -93,7 +97,7 @@ const stylesOnBoarding = StyleSheet.create({
           borderColor: '#E4E4E4',
           borderWidth: 1,
           borderRadius: 8,
-          paddingLeft: 48,
+          paddingLeft: 12,
           fontSize: 18
         },
         containerButton:{
@@ -102,15 +106,27 @@ const stylesOnBoarding = StyleSheet.create({
           alignItems: 'center',
           gap: 24
         },
-        buttonName:{
-          width: '100%'
-        },
         buttonNameSkip:{
           height: 48,
           width: '100%',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+        },
+        buttonNameSkipPressed:{
+          height: 48,
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderColor: colors.primaryColor,
+          borderRadius: 12,
+          borderWidth: 1
+        },
+        buttonSkipText:{
+          fontSize: 20,
+          fontWeight: "bold",
+          color: colors.primaryColor
         },
         // SECTION onBoardingCity        
         containerTextCity:{
@@ -126,6 +142,15 @@ const stylesOnBoarding = StyleSheet.create({
         searchIcon:{
           position: 'absolute',
           left: 8          
+        },
+        inputCity:{
+          height: 48,
+          width: '100%',
+          borderColor: '#E4E4E4',
+          borderWidth: 1,
+          borderRadius: 8,
+          paddingLeft: 48,
+          fontSize: 18
         }
 })
 
