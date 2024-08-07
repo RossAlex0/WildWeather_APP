@@ -5,9 +5,7 @@ import ButtonConfirm from '../components/ButtonConfirm';
 import stylesOnBoarding from '../styles/styleOnBoarding';
 
 export default function OnBoarding({ navigation }:{
-    navigation :{
-    navigate : (screen: string) => void
-}
+    navigation :{ navigate : (screen: string) => void }
 }) {
     
     return(

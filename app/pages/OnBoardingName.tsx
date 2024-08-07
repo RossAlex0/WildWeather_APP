@@ -1,21 +1,26 @@
 import { useState } from "react";
-import { Text, View, TextInput, Pressable } from "react-native";
+import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform } from "react-native";
 
-
+import storageData from "../services/storage";
 import ButtonConfirm from "../components/ButtonConfirm";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 
 export default function OnBoardingName({ navigation }:{
-    navigation :{
-    navigate : (screen: string) => void
-}
+    navigation :{ navigate : (screen: string) => void }
 }) {
-    const[name, setName] = useState("")
-    const[inputValue, setInputValue] = useState("")
-    // ### Function for save user name ###
+
+    const { saveName } = storageData;
+
+    const[inputValue, setInputValue] = useState<string>("");
+
+    const handlePressButtonName = () => {
+        saveName(inputValue)
+        navigation.navigate('OnBoardingCity')
+    };
 
     return (
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={stylesOnBoarding.global}>
             <View style={stylesOnBoarding.containerName}>
                 <View style={stylesOnBoarding.containerTextName}>
@@ -24,8 +29,10 @@ export default function OnBoardingName({ navigation }:{
                 </View>
                 <View style={stylesOnBoarding.containerInput}>
                     <TextInput 
-                    placeholder="Enter your name here" 
-                    onChangeText={(text) => setInputValue(text)}
+                    placeholder="Enter your name here"
+                    returnKeyType="done"
+                    maxLength={15} 
+                    onChangeText={(e) => setInputValue(e)}
                     value={inputValue}
                     style={stylesOnBoarding.inputName} />
                 </View>
@@ -34,7 +41,7 @@ export default function OnBoardingName({ navigation }:{
                     style={({ pressed }) => [
                     stylesOnBoarding.button,
                     { opacity: pressed ? 0.2 : 1}]} 
-                    onPress={() => navigation.navigate('OnBoardingCity')}> 
+                    onPress={handlePressButtonName}> 
                         <ButtonConfirm texte="Confirm" />
                     </Pressable>
                     <Pressable style={({ pressed }) => [
@@ -45,5 +52,6 @@ export default function OnBoardingName({ navigation }:{
                 </View>
             </View>
         </View>
+    </KeyboardAvoidingView>
     )
 }
