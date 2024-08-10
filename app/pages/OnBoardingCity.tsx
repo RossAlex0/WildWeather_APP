@@ -18,7 +18,7 @@ export default function OnBoardingName({ navigation }:{
 
     const handlePressButtonCity = () => {
         saveCity(inputValue)
-        navigation.navigate('OnBoardingCity')
+        navigation.navigate('HomePage')
     };
 
     useEffect(() => {
