@@ -23,18 +23,13 @@ export default function App() {
   return (
     
     <NavigationContainer>
-      {userCity !== null
-      ? <Stack.Navigator initialRouteName='OnBoarding'>
-          <Stack.Screen name='OnBoarding' component={OnBoarding}
-          options={{ headerShown: false }}/>
+       <Stack.Navigator 
+       initialRouteName={userCity !== null ? 'HomePage' : 'OnBoarding'}>
+          <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
           <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
         </Stack.Navigator>
-      : <Stack.Navigator initialRouteName='HomePage'>
-          <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
-        </Stack.Navigator>
-      }
         <StatusBar style="auto" />
     </NavigationContainer>
     
