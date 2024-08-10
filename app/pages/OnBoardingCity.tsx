@@ -45,7 +45,7 @@ export default function OnBoardingName({ navigation }:{
                         <TextInput 
                         placeholder="Research"
                         returnKeyType="done" 
-                        onChangeText={(text) => setInputValue(text)}
+                        onChangeText={(e) => setInputValue(e)}
                         value={inputValue}
                         style={stylesOnBoarding.inputCity} />
                     </View>
