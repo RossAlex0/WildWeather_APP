@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
   const loadCity = async (setCity: (value: string) => void) => {
     try {
-      const city = await AsyncStorage.getItem('city');
+      const city = await AsyncStorage.getItem('userCity');
       if (city !== null) {
         setCity(city);
       }
@@ -12,7 +12,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
   };
   const loadName = async (setName: (value: string) => void) => {
     try{
-      const name = await AsyncStorage.getItem('name');
+      const name = await AsyncStorage.getItem('userName');
       if (name !== null) {
         setName(name);
       }
@@ -23,17 +23,25 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
   const saveName = async (value : string) => {
     try {
-      await AsyncStorage.setItem('name', value);
-    } catch (error) {
-      console.error(error);
+      await AsyncStorage.setItem('userName', value);
+    } catch (err) {
+      console.error(err);
     }
   };
   const saveCity = async (value : string) => {
     try {
       await AsyncStorage.setItem('userCity', value);
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
     }
   };
 
-  export default { saveName, saveCity, loadName, loadCity};
+  const clearStorage = async () => {
+    try {
+      await AsyncStorage.clear();
+    } catch (err) {
+      console.error('Failed to clear AsyncStorage:', err);
+    }
+  };
+
+  export default { saveName, saveCity, loadName, loadCity, clearStorage};
