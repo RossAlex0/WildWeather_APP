@@ -8,12 +8,12 @@ import storage from "../services/storage";
 
 import stylesHome from "../styles/styleHome";
 
-
-
-export default function HomePage() {
-
+export default function HomePage({extraData}:{ extraData : {}}) {
+    console.info(extraData)
+    
     const { loadCity, clearStorage } = storage;
     const [userCity, setUserCity] = useState<string>("");
+    const [inputSearchValue, setInputSearchValue] = useState("")
 
     useEffect(() => {
         loadCity(setUserCity)
@@ -23,8 +23,8 @@ export default function HomePage() {
         console.info("C'est clear")
         clearStorage()
     }
-    const [inputSearchValue, setInputSearchValue] = useState("")
     const handleSubmit = () =>  {
+        // Appel api par l'input
         console.info(inputSearchValue)
         setInputSearchValue("")
     }
