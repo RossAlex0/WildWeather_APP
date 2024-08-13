@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import OnBoarding from './pages/OnBoarding';
@@ -9,43 +9,27 @@ import OnBoardingCity from './pages/OnBoardingCity';
 import HomePage from './pages/HomePage';
 
 import storage from './services/storage';
-import getWeather from './services/getWeather';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
-  const { loadCity } = storage;
-  const [userCity, setUserCity] = useState("");
-  const [data, setData] = useState();
+  const { loadCity } = storage
+  const [ userCity, setUserCity] = useState("")
 
   useEffect(() => {
-    const getData = async() => {
-      try{
-        await loadCity(setUserCity)
-        const weatherData = await getWeather(userCity)
-        setData(weatherData)
-      }catch (err){
-        console.errror(err)
-      }
-    }
-    getData()
-},[]);
+    loadCity(setUserCity)
+  })
   
   return (
-    
-    <NavigationContainer>
+  <NavigationContainer>
        <Stack.Navigator 
        initialRouteName={userCity !== null ? 'HomePage' : 'OnBoarding'}>
           <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-          <Stack.Screen name='HomePage' options={{ headerShown: false}}>
-          {(props) => <HomePage {...props} extraData={data} />}
-          </Stack.Screen>
-          
+          <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
         </Stack.Navigator>
         <StatusBar style="auto" />
-    </NavigationContainer>
-    
+  </NavigationContainer>
   )
 }
 

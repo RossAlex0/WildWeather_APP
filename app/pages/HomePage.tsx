@@ -1,36 +1,51 @@
 import { Pressable, Text, TextInput, View } from "react-native";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { LinearGradient } from 'expo-linear-gradient';
 
 import HomeHeader from "../components/HomeHeader";
+import HomeCitySentences from "../components/HomeCitySentences";
+
 import storage from "../services/storage";
+import getWeather from "../services/getWeather";
 
 import stylesHome from "../styles/styleHome";
 
-export default function HomePage({extraData}:{ extraData : {}}) {
-    console.info(extraData)
+
+export default function HomePage() {
     
-    const { loadCity, clearStorage } = storage;
-    const [userCity, setUserCity] = useState<string>("");
+    const { clearStorage, loadCity, saveCity } = storage;
+    const [userCity, setUserCity] = useState("");
     const [inputSearchValue, setInputSearchValue] = useState("")
+    const [data, setData] = useState();
 
     useEffect(() => {
-        loadCity(setUserCity)
-    },[]);
+        const getData = async() => {
+          try{
+            await loadCity(setUserCity)
+            if(userCity){
+            const weatherData = await getWeather(userCity)
+            setData(weatherData)
+            }
+          }catch (err){
+            console.error(err)
+          }
+        }
+        getData()
+    },[userCity]);
+    
 
     const handleClear = () => {
-        console.info("C'est clear")
+        console.info("Cleaned")
         clearStorage()
     }
     const handleSubmit = () =>  {
-        // Appel api par l'input
-        console.info(inputSearchValue)
+        setUserCity(inputSearchValue)
+        saveCity(inputSearchValue)
         setInputSearchValue("")
     }
 
     return(
-        
     <LinearGradient
     colors={['#D5E8FF', '#FFFFFF']}
     start={{ x: 0, y: 0 }} 
@@ -48,6 +63,7 @@ export default function HomePage({extraData}:{ extraData : {}}) {
             style={stylesHome.input}
             />
         </View>
+        {data && <HomeCitySentences data={data} />}
         <Pressable onPress={handleClear} 
         style={{borderColor: '#000', borderWidth: 2, padding: 4}}>
             <Text>Clear</Text>
