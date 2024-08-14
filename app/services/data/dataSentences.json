@@ -1,0 +1,48 @@
+{
+    "Clear": [
+      "The sun is shining bright. Perfect for enjoying the great outdoors.",
+      "Clear skies today. Great for a walk or just soaking up some vitamin D.",
+      "It’s a clear day, so enjoy the sunshine while it lasts!"
+    ],
+    "Clouds": [
+      "The sky is covered with clouds, giving it a soft, cozy look.",
+      "Cloudy weather today. Ideal for a calm and relaxed day indoors.",
+      "The clouds are out, making the day feel a bit more subdued and peaceful."
+    ],
+    "Rain": [
+      "It’s raining today. Perfect for a cozy day with a good book and a cup of tea.",
+      "Rainy weather ahead, so don’t forget your umbrella and enjoy the soothing sound of raindrops.",
+      "A rainy day is here. Great for staying in and getting comfortable."
+    ],
+    "Thunderstorm": [
+      "A thunderstorm is brewing. Perfect for staying indoors and listening to the dramatic weather outside.",
+      "Thunder and lightning are making today feel extra dynamic and exciting.",
+      "Expect a thunderstorm. Ideal weather for a cozy evening inside."
+    ],
+    "Snow": [
+      "Snow is falling softly. Time for winter activities or just enjoying the snowy scenery.",
+      "The snow is covering everything in a beautiful white blanket—perfect for a winter walk.",
+      "Snowy weather today. Great for a fun snowball fight or a warm drink by the fire."
+    ],
+    "Atmosphere": [
+      "The atmosphere today feels calm and pleasant, perfect for a relaxing day.",
+      "It’s a gentle, atmospheric day. Ideal for some reflective time outdoors.",
+      "The atmosphere is serene, creating a peaceful and tranquil setting."
+    ],
+    "Drizzle": [
+      "It’s drizzling lightly. Just enough to freshen up the air and add a touch of calm.",
+      "A gentle drizzle today. Ideal for a quiet day out or just enjoying the soft rain.",
+      "Drizzle is in the air. Perfect for a refreshing change and a relaxed mood."
+    ],
+    "Mist": [
+      "The mist is rolling in, adding a mysterious and soft touch to the landscape.",
+      "Today’s misty weather creates a dreamy and calm atmosphere.",
+      "The mist is giving everything a gentle, ethereal quality. Perfect for a reflective day."
+    ],
+    "Smoke": [
+      "There’s a smoky haze today. Creating a slightly mysterious and atmospheric feel.",
+      "Smoke in the air gives the day a unique and slightly hazy appearance.",
+      "The smoky weather adds a bit of depth to the landscape. Perfect for a different kind of day."
+    ]
+  }
+  
