@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import { WeatherApiInterface } from "../types/weatherInterfaces";
+import { WeatherInterface } from "../types/weatherInterfaces";
 
 export default function HomeCitySentences({ data } :{data: WeatherInterface}){
     

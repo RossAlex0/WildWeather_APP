@@ -1,4 +1,4 @@
- export interface WeatherApiInterface {
+ export interface WeatherInterface {
     coord: Coordinates;
     weather: Weather[];
     base: string;
