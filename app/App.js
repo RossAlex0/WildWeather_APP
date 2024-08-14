@@ -9,6 +9,7 @@ import OnBoardingCity from './pages/OnBoardingCity';
 import HomePage from './pages/HomePage';
 
 import storage from './services/storage';
+import LoadingPage from './components/LoadingPage';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -26,20 +27,20 @@ export default function App() {
   }, []);
 
   if(loading){
-    return null
+    return <LoadingPage />
   }
   
   return (
-  <NavigationContainer>
-       <Stack.Navigator 
-       initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
-          <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
-          <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
-          <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-          <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
-        </Stack.Navigator>
-        <StatusBar style="auto" />
-  </NavigationContainer>
+    <NavigationContainer>
+      <Stack.Navigator 
+      initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
+        <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
+        <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
+        <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
+        <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
+      </Stack.Navigator>
+      <StatusBar style="auto" />
+    </NavigationContainer>
   )
 }
 
