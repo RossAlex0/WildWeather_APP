@@ -13,16 +13,26 @@ import storage from './services/storage';
 export default function App() {
   const Stack = createNativeStackNavigator();
   const { loadCity } = storage
-  const [ userCity, setUserCity] = useState("")
+  const [ userCity, setUserCity] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadCity(setUserCity)
-  })
+    const loadCityData = async () => {
+      await loadCity(setUserCity);
+      setLoading(false); 
+    };
+
+    loadCityData();
+  }, []);
+
+  if(loading){
+    return null
+  }
   
   return (
   <NavigationContainer>
        <Stack.Navigator 
-       initialRouteName={userCity !== null ? 'HomePage' : 'OnBoarding'}>
+       initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
           <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
