@@ -19,14 +19,14 @@ const stylesHomeCity = StyleSheet.create({
         borderColor: '#CBD8EF',
         borderRadius: 16,
         borderWidth: 1,
-        padding: 16,
+        padding: 12,
         backgroundColor: '#E0EEFF'
     },
     sentences:{
         textAlign: 'center',
         color: colors.primaryColor,
-        fontSize: 16,
-        lineHeight: 20
+        fontSize: 18,
+        fontWeight: '300'
     }
 })
 
