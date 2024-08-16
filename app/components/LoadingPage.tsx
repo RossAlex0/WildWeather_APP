@@ -1,8 +1,8 @@
 import { LinearGradient } from "expo-linear-gradient";
+import { StyleSheet } from "react-native";
 
 import LottieView from "lottie-react-native";
 
-import { StyleSheet } from "react-native";
 
 export default function LoadingPage(){
     return (
@@ -13,7 +13,7 @@ export default function LoadingPage(){
           style={styleLoading.container}
         >
           <LottieView
-            source={require('../../assets/lottie/cloudLoading.json')}
+            source={require('../../assets/loadingLottie/cloudLoading.json')}
             autoPlay
             loop
             style={styleLoading.lottie}

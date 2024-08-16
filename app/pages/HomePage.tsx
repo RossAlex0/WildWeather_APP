@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import HomeHeader from "../components/HomeHeader";
 import HomeCitySentences from "../components/HomeCitySentences";
+import HomeCloud from "../components/HomeCloud";
 
 import storage from "../services/storage";
 import getWeather from "../services/getWeather";
@@ -64,6 +65,7 @@ export default function HomePage() {
             />
         </View>
         {data && <HomeCitySentences data={data} />}
+        {data && <HomeCloud data={data} />}
         <Pressable onPress={handleClear} 
         style={{borderColor: '#000', borderWidth: 2, padding: 4}}>
             <Text>Clear</Text>
