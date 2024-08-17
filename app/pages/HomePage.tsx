@@ -1,4 +1,4 @@
-import { Pressable, Text, TextInput, View } from "react-native";
+import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { useEffect, useState, useContext } from "react";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -9,9 +9,10 @@ import HomeCloud from "../components/HomeCloud";
 import HomeStat from "../components/HomeStat";
 
 import storage from "../services/storage";
-import getWeather from "../services/getWeather";
+import getWeather from "../services/fetchData/getWeather";
 
 import stylesHome from "../styles/styleHome";
+import HomeCarousel from "../components/HomeCarousel";
 
 
 export default function HomePage() {
@@ -48,32 +49,40 @@ export default function HomePage() {
     }
 
     return(
-    <LinearGradient
-    colors={['#D5E8FF', '#FFFFFF']}
-    start={{ x: 0, y: 0 }} 
-    end={{ x: 0, y: 1 }}
-    style={stylesHome.container}>
-        <HomeHeader />
-        <View style={stylesHome.containerInput}>
-            <MaterialIcons style={stylesHome.searchIcon} name="search" size={32} color="#0E0C5E"/>
-            <TextInput 
-            value={inputSearchValue}
-            placeholder="Search for a city"
-            returnKeyType="search"
-            onChangeText={(e) => setInputSearchValue(e)}
-            onSubmitEditing={handleSubmit}
-            style={stylesHome.input}
-            />
-        </View>
-        {data && <HomeCitySentences data={data} />}
-        {data && <HomeCloud data={data} />}
-        {data && <HomeStat data={data} />}
-        <Pressable onPress={handleClear} 
-        style={{borderColor: '#000', borderWidth: 2, padding: 4}}>
-            <Text>Clear</Text>
-        </Pressable>
-    </LinearGradient>
-        
+    
+        <LinearGradient
+        colors={['#D5E8FF', '#FFFFFF']}
+        start={{ x: 0, y: 0 }} 
+        end={{ x: 0, y: 1 }}
+        >
+            <ScrollView 
+            showsVerticalScrollIndicator={false}
+            style={stylesHome.container}>
+            <HomeHeader />
+            <View style={stylesHome.containerInput}>
+                <MaterialIcons style={stylesHome.searchIcon} name="search" size={32} color="#0E0C5E"/>
+                <TextInput 
+                value={inputSearchValue}
+                placeholder="Search for a city"
+                returnKeyType="search"
+                onChangeText={(e) => setInputSearchValue(e)}
+                onSubmitEditing={handleSubmit}
+                style={stylesHome.input}
+                />
+            </View>
+            {data && <HomeCitySentences data={data} />}
+            {data && <HomeCloud data={data} />}
+            {data && <HomeStat data={data} />}
+            {data && <HomeCarousel data={data} userCity={userCity}/>}
+            <View>
+            <Pressable onPress={handleClear} 
+            style={{borderColor: '#000', borderWidth: 2, padding: 4, marginBottom:60}}>
+                <Text>Clear</Text>
+            </Pressable>
+            </View>
+            </ScrollView> 
+        </LinearGradient>
+      
         
     )
 }

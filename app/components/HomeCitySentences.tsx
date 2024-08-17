@@ -25,14 +25,14 @@ export default function HomeCitySentences({ data } :{data: WeatherInterface}){
     }, [data]);  
 
     return (
-        <>
-            <View>
+        <View style={stylesHomeCity.container}>
+            <View style={stylesHomeCity.container}>
                 <Text style={stylesHomeCity.city}>{cityFromArrondissement(data.name)}</Text>
                 <Text style={stylesHomeCity.country}>{codeCountry[data.sys.country]}</Text>
             </View>
             <View style={stylesHomeCity.conatainerSentences}>
                 <Text style={stylesHomeCity.sentences}>{sentences[data.weather[0].main][randomIndex]}</Text>
             </View>
-        </>
+        </View>
     )
 }
