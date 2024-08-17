@@ -3,29 +3,33 @@ import colors from './colors';
 
 const stylesHomeCloud = StyleSheet.create({
     container:{
+        
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        marginTop: -24
+        marginTop: -24,
     },
     lottie:{
-        height: '52%', 
-        width: '60%',
+        height: 208, 
+        width: '100%',
     },
     containerTexte:{
         position: 'absolute',
-        marginTop: '40%'
+        marginTop: '34%',
     },
     tempTexte:{
         textAlign: 'center',
-        fontSize: 54,
+        fontSize: 62,
         fontWeight: '900',
-        color: colors.primaryColor
+        color: colors.primaryColor,
+        marginLeft: 12
     },
     feelTexte:{
         color: colors.primaryColor,
-        fontSize: 17,
-        fontWeight: '200'
+        fontSize: 18,
+        fontWeight: '200',
+        marginLeft: 8,
+        marginTop: -8
     }
 });
 
