@@ -3,11 +3,8 @@ import colors from "./colors";
 
 const stylesHome = StyleSheet.create({
     container:{
-        height: '100%',
         width: '100%',
-        backgroundColor: "#FFF",
         display: 'flex',
-        gap: 24,
         paddingTop: 40,
         paddingBottom: 40,
         paddingLeft: 28,
@@ -21,6 +18,7 @@ const stylesHome = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+        marginBottom: 16
     },
     headerTxt:{
         fontSize: 26,
@@ -40,7 +38,8 @@ const stylesHome = StyleSheet.create({
         overflow: 'visible'
     },
     containerInput:{
-        width: '100%'
+        width: '100%',
+        marginBottom: 16
     },
     input:{
         height: 48,

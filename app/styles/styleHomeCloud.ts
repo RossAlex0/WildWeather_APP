@@ -3,11 +3,10 @@ import colors from './colors';
 
 const stylesHomeCloud = StyleSheet.create({
     container:{
-        
+        marginBottom: 40,
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        marginTop: -24,
     },
     lottie:{
         height: 208, 

@@ -7,7 +7,7 @@ const stylesHomeStat = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
-        marginTop: 8
+        marginBottom: 36,
     },
     statContain:{
         height: 32,
@@ -30,16 +30,16 @@ const stylesHomeStat = StyleSheet.create({
     },
     borderRight:{
         borderRightWidth: 1,
-        borderColor: '#D5E8FF'
+        borderColor: colors.secondaryColor
     },
     borderBottomLeft:{
         borderBottomWidth: 1,
-        borderColor: '#D5E8FF',
+        borderColor: colors.secondaryColor,
         borderBottomLeftRadius: 24
     },
     borderBottomRight:{
         borderBottomWidth: 1,
-        borderColor: '#D5E8FF',
+        borderColor: colors.secondaryColor,
         borderBottomRightRadius: 24
     },
 });

@@ -2,6 +2,9 @@ import { StyleSheet } from "react-native";
 import colors from "./colors";
 
 const stylesHomeCity = StyleSheet.create({
+    container:{
+        marginBottom: 16
+    },
     city:{
         textAlign: 'center',
         fontSize: 38,

@@ -3,7 +3,7 @@ import colors from './colors';
 
 const stylesOnBoarding = StyleSheet.create({
         global:{   
-          backgroundColor: '#D5E8FF',
+          backgroundColor: colors.secondaryColor,
           height: '100%',
           width: '100%'
         },
@@ -35,7 +35,7 @@ const stylesOnBoarding = StyleSheet.create({
         title:{
           fontSize: 32,
           fontWeight: 'bold',
-          color: colors.secondaryColor
+          color: colors.orangeColor
         },
         titleSecondary:{
           width: '100%',
