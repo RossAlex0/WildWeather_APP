@@ -8,10 +8,11 @@ import { ForecastInterfaces } from "../types/forecastInterfaces";
 import codeWeather from "../services/codeWeather";
 import getForecast from "../services/fetchData/getForecast";
 import convertHours from "../services/convertHour";
+import HomeChart from "./HomeChart";
 
 import stylesHomeCarousel from "../styles/styleCarousel";
 
-export default function HomeCarousel({ data, userCity } :{ data: WeatherInterface, userCity : string }){
+export default function HomeCarousel({ data, userCity } : { data: WeatherInterface, userCity : string }){
 
     const [dataForecast, setDataForecast] = useState<ForecastInterfaces[]>([]);
     const [isPress, setIsPress] = useState<number | null>(null);
@@ -24,6 +25,7 @@ export default function HomeCarousel({ data, userCity } :{ data: WeatherInterfac
     ()}, [userCity]);
 
     return (
+      <>
         <View style={stylesHomeCarousel.container}>
           <ScrollView 
           horizontal 
@@ -77,5 +79,7 @@ export default function HomeCarousel({ data, userCity } :{ data: WeatherInterfac
             ))}
             </ScrollView>
         </View>
+        {dataForecast && <HomeChart dataForecast={dataForecast} />}
+      </>
     )
 }
