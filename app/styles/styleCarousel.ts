@@ -33,6 +33,37 @@ const stylesHomeCarousel = StyleSheet.create({
         color: colors.primaryColor,
         fontWeight: 'bold',
         fontSize: 20
+    },
+    slideVerso: {
+        height: 144,
+        width: 84,
+        borderWidth: 1,
+        borderRadius: 48,
+        borderColor: colors.orangeColor,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginRight: 16, 
+        paddingTop: 8,
+        paddingBottom: 8,
+        backgroundColor: '#FFF',
+    },
+    statVerso:{
+        height: 'auto',
+        width: '100%',
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    titleStat:{
+        fontSize: 12,
+        fontWeight: '200',
+        color: colors.primaryColor
+    },
+    dataStat:{
+        fontSize: 14.5,
+        fontWeight: 'bold',
+        color: colors.orangeColor
     }
 });
 
