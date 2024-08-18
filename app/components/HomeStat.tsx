@@ -36,7 +36,7 @@ export default function HomeStat({ data } :{data: WeatherInterface}){
                     Wind Speed
                 </Text>
                 <Text style={stylesHomeStat.statTexteEnd}>
-                    {Math.ceil(data.wind.speed)} Km/h
+                    {Math.ceil(data.wind.speed * 3.6)} Km/h
                 </Text>
             </View>
         </View>
