@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Platform } from "react-native";
 import LottieView from "lottie-react-native";
 
 import { WeatherInterface } from "../types/weatherInterfaces";
@@ -18,7 +18,13 @@ export default function HomeCloud({ data } :{data: WeatherInterface}) {
             style={stylesHomeCloud.lottie} 
             />
             <View style={stylesHomeCloud.containerTexte}>
-                <Text style={stylesHomeCloud.tempTexte}>{Math.floor(data.main.temp)}°</Text>
+                <Text 
+                style={Platform.OS === "android" 
+                ? stylesHomeCloud.tempTexteAndroid
+                : stylesHomeCloud.tempTexteIos}
+                >
+                    {Math.floor(data.main.temp)}°
+                </Text>
                 <Text style={stylesHomeCloud.feelTexte}>Real feel {Math.ceil(data.main.feels_like)}°</Text>
             </View>
         </View>
