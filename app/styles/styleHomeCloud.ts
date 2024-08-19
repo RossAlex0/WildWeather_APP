@@ -16,10 +16,17 @@ const stylesHomeCloud = StyleSheet.create({
         position: 'absolute',
         marginTop: '34%',
     },
-    tempTexte:{
+    tempTexteAndroid:{
         textAlign: 'center',
         fontSize: 62,
         fontWeight: '900',
+        color: colors.primaryColor,
+        marginLeft: 12
+    },
+    tempTexteIos:{
+        textAlign: 'center',
+        fontSize: 62,
+        fontWeight: '800',
         color: colors.primaryColor,
         marginLeft: 12
     },
