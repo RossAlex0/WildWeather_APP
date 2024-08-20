@@ -7,13 +7,12 @@ import HomeHeader from "../components/HomeHeader";
 import HomeCitySentences from "../components/HomeCitySentences";
 import HomeCloud from "../components/HomeCloud";
 import HomeStat from "../components/HomeStat";
+import HomeCarousel from "../components/HomeCarousel";
 
 import storage from "../services/storage";
 import getWeather from "../services/fetchData/getWeather";
 
 import stylesHome from "../styles/styleHome";
-import HomeCarousel from "../components/HomeCarousel";
-
 
 export default function HomePage() {
     

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform, Animated } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import storageData from "../services/storage";
