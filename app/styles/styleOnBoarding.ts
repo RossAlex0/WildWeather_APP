@@ -137,7 +137,7 @@ const stylesOnBoarding = StyleSheet.create({
         },
         containerButtonCity:{
           width: '100%',
-          marginBottom: 72
+          marginBottom: 72,
         },
         searchIcon:{
           position: 'absolute',
@@ -151,6 +151,17 @@ const stylesOnBoarding = StyleSheet.create({
           borderRadius: 8,
           paddingLeft: 48,
           fontSize: 18
+        },
+        warningText:{
+          width: '100%',
+          position: 'absolute',
+          padding: 8,
+          marginTop: 56,
+          color: colors.orangeColor,
+          fontSize: 16,
+          fontWeight: '700',
+          textAlign: 'center',
+          
         }
 })
 

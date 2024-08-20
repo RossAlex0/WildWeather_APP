@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform } from "react-native";
+import { useEffect, useState, useRef } from "react";
+import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform, Animated } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import storageData from "../services/storage";
 
@@ -12,13 +12,22 @@ export default function OnBoardingName({ navigation }:{
 }) {
 
     const { saveCity, loadName} = storageData;
+    const [warningOpacity] = useState(new Animated.Value(0));
 
     const[name, setName] = useState<string>("");
     const[inputValue, setInputValue] = useState<string>("");
 
     const handlePressButtonCity = () => {
-        saveCity(inputValue)
-        navigation.navigate('HomePage')
+        if(inputValue.length > 3){
+            saveCity(inputValue)
+            navigation.navigate('HomePage')
+        }else {
+            Animated.timing(warningOpacity, {
+                toValue: 1,
+                duration: 800,
+                useNativeDriver: true,
+            }).start();
+        }
     };
 
     useEffect(() => {
@@ -58,6 +67,11 @@ export default function OnBoardingName({ navigation }:{
                         >
                             <ButtonConfirm texte="Confirm" />
                         </Pressable>
+                        <Animated.Text 
+                        style={[stylesOnBoarding.warningText, {opacity: warningOpacity}]}
+                        >
+                            ⚠️ Please enter a city ! ⚠️
+                        </Animated.Text >
                     </View>
                 </View>
             </View>
