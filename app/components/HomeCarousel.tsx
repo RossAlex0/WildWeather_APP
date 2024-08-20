@@ -7,7 +7,7 @@ import { ForecastInterfaces } from "../types/forecastInterfaces";
 
 import codeWeather from "../services/codeWeather";
 import getForecast from "../services/fetchData/getForecast";
-import convertHours from "../services/convertHour";
+import { convertDateHours, convertHourToAPM } from "../services/convertHour";
 import HomeChart from "./HomeChart";
 
 import stylesHomeCarousel from "../styles/styleCarousel";
@@ -31,7 +31,7 @@ export default function HomeCarousel({ data, userCity } : { data: WeatherInterfa
           horizontal 
           showsHorizontalScrollIndicator={false}
           >
-            {dataForecast.map((forecast) => (
+            {dataForecast?.map((forecast) => (
               <Pressable 
               key={forecast.dt} 
               style={isPress === forecast.dt ? stylesHomeCarousel.slideVerso : stylesHomeCarousel.slide}
@@ -62,7 +62,7 @@ export default function HomeCarousel({ data, userCity } : { data: WeatherInterfa
               ):( 
                   <>
                     <Text style={stylesHomeCarousel.hours}>
-                      {convertHours(forecast.dt_txt, data.sys.country)}:00
+                      {convertHourToAPM(convertDateHours(forecast.dt_txt, data.sys.country))}
                     </Text>
                     <LottieView
                       source={codeWeather[forecast.weather[0].icon]}
@@ -79,7 +79,7 @@ export default function HomeCarousel({ data, userCity } : { data: WeatherInterfa
             ))}
             </ScrollView>
         </View>
-        {dataForecast && <HomeChart dataForecast={dataForecast} />}
+        {dataForecast.length > 0 && <HomeChart dataForecast={dataForecast} data={data}/>}
       </>
     )
 }

@@ -39,7 +39,7 @@ const stylesHomeCarousel = StyleSheet.create({
         width: 84,
         borderWidth: 1,
         borderRadius: 48,
-        borderColor: colors.orangeColor,
+        borderColor: colors.primaryColor,
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -63,7 +63,7 @@ const stylesHomeCarousel = StyleSheet.create({
     dataStat:{
         fontSize: 14.5,
         fontWeight: 'bold',
-        color: colors.orangeColor
+        color: colors.primaryColor
     }
 });
 
