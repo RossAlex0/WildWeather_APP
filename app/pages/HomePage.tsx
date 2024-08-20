@@ -1,5 +1,5 @@
 import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { LinearGradient } from 'expo-linear-gradient';
 
