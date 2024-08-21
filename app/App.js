@@ -8,12 +8,16 @@ import OnBoardingName from './pages/OnBoardingName';
 import OnBoardingCity from './pages/OnBoardingCity';
 import HomePage from './pages/HomePage';
 
+import WeatherContext from './services/context/WeatherContext';
 import storage from './services/storage';
 import LoadingPage from './components/LoadingPage';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
+
   const { loadCity } = storage
+
+  const [dataWeather, setDataWeather] = useState()
   const [ userCity, setUserCity] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -31,16 +35,18 @@ export default function App() {
   }
   
   return (
-    <NavigationContainer>
-      <Stack.Navigator 
-      initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
-        <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
-        <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
-        <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-        <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
-      </Stack.Navigator>
-      <StatusBar style="auto" />
-    </NavigationContainer>
+    <WeatherContext.Provider value={{dataWeather: dataWeather, setDataWeather: setDataWeather}}>
+      <NavigationContainer>
+        <Stack.Navigator 
+        initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
+          <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
+          <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
+          <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
+          <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
+        </Stack.Navigator>
+        <StatusBar style="auto" />
+      </NavigationContainer>
+    </WeatherContext.Provider>
   )
 }
 
