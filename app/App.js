@@ -12,6 +12,7 @@ import WeatherContext from './services/context/WeatherContext';
 import storage from './services/storage';
 import LoadingPage from './components/LoadingPage';
 import { defaultWeather } from './types/weatherContextTypes';
+import AstronomyPage from './pages/AstronomyPage';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -39,16 +40,24 @@ export default function App() {
     <WeatherContext.Provider value={{data: data, setData: setData}}>
       <NavigationContainer>
         <Stack.Navigator 
-        initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
+        initialRouteName={userCity !== "" ? 'Celestial Events' : 'OnBoarding'}>
           <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-          <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
+          <Stack.Screen name='Celestial Events' component={AstronomyPage} options={{ headerShown: true}} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>
     </WeatherContext.Provider>
   )
 }
+
+// <Stack.Navigator 
+// initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
+// <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
+// <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
+// <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
+// <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
+// </Stack.Navigator>  
 
 

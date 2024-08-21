@@ -1,8 +1,10 @@
 import axios from "axios";
 
-export default function getAstroData(date : string){
+import { AstroInterface } from "../../types/interfaces/astronomyInterfaces";
+
+export default function getAstroData(date : string): Promise<AstroInterface>{
     return axios
     .get(`https://aa.usno.navy.mil/api/moon/phases/date?date=${date}&nump=12`)
-    .then((res) => res)
+    .then((res) => res.data)
     .catch((err) => console.error(err))
 }

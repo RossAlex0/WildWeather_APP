@@ -1,4 +1,4 @@
-  export interface ForecastInterfaces {
+  interface ForecastInterfaces {
     dt: number;
     main: Main;
     weather: Weather[];
@@ -10,14 +10,14 @@
     dt_txt: string;
   };
   
-  export interface Weather {
+  interface Weather {
     id: number;
     main: string;
     description: string;
     icon: string;
   };
   
-  export interface Main {
+  interface Main {
     temp: number;
     feels_like: number;
     temp_min: number;
@@ -29,19 +29,21 @@
     temp_kf: number;
   };
   
-  export interface Wind {
+  interface Wind {
     speed: number;
     deg: number;
     gust: number;
   };
   
-  export interface Clouds {
+  interface Clouds {
     all: number;
   };
   
-  export interface Sys {
+  interface Sys {
     pod: string;
   };
+
+  export { ForecastInterfaces, Weather, Main, Wind, Clouds, Sys}
   
   
   
