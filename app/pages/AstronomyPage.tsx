@@ -38,9 +38,9 @@ export default function AstronomyPage(){
                             />
                             <View style={stylesAstronomy.containerTextSun}>
                                 <Text style={stylesAstronomy.textTimeSun}>
-                                    07:21{data && convertUnixToHours(data.sys.sunrise, data.sys.country)}
+                                    {data ? convertUnixToHours(data.sys.sunrise, data.sys.country): '07:39'}
                                 </Text>
-                                <Text style={stylesAstronomy.textSun}></Text>
+                                <Text style={stylesAstronomy.textSun}>Sunrise</Text>
                             </View>
                         </View>
                         <View style={stylesAstronomy.containSun}>
@@ -50,9 +50,9 @@ export default function AstronomyPage(){
                             />
                             <View style={stylesAstronomy.containerTextSun}>
                                 <Text style={stylesAstronomy.textTimeSun}>
-                                    20:54{data && convertUnixToHours(data.sys.sunrise, data.sys.country)}
+                                    {data ? convertUnixToHours(data.sys.sunrise, data.sys.country) : '20:46'}
                                 </Text>
-                                <Text style={stylesAstronomy.textSun}></Text>
+                                <Text style={stylesAstronomy.textSun}>Sunset</Text>
                             </View>
                         </View>
             </View>
