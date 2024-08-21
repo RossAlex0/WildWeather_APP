@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import OnBoarding from './pages/OnBoarding';
@@ -11,13 +11,15 @@ import HomePage from './pages/HomePage';
 import WeatherContext from './services/context/WeatherContext';
 import storage from './services/storage';
 import LoadingPage from './components/LoadingPage';
+import { defaultWeather } from './types/weatherContextTypes';
+import AstronomyPage from './pages/AstronomyPage';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   const { loadCity } = storage
 
-  const [dataWeather, setDataWeather] = useState()
+  const [data, setData] = useState(defaultWeather)
   const [ userCity, setUserCity] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -35,19 +37,27 @@ export default function App() {
   }
   
   return (
-    <WeatherContext.Provider value={{dataWeather: dataWeather, setDataWeather: setDataWeather}}>
+    <WeatherContext.Provider value={{data: data, setData: setData}}>
       <NavigationContainer>
         <Stack.Navigator 
-        initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
+        initialRouteName={userCity !== "" ? 'Celestial Events' : 'OnBoarding'}>
           <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-          <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
+          <Stack.Screen name='Celestial Events' component={AstronomyPage} options={{ headerShown: true}} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>
     </WeatherContext.Provider>
   )
 }
+
+// <Stack.Navigator 
+// initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
+// <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
+// <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
+// <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
+// <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
+// </Stack.Navigator>  
 
 

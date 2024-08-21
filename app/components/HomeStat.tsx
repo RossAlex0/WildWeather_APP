@@ -1,9 +1,13 @@
 import { View, Text } from "react-native";
+import { useContext } from "react";
 
-import { WeatherInterface } from "../types/weatherInterfaces";
+import WeatherContext from "../services/context/WeatherContext";
 import stylesHomeStat from "../styles/styleHomeStat";
 
-export default function HomeStat({ data } :{data: WeatherInterface}){
+export default function HomeStat(){
+
+    const { data } = useContext(WeatherContext);
+
     return (
         <View style={stylesHomeStat.container}>
             <View style={[stylesHomeStat.statContain, stylesHomeStat.borderBottomLeft, stylesHomeStat.borderRight]}>

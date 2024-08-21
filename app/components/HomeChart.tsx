@@ -1,14 +1,19 @@
 import { View, Text, Dimensions } from "react-native";
+import { useContext } from "react";
 import { LineChart } from "react-native-chart-kit";
 
-import { ForecastInterfaces } from "../types/forecastInterfaces";
-import { WeatherInterface } from "../types/weatherInterfaces";
+import { ForecastInterfaces } from "../types/interfaces/forecastInterfaces";
+
 import { convertDateHours, convertHourToAPMArray } from "../services/convertHour";
+import WeatherContext from "../services/context/WeatherContext";
 
 import stylesHomeChart from "../styles/styleHomeChart";
 
 
-export default function HomeChart({ dataForecast, data } : { dataForecast: ForecastInterfaces[], data: WeatherInterface}) {
+
+export default function HomeChart({ dataForecast} : { dataForecast: ForecastInterfaces[]}) {
+
+    const { data } = useContext(WeatherContext);
  
     const labels: string[] = dataForecast.map(forecast => `${convertDateHours(forecast.dt_txt, data.sys.country)}h`).slice(0, -2);
     const labelsAMPM: string[] = convertHourToAPMArray(labels);
@@ -17,7 +22,7 @@ export default function HomeChart({ dataForecast, data } : { dataForecast: Forec
 
     return (
         <View>
-          {humidityData && data && (
+          {humidityData && (
             <>
               <Text style={stylesHomeChart.title}>Humidity Analysis :</Text>
               <View style={stylesHomeChart.container}>

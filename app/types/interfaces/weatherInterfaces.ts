@@ -1,4 +1,4 @@
- export interface WeatherInterface {
+  interface WeatherInterface {
     coord: Coordinates;
     weather: Weather[];
     base: string;
@@ -14,19 +14,19 @@
     cod: number;
   }
  
- export interface Coordinates {
+  interface Coordinates {
     lon: number;
     lat: number;
   }
   
- export interface Weather {
+  interface Weather {
     id: number;
     main: string;
     description: string;
     icon: string;
   }
   
- export interface MainWeather {
+  interface MainWeather {
     temp: number;
     feels_like: number;
     temp_min: number;
@@ -37,16 +37,16 @@
     grnd_level: number;
   }
   
- export interface Wind {
+  interface Wind {
     speed: number;
     deg: number;
   }
   
- export interface Clouds {
+  interface Clouds {
     all: number;
   }
   
- export interface Sys {
+  interface Sys {
     type: number;
     id: number;
     country: string;
@@ -54,5 +54,6 @@
     sunset: number;
   }
   
+  export { WeatherInterface, Coordinates, Weather, MainWeather, Wind, Clouds, Sys}
  
   
