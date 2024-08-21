@@ -1,4 +1,6 @@
-export default function( setter: any ){
+import { Dispatch, SetStateAction } from "react"
+
+export default function( setter: Dispatch<SetStateAction<string>> ){
     const date = new Date()
     const year = date.getFullYear() 
     const month = date.getMonth() + 1
