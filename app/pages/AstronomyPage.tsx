@@ -56,8 +56,21 @@ export default function AstronomyPage(){
                             </View>
                         </View>
             </View>
-            <View>
-
+            <View style={stylesAstronomy.containerMoon}>
+                <View style={stylesAstronomy.containerTextMoon}>
+                    <Text style={stylesAstronomy.textPhase}>
+                        Full Moon
+                    </Text>
+                    <Text style={stylesAstronomy.textDate}>
+                        2024-06-25
+                    </Text>
+                    <Text style={stylesAstronomy.textHour}>
+                        12:20
+                    </Text>
+                </View>
+                <Image 
+                source={require('../../assets/imagesAstro/First Quarter.png')}
+                style={stylesAstronomy.imageMoon}/>
             </View>
         </View>
     )
