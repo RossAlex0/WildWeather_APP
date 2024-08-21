@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer, useFocusEffect } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import OnBoarding from './pages/OnBoarding';
@@ -11,13 +11,14 @@ import HomePage from './pages/HomePage';
 import WeatherContext from './services/context/WeatherContext';
 import storage from './services/storage';
 import LoadingPage from './components/LoadingPage';
+import { defaultWeather } from './types/weatherContextTypes';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
 
   const { loadCity } = storage
 
-  const [dataWeather, setDataWeather] = useState()
+  const [data, setData] = useState(defaultWeather)
   const [ userCity, setUserCity] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +36,7 @@ export default function App() {
   }
   
   return (
-    <WeatherContext.Provider value={{dataWeather: dataWeather, setDataWeather: setDataWeather}}>
+    <WeatherContext.Provider value={{data: data, setData: setData}}>
       <NavigationContainer>
         <Stack.Navigator 
         initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>

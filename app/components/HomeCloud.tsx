@@ -1,14 +1,17 @@
 import { View, Text, Platform } from "react-native";
+import { useContext } from "react";
 import LottieView from "lottie-react-native";
 
-import { WeatherInterface } from "../types/weatherInterfaces";
+import WeatherContext from "../services/context/WeatherContext";
 import codeWeather from "../services/codeWeather";
 
 import stylesHomeCloud from "../styles/styleHomeCloud";
 
-export default function HomeCloud({ data } :{data: WeatherInterface}) {
+
+export default function HomeCloud() {
     
-    
+    const { data } = useContext(WeatherContext);
+   
     return (
         <View style={stylesHomeCloud.container}>
             <LottieView

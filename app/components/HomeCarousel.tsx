@@ -1,18 +1,21 @@
 import { Pressable, ScrollView, Text, View, Animated } from "react-native";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import LottieView from "lottie-react-native";
 
-import { WeatherInterface } from "../types/weatherInterfaces";
-import { ForecastInterfaces } from "../types/forecastInterfaces";
+import HomeChart from "./HomeChart";
 
+import { ForecastInterfaces } from "../types/interfaces/forecastInterfaces";
+
+import { convertDateHours, convertHourToAPM } from "../services/convertHour";
 import codeWeather from "../services/codeWeather";
 import getForecast from "../services/fetchData/getForecast";
-import { convertDateHours, convertHourToAPM } from "../services/convertHour";
-import HomeChart from "./HomeChart";
+import WeatherContext from "../services/context/WeatherContext";
 
 import stylesHomeCarousel from "../styles/styleCarousel";
 
-export default function HomeCarousel({ data, userCity } : { data: WeatherInterface, userCity : string }){
+export default function HomeCarousel({ userCity } : { userCity : string }){
+
+    const { data } = useContext(WeatherContext);
 
     const [dataForecast, setDataForecast] = useState<ForecastInterfaces[]>([]);
     const [isPress, setIsPress] = useState<number | null>(null);
@@ -79,7 +82,10 @@ export default function HomeCarousel({ data, userCity } : { data: WeatherInterfa
             ))}
             </ScrollView>
         </View>
-        {dataForecast.length > 0 && <HomeChart dataForecast={dataForecast} data={data}/>}
+          {dataForecast.length > 0 && 
+          <HomeChart dataForecast={dataForecast}
+        />
+        }
       </>
     )
 }

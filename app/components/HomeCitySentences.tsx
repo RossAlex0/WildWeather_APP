@@ -1,13 +1,16 @@
 import { Text, View } from "react-native";
-import { WeatherInterface } from "../types/weatherInterfaces";
+import { useContext, useEffect, useState } from "react";
 
 import dataCodeCountry from "../services/data/dataCodeCountry.json";
 import dataSentences from "../services/data/dataSentences.json";
+import WeatherContext from "../services/context/WeatherContext";
 
 import stylesHomeCity from "../styles/styleHomeCity";
-import { useEffect, useState } from "react";
 
-export default function HomeCitySentences({ data } :{data: WeatherInterface}){
+export default function HomeCitySentences(){
+
+    const { data } = useContext(WeatherContext);
+
     const codeCountry: Record<string, string> = dataCodeCountry;
     const sentences: Record<string, string[]> = dataSentences;
 

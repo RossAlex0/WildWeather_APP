@@ -1,5 +1,5 @@
 import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -13,13 +13,15 @@ import storage from "../services/storage";
 import getWeather from "../services/fetchData/getWeather";
 
 import stylesHome from "../styles/styleHome";
+import WeatherContext from "../services/context/WeatherContext";
 
 export default function HomePage() {
+
+    const { data, setData } = useContext(WeatherContext);
     
     const { clearStorage, loadCity, saveCity } = storage;
     const [userCity, setUserCity] = useState("");
     const [inputSearchValue, setInputSearchValue] = useState("")
-    const [data, setData] = useState();
 
     useEffect(() => {
         const getData = async() => {
@@ -69,10 +71,14 @@ export default function HomePage() {
                 style={stylesHome.input}
                 />
             </View>
-            {data && <HomeCitySentences data={data} />}
-            {data && <HomeCloud data={data} />}
-            {data && <HomeStat data={data} />}
-            {data && <HomeCarousel data={data} userCity={userCity}/>}
+            { data && 
+                <>
+                    <HomeCitySentences />
+                    <HomeCloud />
+                    <HomeStat />
+                    <HomeCarousel userCity={userCity}/>
+                </>
+            }
             <View>
             <Pressable onPress={handleClear} 
             style={{borderColor: '#000', borderWidth: 2, padding: 4, marginBottom:60}}>

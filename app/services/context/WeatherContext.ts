@@ -1,7 +1,10 @@
 import { createContext } from "react";
-import { WeatherInterface } from "../../types/weatherInterfaces";
-import { defaultWeather } from "../../types/defaultWeatherInterfaces";
+import { WeatherContextTypes } from "../../types/weatherContextTypes";
+import { defaultWeather } from "../../types/defaultWeatherState";
 
-const WeatherContext = createContext<WeatherInterface>(defaultWeather);
+const WeatherContext = createContext<WeatherContextTypes>({
+    data: defaultWeather,
+    setData: () => {},
+  });
 
 export default WeatherContext;
