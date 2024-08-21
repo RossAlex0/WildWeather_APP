@@ -39,7 +39,38 @@ const stylesAstronomy = StyleSheet.create({
         fontSize: 16
     },
     containerMoon:{
-        
+        height: 80,
+        width: '100%',
+        marginTop: 46,
+        backgroundColor: '#FFF',
+        borderColor: '#E9E9F1',
+        borderWidth: 1,
+        borderRadius: 12,
+        overflow: 'hidden',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    containerTextMoon:{
+        width: '60%',
+        paddingVertical: 4,
+        paddingHorizontal: 16
+    },
+    textPhase:{
+        fontWeight: '900',
+        fontSize: 18,
+        marginBottom: 4,
+        color: colors.primaryColor
+    },
+    textDate:{
+        color: colors.primaryColor
+    },
+    textHour:{
+        color: colors.primaryColor
+    },
+    imageMoon:{
+        height: 104,
+        width: 160,
+        marginTop: -12
     }
 });
 
