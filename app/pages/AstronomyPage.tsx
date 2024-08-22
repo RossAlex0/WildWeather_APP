@@ -43,6 +43,7 @@ export default function AstronomyPage(){
                                 <Text style={stylesAstronomy.textSun}>Sunrise</Text>
                             </View>
                         </View>
+                        <View style={stylesAstronomy.borderSun}></View>
                         <View style={stylesAstronomy.containSun}>
                             <Image
                             source={require('../../assets/imagesAstro/moon.png')}
