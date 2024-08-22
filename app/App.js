@@ -13,6 +13,8 @@ import storage from './services/storage';
 import LoadingPage from './components/LoadingPage';
 import { defaultWeather } from './types/weatherContextTypes';
 import AstronomyPage from './pages/AstronomyPage';
+import BackButton from './components/BackButton';
+
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -39,25 +41,26 @@ export default function App() {
   return (
     <WeatherContext.Provider value={{data: data, setData: setData}}>
       <NavigationContainer>
-        <Stack.Navigator 
-        initialRouteName={userCity !== "" ? 'Celestial Events' : 'OnBoarding'}>
+       <Stack.Navigator 
+        initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
           <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
           <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-          <Stack.Screen name='Celestial Events' component={AstronomyPage} options={{ headerShown: true}} />
-        </Stack.Navigator>
+          <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
+          <Stack.Screen name='Celestial Events' component={AstronomyPage} options={{ headerShown: true,  headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 20,
+            },
+            headerTintColor: '#0E0C5E',
+            headerLeft: () => <BackButton />,
+          }} />
+        </Stack.Navigator>  
         <StatusBar style="auto" />
       </NavigationContainer>
     </WeatherContext.Provider>
   )
 }
 
-// <Stack.Navigator 
-// initialRouteName={userCity !== "" ? 'HomePage' : 'OnBoarding'}>
-// <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
-// <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
-// <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-// <Stack.Screen name='HomePage' component={HomePage} options={{ headerShown: false}} />
-// </Stack.Navigator>  
+
 
 

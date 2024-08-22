@@ -1,14 +1,16 @@
 import { Text, View, Pressable, Image } from "react-native";
 import { useEffect, useState } from "react";
+import { useNavigation, ParamListBase, NavigationProp } from "@react-navigation/native";
+
 
 import storage from "../services/storage";
 
 import stylesHome from "../styles/styleHome";
 
 
-export default function HomeHeader({ navigation }:{
-    navigation :{ navigate : (screen: string) => void }
-}){
+export default function HomeHeader(){
+
+    const navigation: NavigationProp<ParamListBase> = useNavigation();
     const { loadName } = storage
     const [userName, setUserName] = useState("")
 
@@ -20,7 +22,7 @@ export default function HomeHeader({ navigation }:{
         <View style={stylesHome.header}>
             <Text style={stylesHome.headerTxt}>Hi {userName} !</Text>
             <View style={stylesHome.headerBtn}>
-                <Pressable>
+                <Pressable onPress={() => navigation.navigate('Celestial Events')}>
                     <Image 
                     source={require('../../assets/imagesBtn/VectorAstro.png')}
                     style={stylesHome.headerImg} />
