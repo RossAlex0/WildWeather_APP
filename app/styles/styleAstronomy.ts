@@ -14,12 +14,21 @@ const stylesAstronomy = StyleSheet.create({
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        paddingHorizontal: 8
+        alignItems: 'center',
+        paddingHorizontal: 8,
+    },
+    borderSun:{
+        height: 1,
+        width: '21%',
+        borderWidth: 1,
+        borderColor: colors.secondaryColor,
+        borderStyle: 'dashed',
     },
     containSun:{
         height: 50,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     imageSun:{
         height: 50,
@@ -27,7 +36,7 @@ const stylesAstronomy = StyleSheet.create({
         marginRight: 12
     },
     containerTextSun:{
-        justifyContent: 'center'
+        alignItems: 'center'
     },
     textTimeSun:{
         color: colors.primaryColor,
