@@ -1,7 +1,7 @@
 
 import { Pressable } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export default function BackButton (){
     
