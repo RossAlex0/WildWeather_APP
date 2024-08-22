@@ -27,7 +27,7 @@ export default function HomeHeader(){
                     source={require('../../assets/imagesBtn/VectorAstro.png')}
                     style={stylesHome.headerImg} />
                 </Pressable>
-                <Pressable>
+                <Pressable onPress={() => navigation.navigate('Settings')}>
                     <Image 
                     source={require('../../assets/imagesBtn/parameter.png')}
                     style={stylesHome.headerImg} />

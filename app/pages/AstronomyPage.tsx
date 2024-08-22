@@ -10,17 +10,13 @@ import convertDateYMD from "../services/convertDateYMD";
 import stylesAstronomy from "../styles/styleAstronomy";
 import LoadingPage from "../components/LoadingPage";
 
-interface Astr {
-    [key: string]: any;
-}
-
 export default function AstronomyPage(){
 
     const { data } = useContext(WeatherContext);
 
     const [astroData, setAstroData] = useState<AstroInterface>()
 
-    const moonPhaseImages: Astr = {
+    const moonPhaseImages: { [key: string]: any }= {
         'First Quarter': require('../../assets/imagesAstro/FirstQuarter.png'),
         'Last Quarter': require('../../assets/imagesAstro/LastQuarter.png'),
         'Full Moon': require('../../assets/imagesAstro/FullMoon.png'),
@@ -50,7 +46,7 @@ export default function AstronomyPage(){
                             />
                             <View style={stylesAstronomy.containerTextSun}>
                                 <Text style={stylesAstronomy.textTimeSun}>
-                                    {data ? convertUnixToHours(data.sys.sunrise, data.sys.country): '07:39'}
+                                    {data ? convertUnixToHours(data.sys.sunrise, data.sys.country) : '07:39'}
                                 </Text>
                                 <Text style={stylesAstronomy.textSun}>Sunrise</Text>
                             </View>
@@ -63,7 +59,7 @@ export default function AstronomyPage(){
                             />
                             <View style={stylesAstronomy.containerTextSun}>
                                 <Text style={stylesAstronomy.textTimeSun}>
-                                    {data ? convertUnixToHours(data.sys.sunrise, data.sys.country) : '20:46'}
+                                    {data ? convertUnixToHours(data.sys.sunset, data.sys.country) : '20:46'}
                                 </Text>
                                 <Text style={stylesAstronomy.textSun}>Sunset</Text>
                             </View>
@@ -84,7 +80,6 @@ export default function AstronomyPage(){
                 </View>
                 <Image 
                 source={moonPhaseImages[moonPhase.phase]}
-                
                 style={stylesAstronomy.imageMoon}/>
             </View>
             ))

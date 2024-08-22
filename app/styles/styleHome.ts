@@ -33,7 +33,7 @@ const stylesHome = StyleSheet.create({
 
     },
     headerImg:{
-        height: 28,
+        height: 32,
         width: 32,
         overflow: 'visible'
     },
