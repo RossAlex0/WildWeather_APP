@@ -57,22 +57,24 @@ export default function AstronomyPage(){
                             </View>
                         </View>
             </View>
-            <View style={stylesAstronomy.containerMoon}>
+            {astroData?.phasedata.map((moonPhase, index) => (
+            <View key={index} style={stylesAstronomy.containerMoon}>
                 <View style={stylesAstronomy.containerTextMoon}>
                     <Text style={stylesAstronomy.textPhase}>
-                        Full Moon
+                        {moonPhase.phase}
                     </Text>
                     <Text style={stylesAstronomy.textDate}>
-                        2024-06-25
+                        {moonPhase.year}-{moonPhase.month}-{moonPhase.day}
                     </Text>
                     <Text style={stylesAstronomy.textHour}>
-                        12:20
+                        {moonPhase.time}
                     </Text>
                 </View>
                 <Image 
                 source={require('../../assets/imagesAstro/First Quarter.png')}
                 style={stylesAstronomy.imageMoon}/>
             </View>
+            ))}
         </View>
     )
 }

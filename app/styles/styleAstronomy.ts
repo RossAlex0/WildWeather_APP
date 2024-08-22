@@ -16,6 +16,7 @@ const stylesAstronomy = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 8,
+        marginBottom: 46
     },
     borderSun:{
         height: 1,
@@ -50,7 +51,7 @@ const stylesAstronomy = StyleSheet.create({
     containerMoon:{
         height: 80,
         width: '100%',
-        marginTop: 46,
+        marginTop: 12,
         backgroundColor: '#FFF',
         borderColor: '#E9E9F1',
         borderWidth: 1,
