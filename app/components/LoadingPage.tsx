@@ -1,4 +1,3 @@
-import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, Animated, View } from "react-native";
 import { useRef, useEffect } from "react";
 import LottieView from "lottie-react-native";
@@ -34,12 +33,7 @@ export default function LoadingPage(){
 
   return (
     <>
-      <LinearGradient
-        colors={['#D5E8FF', '#FFFFFF']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styleLoading.container}
-      >
+      <View style={styleLoading.container}>
         <LottieView
           source={require('../../assets/loadingLottie/cloudLoading.json')}
           autoPlay
@@ -51,7 +45,7 @@ export default function LoadingPage(){
       >
         <Text style={styleLoading.text}>Loading..</Text>
       </Animated.View>
-      </LinearGradient>
+      </View>
     </>
   );
 };
@@ -63,7 +57,8 @@ const styleLoading = StyleSheet.create({
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#F3F7FD',
     },
     lottie:{
         height: '30%',

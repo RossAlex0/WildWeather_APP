@@ -16,7 +16,7 @@ const stylesAstronomy = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: 8,
-        marginBottom: 46
+        marginBottom: 32
     },
     borderSun:{
         height: 1,

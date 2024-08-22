@@ -8,12 +8,24 @@ import { convertUnixToHours } from "../services/convertHour";
 import convertDateYMD from "../services/convertDateYMD";
 
 import stylesAstronomy from "../styles/styleAstronomy";
+import LoadingPage from "../components/LoadingPage";
+
+interface Astr {
+    [key: string]: any;
+}
 
 export default function AstronomyPage(){
 
     const { data } = useContext(WeatherContext);
 
     const [astroData, setAstroData] = useState<AstroInterface>()
+
+    const moonPhaseImages: Astr = {
+        'First Quarter': require('../../assets/imagesAstro/FirstQuarter.png'),
+        'Last Quarter': require('../../assets/imagesAstro/LastQuarter.png'),
+        'Full Moon': require('../../assets/imagesAstro/FullMoon.png'),
+        'New Moon': require('../../assets/imagesAstro/NewMoon.png'),
+    };
 
     useEffect(() => {
         const fetchAstroData = async () => {
@@ -57,7 +69,7 @@ export default function AstronomyPage(){
                             </View>
                         </View>
             </View>
-            {astroData?.phasedata.map((moonPhase, index) => (
+            {astroData ? astroData.phasedata.map((moonPhase, index) => (
             <View key={index} style={stylesAstronomy.containerMoon}>
                 <View style={stylesAstronomy.containerTextMoon}>
                     <Text style={stylesAstronomy.textPhase}>
@@ -71,10 +83,13 @@ export default function AstronomyPage(){
                     </Text>
                 </View>
                 <Image 
-                source={require('../../assets/imagesAstro/First Quarter.png')}
+                source={moonPhaseImages[moonPhase.phase]}
+                
                 style={stylesAstronomy.imageMoon}/>
             </View>
-            ))}
+            ))
+        : <LoadingPage/>
+        }
         </View>
     )
 }
