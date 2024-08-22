@@ -6,7 +6,8 @@ const stylesAstronomy = StyleSheet.create({
         backgroundColor: '#F3F7FD',
         height: '100%',
         flex: 1,
-        padding: 28,
+        paddingHorizontal: 28,
+        paddingVertical: 64,
         borderTopColor: colors.secondaryColor,
         borderTopWidth: 1
     },

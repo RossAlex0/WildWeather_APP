@@ -9,16 +9,11 @@ export default function SettingsNavigate(){
 
     return (
         <Tab.Navigator>
-            <Tab.Screen name='SettingsPage' component={SettingsPage}
-            options={{
-                headerTitleStyle: {
-                  fontWeight: '800',
-                  fontSize: 22,
-                  color: '#0E0C5E',
-                },
-                headerTitleAlign: 'center',
-                headerLeft: () => <BackButton />,
-                }} />
+            <Tab.Screen name='SettingsPage' component={SettingsPage} 
+            options={{ 
+                headerShown: false,
+                tabBarStyle: { display: 'none' }
+            }} />
         </Tab.Navigator>
         
     )
