@@ -34,12 +34,7 @@ export default function LoadingPage(){
 
   return (
     <>
-      <LinearGradient
-        colors={['#D5E8FF', '#FFFFFF']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={styleLoading.container}
-      >
+      <View style={styleLoading.container}>
         <LottieView
           source={require('../../assets/loadingLottie/cloudLoading.json')}
           autoPlay
@@ -51,7 +46,7 @@ export default function LoadingPage(){
       >
         <Text style={styleLoading.text}>Loading..</Text>
       </Animated.View>
-      </LinearGradient>
+      </View>
     </>
   );
 };
