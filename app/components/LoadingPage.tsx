@@ -1,4 +1,3 @@
-import { LinearGradient } from "expo-linear-gradient";
 import { StyleSheet, Text, Animated, View } from "react-native";
 import { useRef, useEffect } from "react";
 import LottieView from "lottie-react-native";
@@ -58,7 +57,8 @@ const styleLoading = StyleSheet.create({
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        backgroundColor: '#F3F7FD',
     },
     lottie:{
         height: '30%',
