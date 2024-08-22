@@ -6,7 +6,9 @@ import storage from "../services/storage";
 import stylesHome from "../styles/styleHome";
 
 
-export default function HomeHeader(){
+export default function HomeHeader({ navigation }:{
+    navigation :{ navigate : (screen: string) => void }
+}){
     const { loadName } = storage
     const [userName, setUserName] = useState("")
 
@@ -20,7 +22,7 @@ export default function HomeHeader(){
             <View style={stylesHome.headerBtn}>
                 <Pressable>
                     <Image 
-                    source={require('../../assets/imagesBtn/Vector.png')}
+                    source={require('../../assets/imagesBtn/VectorAstro.png')}
                     style={stylesHome.headerImg} />
                 </Pressable>
                 <Pressable>
