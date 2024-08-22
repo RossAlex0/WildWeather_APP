@@ -2,11 +2,9 @@ import { Text, View, Pressable, Image } from "react-native";
 import { useEffect, useState } from "react";
 import { useNavigation, ParamListBase, NavigationProp } from "@react-navigation/native";
 
-
 import storage from "../services/storage";
 
 import stylesHome from "../styles/styleHome";
-
 
 export default function HomeHeader(){
 
@@ -27,7 +25,7 @@ export default function HomeHeader(){
                     source={require('../../assets/imagesBtn/VectorAstro.png')}
                     style={stylesHome.headerImg} />
                 </Pressable>
-                <Pressable onPress={() => navigation.navigate('Settings')}>
+                <Pressable onPress={() => navigation.navigate('SettingsNav')}>
                     <Image 
                     source={require('../../assets/imagesBtn/parameter.png')}
                     style={stylesHome.headerImg} />

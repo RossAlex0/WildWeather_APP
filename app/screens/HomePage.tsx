@@ -21,7 +21,8 @@ export default function HomePage() {
     
     const { clearStorage, loadCity, saveCity } = storage;
     const [userCity, setUserCity] = useState("");
-    const [inputSearchValue, setInputSearchValue] = useState("")
+    const [inputSearchValue, setInputSearchValue] = useState("");
+    const [isValidCity, setIsValidCity] = useState(false)
 
     useEffect(() => {
         const getData = async() => {
@@ -29,6 +30,7 @@ export default function HomePage() {
             await loadCity(setUserCity)
             if(userCity){
             const weatherData = await getWeather(userCity)
+            if(weatherData)
             setData(weatherData)
             }
           }catch (err){

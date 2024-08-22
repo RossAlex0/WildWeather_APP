@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform, Animated } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons'; 
 import storageData from "../services/storage";
@@ -6,21 +6,21 @@ import storageData from "../services/storage";
 import ButtonConfirm from "../components/ButtonConfirm";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
+import WeatherContext from "../services/context/WeatherContext";
 
-export default function OnBoardingName({ navigation }:{
-    navigation :{ navigate : (screen: string) => void }
-}) {
+export default function OnBoardingName() {
 
+    const { setIsSignedIn } = useContext(WeatherContext)
     const { saveCity, loadName} = storageData;
+    
     const [warningOpacity] = useState(new Animated.Value(0));
-
-    const[name, setName] = useState<string>("");
-    const[inputValue, setInputValue] = useState<string>("");
+    const [name, setName] = useState<string>("");
+    const [inputValue, setInputValue] = useState<string>("");
 
     const handlePressButtonCity = () => {
         if(inputValue.length > 3){
             saveCity(inputValue)
-            navigation.navigate('HomePage')
+            setIsSignedIn(true)
         }else {
             Animated.timing(warningOpacity, {
                 toValue: 1,

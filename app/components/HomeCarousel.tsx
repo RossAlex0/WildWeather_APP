@@ -17,12 +17,12 @@ export default function HomeCarousel({ userCity } : { userCity : string }){
 
     const { data } = useContext(WeatherContext);
 
-    const [dataForecast, setDataForecast] = useState<ForecastInterfaces[]>([]);
+    const [dataForecast, setDataForecast] = useState<ForecastInterfaces[]>();
     const [isPress, setIsPress] = useState<number | null>(null);
 
     useEffect(() => {(
         async () => {
-          const forecast = await getForecast(userCity);
+          const forecast= await getForecast(userCity);
           setDataForecast(forecast);
         })
     ()}, [userCity]);
@@ -82,7 +82,7 @@ export default function HomeCarousel({ userCity } : { userCity : string }){
             ))}
             </ScrollView>
         </View>
-          {dataForecast.length > 0 && 
+          {dataForecast && 
           <HomeChart dataForecast={dataForecast}
         />
         }
