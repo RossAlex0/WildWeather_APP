@@ -1,10 +1,10 @@
 const settings = [
     {
-        'name': 'Profil',
+        'name': 'Profile',
         'nameIcon': 'person-outline',
         'sizeIcon': 28,
         'navigate': true,
-        'navigateTo': 'Profil'
+        'navigateTo': 'Profile'
     },
     {
         'name': 'Localisation',
