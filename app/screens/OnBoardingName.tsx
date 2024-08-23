@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform } from "react-native";
 
 import storageData from "../services/storage";
-import ButtonConfirm from "../components/ButtonConfirm";
+import ButtonGradient from "../components/ButtonGradient";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 
@@ -42,7 +42,7 @@ export default function OnBoardingName({ navigation }:{
                     stylesOnBoarding.button,
                     { opacity: pressed ? 0.2 : 1}]} 
                     onPress={handlePressButtonName}> 
-                        <ButtonConfirm texte="Confirm" />
+                        <ButtonGradient texte="Confirm" />
                     </Pressable>
                     <Pressable style={({ pressed }) => [
                          pressed ? stylesOnBoarding.buttonNameSkipPressed : stylesOnBoarding.buttonNameSkip]}

@@ -3,7 +3,7 @@ import { useContext } from "react";
 import LottieView from "lottie-react-native";
 
 import WeatherContext from "../services/context/WeatherContext";
-import codeWeather from "../services/codeWeather";
+import dataCodeWeather from "../services/data/dataCodeWeather";
 
 import stylesHomeCloud from "../styles/styleHomeCloud";
 
@@ -15,7 +15,7 @@ export default function HomeCloud() {
     return (
         <View style={stylesHomeCloud.container}>
             <LottieView
-            source={codeWeather[data.weather[0].icon]}
+            source={dataCodeWeather[data.weather[0].icon]}
             autoPlay
             loop
             style={stylesHomeCloud.lottie} 

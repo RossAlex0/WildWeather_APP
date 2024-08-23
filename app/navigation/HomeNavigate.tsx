@@ -27,7 +27,7 @@ export default function HomeNavigate(){
                 backgroundColor: '#FFF',
                 borderTopWidth: 1,
                 borderTopColor: colors.secondaryColor,
-                paddingVertical: 8
+                paddingVertical: 8,
             }
         }}>
             <Tab.Screen name='Home' component={HomePage} 

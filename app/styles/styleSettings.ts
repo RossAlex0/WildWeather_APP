@@ -11,16 +11,49 @@ const stylesSettings = StyleSheet.create({
         borderTopWidth: 1
     },
     containerTitleNav:{
-
+        marginTop: 64,
+        
     },
     containTitleNav:{
-
+        width: '100%',
+        height: 64,
+        backgroundColor: '#FFF',
+        paddingHorizontal: 12,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems:'center',
+        marginBottom: 40,
+        borderRadius: 24,
+        borderWidth: 1,
+        borderColor: colors.secondaryColor
     },
     imageTitleNav:{
-
+        paddingLeft: 24,
+        position: 'absolute',
+        right: 12
     },
     textTitleNav:{
-        
+        fontSize: 18,
+        fontWeight: '700',
+        color: colors.primaryColor,
+        marginLeft: 24
+    },
+    buttonLogout:{
+        width: '35%',
+        height: 48,
+        marginHorizontal: 'auto',
+        marginTop: 32
+    },
+    containerCopy:{
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        marginBottom: -16
+    },
+    textCopy:{
+        fontSize: 14,
+        fontWeight: '600',
+        color: colors.primaryColor
     }
 });
 

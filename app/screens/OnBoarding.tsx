@@ -1,6 +1,6 @@
 import { Image, Text, View, Pressable } from 'react-native';
 
-import ButtonConfirm from '../components/ButtonConfirm';
+import ButtonGradient from '../components/ButtonGradient';
 
 import stylesOnBoarding from '../styles/styleOnBoarding';
 
@@ -33,7 +33,7 @@ export default function OnBoarding({ navigation }:{
                 stylesOnBoarding.button,
                 { opacity: pressed ? 0.2 : 1}]} 
                 onPress={() => navigation.navigate('OnBoardingName')}>
-                    <ButtonConfirm texte="Let's go !" />
+                    <ButtonGradient texte="Let's go !" />
                 </Pressable>
             </View>
         </View>
