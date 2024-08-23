@@ -14,7 +14,7 @@ export default function HomeHeader(){
 
     useEffect(() => {
         loadName(setUserName)
-    })
+    },[])
 
     return (
         <View style={stylesHome.header}>
