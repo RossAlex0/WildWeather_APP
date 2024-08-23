@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import SettingsPage from '../screens/SettingsPage';
-import Profile from '../screens/Profile';
-import Localisation from '../screens/Localisation';
-import Language from '../screens/Language';
-import Contact from '../screens/Contact';
+import Profile from '../screens/settingsScreen/Profile';
+import Localisation from '../screens/settingsScreen/Localisation';
+import Language from '../screens/settingsScreen/Language';
+import Contact from '../screens/settingsScreen/Contact';
 import BackButton from '../components/BackButton';
 
 export default function SettingsNavigate(){
