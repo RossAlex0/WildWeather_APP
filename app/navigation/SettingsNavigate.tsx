@@ -1,10 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import SettingsPage from '../screens/SettingsPage';
-import Profile from '../screens/Profile';
-import Localisation from '../screens/Localisation';
-import Language from '../screens/Language';
-import Contact from '../screens/Contact';
+import Profile from '../screens/settingsScreen/Profile';
+import Localisation from '../screens/settingsScreen/Localisation';
+import Language from '../screens/settingsScreen/Language';
+import Contact from '../screens/settingsScreen/Contact';
 import BackButton from '../components/BackButton';
 
 export default function SettingsNavigate(){
@@ -22,33 +22,41 @@ export default function SettingsNavigate(){
                 tabBarStyle: { display: 'none' }
             }} />
             <Tab.Screen name='Profile' component={Profile} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,
             }}/>
             <Tab.Screen name='Localisation' component={Localisation} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,
             }}/>
             <Tab.Screen name='Language' component={Language} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,
             }}/>
             <Tab.Screen name='Contact' component={Contact} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,

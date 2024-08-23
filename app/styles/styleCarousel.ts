@@ -23,7 +23,9 @@ const stylesHomeCarousel = StyleSheet.create({
     hours:{
         color: colors.primaryColor,
         fontWeight: 'bold',
-        fontSize: 16
+        fontSize: 16,
+        paddingTop: 6,
+        marginBottom: -2
     },
     lottie:{
         height: '50%',
@@ -32,7 +34,9 @@ const stylesHomeCarousel = StyleSheet.create({
     temperature:{
         color: colors.primaryColor,
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 20,
+        marginTop: -2,
+        paddingBottom: 6
     },
     slideVerso: {
         height: 144,
