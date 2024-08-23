@@ -5,6 +5,7 @@ import { defaultWeather } from "../../types/defaultWeatherState";
 const WeatherContext = createContext<WeatherContextTypes>({
     data: defaultWeather,
     setData: () => {},
+    setIsSignedIn: () => {},
   });
 
 export default WeatherContext;

@@ -1,25 +1,17 @@
-import { Text, View, Pressable, Image } from "react-native";
-import { useEffect, useState } from "react";
-import { useNavigation, ParamListBase, NavigationProp } from "@react-navigation/native";
+import { Text, View} from "react-native";
+import { useContext } from "react";
 
-import storage from "../services/storage";
+import UserContext from "../services/context/UserContext";
 
 import stylesHome from "../styles/styleHome";
 
 export default function HomeHeader(){
 
-    const navigation: NavigationProp<ParamListBase> = useNavigation();
-    const { loadName } = storage
-    const [userName, setUserName] = useState("")
-
-    useEffect(() => {
-        loadName(setUserName)
-    })
+    const { userName } = useContext(UserContext)
 
     return (
         <View style={stylesHome.header}>
             <Text style={stylesHome.headerTxt}>Hi {userName} !</Text>
-            
         </View>
     )
 }

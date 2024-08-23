@@ -1,8 +1,8 @@
 import { WeatherInterface } from "./interfaces/weatherInterfaces";
+import { defaultWeather } from "./defaultWeatherState";
 
 export interface WeatherContextTypes{
     data: WeatherInterface;
-    setData: React.Dispatch<React.SetStateAction<WeatherInterface>>;
-    setIsSignedIn: React.Dispatch<React.SetStateAction<Boolean>>;
-    setUserCity: React.Dispatch<React.SetStateAction<String>>;
+    setData: (data: typeof defaultWeather) => void;
+    setIsSignedIn: (isSignedIn: boolean) => void;
   }

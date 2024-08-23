@@ -5,6 +5,8 @@ const stylesLanguage = StyleSheet.create({
     container:{
         padding: 28,
         backgroundColor: '#F3F7FD',
+        borderTopWidth: 1,
+        borderTopColor: colors.secondaryColor,
         height: '100%'
     },
     checkboxSection:{

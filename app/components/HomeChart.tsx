@@ -8,8 +8,7 @@ import { convertDateHours, convertHourToAPMArray } from "../services/convertHour
 import WeatherContext from "../services/context/WeatherContext";
 
 import stylesHomeChart from "../styles/styleHomeChart";
-
-
+import chartConfig from "../styles/styleChartConfig";
 
 export default function HomeChart({ dataForecast} : { dataForecast: ForecastInterfaces[]}) {
 
@@ -40,32 +39,7 @@ export default function HomeChart({ dataForecast} : { dataForecast: ForecastInte
                   width={screenWidth}
                   height={160}
                   withHorizontalLabels={false}
-                  chartConfig={{
-                    backgroundGradientFrom: '#F1F8FF',
-                    backgroundGradientFromOpacity: 1,
-                    backgroundGradientTo: '#F1F8FF',
-                    backgroundGradientToOpacity: 1,
-                    fillShadowGradientFrom: '#0E0C5E',
-                    fillShadowGradientFromOpacity: 0.6,
-                    fillShadowGradientFromOffset: 0.3,
-                    fillShadowGradientTo: '#F1F8FF',
-                    fillShadowGradientToOpacity: 0.4,
-                    fillShadowGradientToOffset: 0.86,
-                    decimalPlaces: 0,
-                    color: (opacity = 6) => `rgba(14, 12, 94, ${opacity})`,
-                    labelColor: (opacity = 1) => `rgba(14, 12, 94, ${opacity})`,
-                    
-                    propsForBackgroundLines: {
-                      strokeDasharray: '', 
-                      stroke: 'transparent', 
-                    },
-                    propsForDots: {
-                      r: '5',
-                      strokeWidth: 4,
-                      stroke: '#0E0C5E',
-                      fill: `#D5E8FF`
-                    },
-                  }}
+                  chartConfig={chartConfig}
                   renderDotContent={({ x, y, index }) => (
                       <Text
                         key={index} 
@@ -75,7 +49,7 @@ export default function HomeChart({ dataForecast} : { dataForecast: ForecastInte
                           left: x - 12,
                           color: '#0E0C5E',
                           fontSize: 14,
-                          fontWeight: 'bold',
+                          fontWeight: 'bold'
                         }}
                       >
                         {humidityData[index]}%
