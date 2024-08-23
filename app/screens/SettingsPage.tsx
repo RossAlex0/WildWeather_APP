@@ -1,19 +1,31 @@
 import { Pressable, Text, View, Switch } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import ButtonGradient from "../components/ButtonGradient";
 
 import settings from "../services/data/dataSettings";
+import storage from "../services/storage";
+import WeatherContext from "../services/context/WeatherContext";
 
 import stylesSettings from "../styles/styleSettings";
 import colors from "../styles/colors";
 
 export default function SettingsPage(){
 
+    const { clearStorage } = storage;
+    const { setIsSignedIn, setUserCity } = useContext(WeatherContext)
+
     const [isEnabled, setIsEnabled] = useState(false);
 
-  const toggleSwitch = () => setIsEnabled(!isEnabled);
+    const toggleSwitch = () => setIsEnabled(!isEnabled);
+
+    const handleClear = () => {
+        console.info("Cleaned")
+        setIsSignedIn(false)
+        clearStorage()
+        setUserCity("")
+    }
 
     return(
         <View style={stylesSettings.container}>
@@ -49,7 +61,7 @@ export default function SettingsPage(){
                 </Pressable>
                 ))}   
             </View>
-            <Pressable style={stylesSettings.buttonLogout}>
+            <Pressable style={stylesSettings.buttonLogout} onPress={handleClear}>
                 <ButtonGradient texte='Logout'/>
             </Pressable>
             <View style={stylesSettings.containerCopy}>

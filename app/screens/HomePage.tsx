@@ -19,10 +19,9 @@ export default function HomePage() {
 
     const { data, setData } = useContext(WeatherContext);
     
-    const { clearStorage, loadCity, saveCity } = storage;
+    const { loadCity, saveCity } = storage;
     const [userCity, setUserCity] = useState("");
     const [inputSearchValue, setInputSearchValue] = useState("");
-    const [isValidCity, setIsValidCity] = useState(false)
 
     useEffect(() => {
         const getData = async() => {
@@ -41,10 +40,7 @@ export default function HomePage() {
     },[userCity]);
     
 
-    const handleClear = () => {
-        console.info("Cleaned")
-        clearStorage()
-    }
+    
     const handleSubmit = () =>  {
         setUserCity(inputSearchValue)
         saveCity(inputSearchValue)
@@ -81,12 +77,6 @@ export default function HomePage() {
                     <HomeCarousel userCity={userCity}/>
                 </>
             }
-            <View>
-            <Pressable onPress={handleClear} 
-            style={{borderColor: '#000', borderWidth: 2, padding: 4, marginBottom:60}}>
-                <Text>Clear</Text>
-            </Pressable>
-            </View>
             </ScrollView> 
         </LinearGradient>
     )
