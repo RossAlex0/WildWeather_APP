@@ -22,33 +22,41 @@ export default function SettingsNavigate(){
                 tabBarStyle: { display: 'none' }
             }} />
             <Tab.Screen name='Profile' component={Profile} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,
             }}/>
             <Tab.Screen name='Localisation' component={Localisation} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,
             }}/>
             <Tab.Screen name='Language' component={Language} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,
             }}/>
             <Tab.Screen name='Contact' component={Contact} 
-            options={{ headerShown: true,  headerTitleStyle: {
+            options={{ 
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: 24,
             },
             headerTintColor: '#0E0C5E',
             headerLeft: () => <BackButton />,
