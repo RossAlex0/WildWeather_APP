@@ -14,25 +14,29 @@ import getWeather from "../services/fetchData/getWeather";
 
 import stylesHome from "../styles/styleHome";
 import WeatherContext from "../services/context/WeatherContext";
+import UserContext from "../services/context/UserContext";
 
 export default function HomePage() {
 
     const { data, setData } = useContext(WeatherContext);
-    
+    const { userCity, setUserCity} = useContext(UserContext);
     const { loadCity, saveCity } = storage;
-    const [userCity, setUserCity] = useState("");
+
     const [inputSearchValue, setInputSearchValue] = useState("");
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const getData = async() => {
           try{
+            setError(false)
             await loadCity(setUserCity)
             if(userCity){
-            const weatherData = await getWeather(userCity)
-            if(weatherData)
-            setData(weatherData)
-            }
-          }catch (err){
+                const weatherData = await getWeather(userCity)
+                
+                    setData(weatherData)
+                
+            }}catch (err){
+            setError(true)
             console.error(err)
           }
         }
@@ -69,12 +73,21 @@ export default function HomePage() {
                 style={stylesHome.input}
                 />
             </View>
-            { data && 
-                <>
+            { data
+            ?   <>
                     <HomeCitySentences />
                     <HomeCloud />
                     <HomeStat />
-                    <HomeCarousel userCity={userCity}/>
+                    <HomeCarousel />
+                </>
+            :   <>
+                    <View style={stylesHome.containerError}>
+                        <View style={stylesHome.containerTextError}>
+                            <MaterialIcons name="warning" style={stylesHome.iconError}/>
+                            <Text style={stylesHome.textError}>There is a problem with the name of your city.{'\n'} 
+                                Please enter a new city.</Text>
+                        </View>
+                    </View>
                 </>
             }
             </ScrollView> 

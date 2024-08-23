@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from "react";
 import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform, Animated } from "react-native";
 import { MaterialIcons } from '@expo/vector-icons'; 
+
+import WeatherContext from "../services/context/WeatherContext";
+import UserContext from "../services/context/UserContext";
 import storageData from "../services/storage";
 
 import ButtonGradient from "../components/ButtonGradient";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
-import WeatherContext from "../services/context/WeatherContext";
 
 export default function OnBoardingName() {
 
     const { setIsSignedIn } = useContext(WeatherContext)
+    const { userName, setUserName} = useContext(UserContext);
     const { saveCity, loadName} = storageData;
     
     const [warningOpacity] = useState(new Animated.Value(0));
-    const [name, setName] = useState<string>("");
     const [inputValue, setInputValue] = useState<string>("");
 
     const handlePressButtonCity = () => {
@@ -31,8 +33,8 @@ export default function OnBoardingName() {
     };
 
     useEffect(() => {
-        loadName(setName)
-    }, []);
+        loadName(setUserName)
+    }, [userName]);
 
     return (
         <KeyboardAvoidingView 
@@ -42,8 +44,8 @@ export default function OnBoardingName() {
                 <View style={stylesOnBoarding.containerName}>
                     <View style={stylesOnBoarding.containerTextCity}>
                         <Text style={stylesOnBoarding.textNameTitle}>
-                            {name !== null 
-                            ? `Thank you, ${name}.`
+                            {userName !== null 
+                            ? `Thank you, ${userName}.`
                             : 'Thank you.'
                             }                            
                         </Text>

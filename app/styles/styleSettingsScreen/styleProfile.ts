@@ -52,6 +52,10 @@ const stylesProfile = StyleSheet.create({
         width: '90%',
         marginTop: 16,
         marginHorizontal: 'auto'
+    },
+    textUser:{
+        fontStyle: 'italic',
+        fontWeight: '300'
     }
 });
 

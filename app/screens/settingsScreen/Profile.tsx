@@ -1,39 +1,40 @@
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 
 import storage from "../../services/storage";
 import ButtonGradient from "../../components/ButtonGradient";
+
+import UserContext from "../../services/context/UserContext";
 
 import stylesProfile from "../../styles/styleSettingsScreen/styleProfile";
 import colors from "../../styles/colors";
 
 export default function Profile(){
 
-    const { loadName, saveName } = storage;
+    const { saveName } = storage;
+    const { userName, setUserName} = useContext(UserContext)
+
+    const [isOpen, setIsOpen] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState(false);
 
     const [value, setValue] = useState("");
     const [valueName, setValueName] = useState("");
-    const [inputCurrentPassword, setInputCurrentPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState(false);
-    const [isOpen, setIsOpen] = useState("");
-    const [userName, setUserName] = useState("");
-    const [userNameDefault, setUserNameDefault] = useState("");
+    const [valueCurrentPassword, setValueCurrentPassword] = useState("");
 
     const handleConfirmCurrentPassword = () => {
-        if( inputCurrentPassword === "1234"){
+        if( valueCurrentPassword === "1234"){
             setConfirmPassword(true)
         }
     }
+    
+    const handleConfirmName = () => {
+        setIsOpen(""); 
+        setUserName(valueName);
+        saveName(valueName);
+        setValueName("")
+    }
 
-    useEffect(() => {
-        loadName(setUserNameDefault)
-    }, []);
-    useEffect(() => {
-        if(userName !== ""){
-            saveName(userName)
-        }
-    }, [userName]);
 
     return(
         
@@ -53,7 +54,7 @@ export default function Profile(){
                     />
                     <Pressable 
                     style={stylesProfile.btnConfirm} 
-                    onPress={() => {setIsOpen(""); setUserName(valueName)}}>
+                    onPress={handleConfirmName}>
                         <ButtonGradient texte="Confirm"/>
                     </Pressable>
                 </View>
@@ -61,8 +62,8 @@ export default function Profile(){
                 <View style={stylesProfile.containerInputClose}>
                     <Text style={stylesProfile.label}>
                         Your name:{'  '}
-                        <Text style={{ textDecorationLine: 'underline'}}>
-                            {userName !== "" ? userName : userNameDefault}</Text>
+                        <Text style={stylesProfile.textUser}>
+                            {userName}</Text>
                     </Text>
                     <Pressable onPress={() => setIsOpen("name")}>
                         <Icon
@@ -94,7 +95,7 @@ export default function Profile(){
                 <View style={stylesProfile.containerInputClose}>
                     <Text style={stylesProfile.label}>
                         Your mail:{'  '}
-                        <Text style={{ textDecorationLine: 'underline'}}>alexnw33910@gmail.com</Text>
+                        <Text style={stylesProfile.textUser}>alexnw33910@gmail.com</Text>
                     </Text>
                     <Pressable onPress={() => setIsOpen("mail")}>
                         <Icon
@@ -140,11 +141,11 @@ export default function Profile(){
                         <>
                             <Text style={stylesProfile.label}>Enter your password to authorize the change:</Text>
                             <TextInput 
-                                placeholder="Enter your password here"
+                                placeholder="Enter your current password here"
                                 returnKeyType="done"
                                 maxLength={15}
-                                onChangeText={(e) => setInputCurrentPassword(e)}
-                                value={inputCurrentPassword} 
+                                onChangeText={(e) => setValueCurrentPassword(e)}
+                                value={valueCurrentPassword} 
                                 style={stylesProfile.input} 
                             />
                             <Pressable style={stylesProfile.btnConfirm} onPress={handleConfirmCurrentPassword}>
@@ -159,7 +160,7 @@ export default function Profile(){
                 <View style={stylesProfile.containerInputClose}>
                     <Text style={stylesProfile.label}>
                         Your password:{'  '}  
-                        <Text style={{ textDecorationLine: 'underline'}}>***********</Text>
+                        <Text style={stylesProfile.textUser}>***********</Text>
                     </Text>
                     <Pressable onPress={() => setIsOpen("password")}>
                         <Icon

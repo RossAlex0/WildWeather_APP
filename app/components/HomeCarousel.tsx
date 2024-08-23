@@ -10,12 +10,14 @@ import { convertDateHours, convertHourToAPM } from "../services/convertHour";
 import dataCodeWeather from "../services/data/dataCodeWeather";
 import getForecast from "../services/fetchData/getForecast";
 import WeatherContext from "../services/context/WeatherContext";
+import UserContext from "../services/context/UserContext";
 
 import stylesHomeCarousel from "../styles/styleCarousel";
 
-export default function HomeCarousel({ userCity } : { userCity : string }){
+export default function HomeCarousel(){
 
     const { data } = useContext(WeatherContext);
+    const { userCity } = useContext(UserContext);
 
     const [dataForecast, setDataForecast] = useState<ForecastInterfaces[]>();
     const [isPress, setIsPress] = useState<number | null>(null);

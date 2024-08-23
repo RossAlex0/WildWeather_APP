@@ -7,6 +7,7 @@ import ButtonGradient from "../components/ButtonGradient";
 import settings from "../services/data/dataSettings";
 import storage from "../services/storage";
 import WeatherContext from "../services/context/WeatherContext";
+import UserContext from "../services/context/UserContext";
 
 import stylesSettings from "../styles/styleSettings";
 import colors from "../styles/colors";
@@ -16,7 +17,8 @@ export default function SettingsPage({ navigation }:{
 }){
 
     const { clearStorage } = storage;
-    const { setIsSignedIn, setUserCity } = useContext(WeatherContext)
+    const { setIsSignedIn } = useContext(WeatherContext)
+    const { setUserCity } = useContext(UserContext);
 
     const [isEnabled, setIsEnabled] = useState(false);
 

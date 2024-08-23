@@ -58,6 +58,33 @@ const stylesHome = StyleSheet.create({
         top: 8,
         zIndex: 1,        
       },
+      containerError:{
+        height: 1200,
+        marginTop: 90
+      },
+      containerTextError:{
+        height: 'auto',
+        width: '100%',
+        borderRadius: 26,
+        color: colors.orangeColor,
+        borderWidth: 1,
+        borderColor: colors.orangeColor,
+        padding: 24
+      },
+      iconError:{
+        textAlign: 'center',
+        fontSize: 48,
+        fontWeight: '900',
+        color: colors.orangeColor,
+        marginBottom: 24,
+        
+      },
+      textError:{
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: '800',
+        color: colors.orangeColor
+      }
 })
 
 export default stylesHome;
