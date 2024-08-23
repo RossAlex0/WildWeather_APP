@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
-export default function ButtonConfirm({ texte }: {texte : string}){
+export default function ButtonGradient({ texte }: {texte : string}){
 
     return <>
         <LinearGradient

@@ -3,7 +3,7 @@ import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform, Anima
 import { MaterialIcons } from '@expo/vector-icons'; 
 import storageData from "../services/storage";
 
-import ButtonConfirm from "../components/ButtonConfirm";
+import ButtonGradient from "../components/ButtonGradient";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 import WeatherContext from "../services/context/WeatherContext";
@@ -65,7 +65,7 @@ export default function OnBoardingName() {
                         { opacity: pressed ? 0.2 : 1}]}
                         onPress={handlePressButtonCity} 
                         >
-                            <ButtonConfirm texte="Confirm" />
+                            <ButtonGradient texte="Confirm" />
                         </Pressable>
                         <Animated.Text 
                         style={[stylesOnBoarding.warningText, {opacity: warningOpacity}]}

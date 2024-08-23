@@ -7,7 +7,7 @@ import HomeChart from "./HomeChart";
 import { ForecastInterfaces } from "../types/interfaces/forecastInterfaces";
 
 import { convertDateHours, convertHourToAPM } from "../services/convertHour";
-import codeWeather from "../services/codeWeather";
+import dataCodeWeather from "../services/data/dataCodeWeather";
 import getForecast from "../services/fetchData/getForecast";
 import WeatherContext from "../services/context/WeatherContext";
 
@@ -68,7 +68,7 @@ export default function HomeCarousel({ userCity } : { userCity : string }){
                       {convertHourToAPM(convertDateHours(forecast.dt_txt, data.sys.country))}
                     </Text>
                     <LottieView
-                      source={codeWeather[forecast.weather[0].icon]}
+                      source={dataCodeWeather[forecast.weather[0].icon]}
                       autoPlay
                       loop
                       style={stylesHomeCarousel.lottie}

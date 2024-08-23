@@ -19,18 +19,7 @@ export default function HomeHeader(){
     return (
         <View style={stylesHome.header}>
             <Text style={stylesHome.headerTxt}>Hi {userName} !</Text>
-            <View style={stylesHome.headerBtn}>
-                <Pressable onPress={() => navigation.navigate('Celestial Events')}>
-                    <Image 
-                    source={require('../../assets/imagesBtn/VectorAstro.png')}
-                    style={stylesHome.headerImg} />
-                </Pressable>
-                <Pressable onPress={() => navigation.navigate('SettingsNav')}>
-                    <Image 
-                    source={require('../../assets/imagesBtn/parameter.png')}
-                    style={stylesHome.headerImg} />
-                </Pressable>
-            </View>
+            
         </View>
     )
 }
