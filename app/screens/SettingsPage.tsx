@@ -1,21 +1,37 @@
-import { Pressable, Text, View } from "react-native";
-
-import stylesSettings from "../styles/styleSettings";
+import { Pressable, Text, View, Switch } from "react-native";
+import { useContext, useState } from "react";
 import Icon from 'react-native-vector-icons/Ionicons';
-import colors from "../styles/colors";
+
 import ButtonGradient from "../components/ButtonGradient";
 
 import settings from "../services/data/dataSettings";
+import storage from "../services/storage";
+import WeatherContext from "../services/context/WeatherContext";
+
+import stylesSettings from "../styles/styleSettings";
+import colors from "../styles/colors";
 
 export default function SettingsPage(){
 
-    
+    const { clearStorage } = storage;
+    const { setIsSignedIn, setUserCity } = useContext(WeatherContext)
+
+    const [isEnabled, setIsEnabled] = useState(false);
+
+    const toggleSwitch = () => setIsEnabled(!isEnabled);
+
+    const handleClear = () => {
+        console.info("Cleaned")
+        setIsSignedIn(false)
+        clearStorage()
+        setUserCity("")
+    }
 
     return(
         <View style={stylesSettings.container}>
             <View style={stylesSettings.containerTitleNav}>
                 {settings.map((setting) => (
-                <View key={setting.name} style={stylesSettings.containTitleNav}>
+                <Pressable key={setting.name} style={stylesSettings.containTitleNav}>
                     <Icon
                     name={setting.nameIcon}
                     size={setting.sizeIcon} 
@@ -25,20 +41,27 @@ export default function SettingsPage(){
                     {setting.name}
                     </Text>
                     {setting.navigate ? (
-                    <Pressable style={stylesSettings.imageTitleNav}>
+                    <View style={stylesSettings.imageTitleNav}>
                         <Icon
                         name='chevron-forward-outline'
                         size={28}
                         color={colors.primaryColor}
                         />
-                    </Pressable>
+                    </View>
                     ) : (
-                    <Text style={stylesSettings.imageTitleNav}>!Toggle!</Text>
+                        <Switch
+                        style={stylesSettings.imageTitleNav}
+                        trackColor={{ false: '#F3F7FD', true: colors.orangeColor }}
+                        thumbColor={isEnabled ? '#F3F7FD' : colors.orangeColor}
+                        ios_backgroundColor= '#F3F7FD'
+                        onValueChange={toggleSwitch}
+                        value={isEnabled}
+                      />
                     )}
-                </View>
+                </Pressable>
                 ))}   
             </View>
-            <Pressable style={stylesSettings.buttonLogout}>
+            <Pressable style={stylesSettings.buttonLogout} onPress={handleClear}>
                 <ButtonGradient texte='Logout'/>
             </Pressable>
             <View style={stylesSettings.containerCopy}>

@@ -9,14 +9,14 @@ const stylesHomeChart = StyleSheet.create({
         borderWidth: 1,
         borderColor: colors.secondaryColor,
         borderRadius: 12,
-        marginBottom: 12 
+        marginBottom: 88 
     },
     title:{
         fontSize: 22,
         fontWeight: '800',
         color: colors.primaryColor,
         opacity: 0.9,
-        marginBottom: 8
+        marginBottom: 12
     },
 });
 

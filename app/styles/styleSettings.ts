@@ -22,7 +22,7 @@ const stylesSettings = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems:'center',
-        marginBottom: 40,
+        marginBottom: 24,
         borderRadius: 24,
         borderWidth: 1,
         borderColor: colors.secondaryColor
@@ -42,7 +42,7 @@ const stylesSettings = StyleSheet.create({
         width: '35%',
         height: 48,
         marginHorizontal: 'auto',
-        marginTop: 32
+        marginTop: 40
     },
     containerCopy:{
         flex: 1,
