@@ -11,7 +11,9 @@ import WeatherContext from "../services/context/WeatherContext";
 import stylesSettings from "../styles/styleSettings";
 import colors from "../styles/colors";
 
-export default function SettingsPage(){
+export default function SettingsPage({ navigation }:{
+    navigation :{ navigate : (screen: string) => void }
+}){
 
     const { clearStorage } = storage;
     const { setIsSignedIn, setUserCity } = useContext(WeatherContext)
@@ -31,7 +33,11 @@ export default function SettingsPage(){
         <View style={stylesSettings.container}>
             <View style={stylesSettings.containerTitleNav}>
                 {settings.map((setting) => (
-                <Pressable key={setting.name} style={stylesSettings.containTitleNav}>
+                <Pressable 
+                key={setting.name} 
+                style={stylesSettings.containTitleNav}
+                onPress={setting.navigate ? () => navigation.navigate(setting.navigateTo) : null}
+                >
                     <Icon
                     name={setting.nameIcon}
                     size={setting.sizeIcon} 
