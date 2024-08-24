@@ -7,7 +7,7 @@ const stylesLanguage = StyleSheet.create({
         backgroundColor: '#F3F7FD',
         borderTopWidth: 1,
         borderTopColor: colors.secondaryColor,
-        height: '100%'
+        flex: 1
     },
     checkboxSection:{
         width: '100%',
