@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import dataCodeCountry from "../services/data/dataCodeCountry.json";
 import dataSentences from "../services/data/dataSentences.json";
 import WeatherContext from "../services/context/WeatherContext";
+import cityFromArrondissement from "../services/transformCityName";
 
 import stylesHomeCity from "../styles/styleHomeCity";
 
@@ -15,13 +16,6 @@ export default function HomeCitySentences(){
     const sentences: Record<string, string[]> = dataSentences;
 
     const [randomIndex, setRandomIndex] = useState(Math.floor(Math.random() * 3));
-
-    const cityFromArrondissement = (cityName : string) => {
-        const deleteSpeChart = cityName.replace(/'/g, " ");
-        const breakSentence = deleteSpeChart.split(" ");
-    
-        return breakSentence.includes("Arrondissement") ? breakSentence.slice(2).join(" ") : cityName;
-    };
   
     useEffect(() => {
         setRandomIndex(Math.floor(Math.random() * 3));

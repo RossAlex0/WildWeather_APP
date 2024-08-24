@@ -40,21 +40,21 @@ export default function Language(){
                 <Checkbox
                 value={isFrChecked}
                 onValueChange={handleFrCheck}
-                style={stylesLanguage.checkbox}></Checkbox>
+                style={stylesLanguage.checkbox} />
                 <Text style={stylesLanguage.labelCheckbox}>🇫🇷 Français</Text>
             </View>
             <View style={stylesLanguage.checkboxSection}>
                 <Checkbox
                 value={isEnChecked}
                 onValueChange={handleEnCheck}
-                style={stylesLanguage.checkbox}></Checkbox>
+                style={stylesLanguage.checkbox} />
                 <Text style={stylesLanguage.labelCheckbox}>🏴󠁧󠁢󠁥󠁮󠁧󠁿 English</Text>
             </View>
             <View style={stylesLanguage.checkboxSection}>
                 <Checkbox
                 value={isAlChecked}
                 onValueChange={handleAlCheck}
-                style={stylesLanguage.checkbox}></Checkbox>
+                style={stylesLanguage.checkbox} />
                 <Text style={stylesLanguage.labelCheckbox}>🇩🇪 Deutsch</Text>
             </View>
         </View>

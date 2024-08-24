@@ -42,7 +42,7 @@ export default function App() {
     <WeatherContext.Provider value={{data: data, setData: setData, setIsSignedIn: setIsSignedIn }}>
       <UserContext.Provider value={{userName: userName, userCity: userCity, setUserName: setUserName, setUserCity: setUserCity}}>
         <NavigationContainer>
-        <Stack.Navigator >
+          <Stack.Navigator >
           {!isSignedIn && userCity === "" ? (
             <>
             <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
