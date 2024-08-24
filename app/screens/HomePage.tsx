@@ -1,6 +1,6 @@
 import { Pressable, ScrollView, StatusBar, Text, TextInput, View } from "react-native";
 import { useEffect, useState, useContext } from "react";
-import { MaterialIcons } from '@expo/vector-icons'; 
+import Icon from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from 'expo-linear-gradient';
 
 import HomeHeader from "../components/HomeHeader";
@@ -23,28 +23,17 @@ export default function HomePage() {
     const { loadCity, saveCity } = storage;
 
     const [inputSearchValue, setInputSearchValue] = useState("");
-    const [error, setError] = useState(false)
+    const [messageError, setMessageError] = useState("")
 
-    useEffect(() => {
-        const getData = async() => {
-          try{
-            setError(false)
-            await loadCity(setUserCity)
+    useEffect(() => {loadCity(setUserCity)},[])
+    useEffect(() => {(
+        async() => {
             if(userCity){
-                const weatherData = await getWeather(userCity)
-                
-                    setData(weatherData)
-                
-            }}catch (err){
-            setError(true)
-            console.error(err)
-          }
-        }
-        getData()
-    },[userCity]);
-    
+        getWeather(userCity, setData, setMessageError);
+        }})
+    ()
+    },[userCity])
 
-    
     const handleSubmit = () =>  {
         setUserCity(inputSearchValue)
         saveCity(inputSearchValue)
@@ -63,7 +52,7 @@ export default function HomePage() {
             style={stylesHome.container}>
             <HomeHeader />
             <View style={stylesHome.containerInput}>
-                <MaterialIcons style={stylesHome.searchIcon} name="search" size={32} color="#0E0C5E"/>
+                <Icon style={stylesHome.searchIcon} name="search" size={31} color="#0E0C5E"/>
                 <TextInput 
                 value={inputSearchValue}
                 placeholder="Search for a city"
@@ -73,7 +62,7 @@ export default function HomePage() {
                 style={stylesHome.input}
                 />
             </View>
-            { data
+            { messageError === ""
             ?   <>
                     <HomeCitySentences />
                     <HomeCloud />
@@ -83,9 +72,8 @@ export default function HomePage() {
             :   <>
                     <View style={stylesHome.containerError}>
                         <View style={stylesHome.containerTextError}>
-                            <MaterialIcons name="warning" style={stylesHome.iconError}/>
-                            <Text style={stylesHome.textError}>There is a problem with the name of your city.{'\n'} 
-                                Please enter a new city.</Text>
+                            <Icon name="flash-outline" style={stylesHome.iconError}/>
+                            <Text style={stylesHome.textError}>{messageError}</Text>
                         </View>
                     </View>
                 </>
