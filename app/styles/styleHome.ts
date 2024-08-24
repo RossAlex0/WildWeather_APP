@@ -66,9 +66,9 @@ const stylesHome = StyleSheet.create({
         height: 'auto',
         width: '100%',
         borderRadius: 26,
-        color: colors.orangeColor,
-        borderWidth: 1,
-        borderColor: colors.orangeColor,
+        borderStyle: 'solid',
+        borderWidth: 2,
+        borderColor: '#FFF',
         padding: 24
       },
       iconError:{
@@ -82,8 +82,9 @@ const stylesHome = StyleSheet.create({
       textError:{
         textAlign: 'center',
         fontSize: 20,
+        fontStyle: 'italic',
         fontWeight: '800',
-        color: colors.orangeColor
+        color: colors.primaryColor
       }
 })
 
