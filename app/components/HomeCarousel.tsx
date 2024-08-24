@@ -67,7 +67,7 @@ export default function HomeCarousel(){
               ):( 
                   <>
                     <Text style={stylesHomeCarousel.hours}>
-                      {convertHourToAPM(convertDateHours(forecast.dt_txt, data.sys.country))}
+                      {convertDateHours(forecast.dt_txt, data.sys.country)}:00
                     </Text>
                     <LottieView
                       source={dataCodeWeather[forecast.weather[0].icon]}

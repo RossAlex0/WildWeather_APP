@@ -8,7 +8,8 @@ const stylesLocalisation = StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: colors.secondaryColor,
         flex: 1,
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     sectionText:{
         width: '100%',
@@ -89,6 +90,12 @@ const stylesLocalisation = StyleSheet.create({
         borderColor: colors.primaryColor,
         marginHorizontal: 'auto',
         marginVertical: 4
+    },
+    confirm:{
+        position: 'absolute',
+        bottom: 40,
+        width: '70%',
+        height: 48
     }
 });
 

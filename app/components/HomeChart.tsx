@@ -14,7 +14,7 @@ export default function HomeChart({ dataForecast} : { dataForecast: ForecastInte
 
     const { data } = useContext(WeatherContext);
  
-    const labels: string[] = dataForecast.map(forecast => `${convertDateHours(forecast.dt_txt, data.sys.country)}h`).slice(0, -2);
+    const labels: string[] = dataForecast.map(forecast => `${convertDateHours(forecast.dt_txt, data.sys.country)}:00`).slice(0, -2);
     const labelsAMPM: string[] = convertHourToAPMArray(labels);
     const humidityData: number[] = dataForecast.map(forecast => (forecast.main.humidity)).slice(0, -2);
     const screenWidth = Dimensions.get('window').width + 4 ;
@@ -27,7 +27,7 @@ export default function HomeChart({ dataForecast} : { dataForecast: ForecastInte
               <View style={stylesHomeChart.container}>
                 <LineChart
                   data={{
-                    labels: labelsAMPM, 
+                    labels: labels, 
                     datasets: [
                       { 
                         data: humidityData,
