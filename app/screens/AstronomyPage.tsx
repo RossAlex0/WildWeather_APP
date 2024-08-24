@@ -4,7 +4,7 @@ import { View, Text, Image } from "react-native";
 import { AstroInterface } from "../types/interfaces/astronomyInterfaces";
 import WeatherContext from "../services/context/WeatherContext";
 import getAstroData from "../services/fetchData/getAstroData";
-import { convertUnixToHours } from "../services/convertHour";
+import { convertHoursAPIAstroWithOffset, convertUnixToHours } from "../services/convertHour";
 import convertDateYMD from "../services/convertDateYMD";
 
 import stylesAstronomy from "../styles/styleAstronomy";
@@ -75,7 +75,7 @@ export default function AstronomyPage(){
                         {moonPhase.year}-{moonPhase.month}-{moonPhase.day}
                     </Text>
                     <Text style={stylesAstronomy.textHour}>
-                        {moonPhase.time}
+                        {convertHoursAPIAstroWithOffset(moonPhase.time, data.sys.country)}
                     </Text>
                 </View>
                 <Image 

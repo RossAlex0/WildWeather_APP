@@ -65,10 +65,6 @@ const stylesHome = StyleSheet.create({
       containerTextError:{
         height: 'auto',
         width: '100%',
-        borderRadius: 26,
-        borderStyle: 'solid',
-        borderWidth: 2,
-        borderColor: '#FFF',
         padding: 24
       },
       iconError:{
