@@ -52,3 +52,13 @@ export function convertUnixToHours(unixUTC: number, codeCountry: string): string
 
     return `${formattedHours}:${formattedMinutes}`;
 }
+
+export function convertHoursAPIAstroWithOffset( hoursApi: string, codeCountry: string): string {
+    const utcOffset = (dataUtcOffset as { [key: string]: number })[codeCountry];
+    const [hours, minutes] = hoursApi.split(':');
+
+    let utcHours = (parseInt(hours)) + ( utcOffset / 60)
+    utcHours = (utcHours % 24)
+    
+    return `${utcHours.toString().padStart(2, '0')}:${minutes}`
+}

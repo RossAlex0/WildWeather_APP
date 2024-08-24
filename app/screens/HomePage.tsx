@@ -62,7 +62,7 @@ export default function HomePage() {
                 style={stylesHome.input}
                 />
             </View>
-            { messageError === ""
+            { data && messageError === ""
             ?   <>
                     <HomeCitySentences />
                     <HomeCloud />
