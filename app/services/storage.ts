@@ -20,6 +20,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       console.error(err)
     }
   }
+  const loadMail = async (setMail: (value: string) => void) => {
+    try{
+      const mail = await AsyncStorage.getItem('userMail');
+      if (mail !== null) {
+        setMail(mail);
+      }
+    } catch (err){
+      console.error(err)
+    }
+  }
 
   const saveName = async (value : string) => {
     try {
@@ -35,6 +45,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
       console.error(err);
     }
   };
+  const saveMail = async (value : string) => {
+    try {
+      await AsyncStorage.setItem('userMail', value);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const clearStorage = async () => {
     try {
@@ -44,4 +61,4 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
     }
   };
 
-  export default { saveName, saveCity, loadName, loadCity, clearStorage};
+  export default { saveName, saveCity, saveMail, loadName, loadCity, loadMail, clearStorage};

@@ -10,32 +10,55 @@ export default function OnBoardingName({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
 }) {
 
-    const { saveName } = storageData;
+    const { saveName, saveMail } = storageData;
 
-    const[inputValue, setInputValue] = useState<string>("");
+    const [focus, setFocus] = useState(false);
+
+    const[inputValueName, setInputValueName] = useState("");
+    const[inputValueMail, setInputValueMail] = useState("");
 
     const handlePressButtonName = () => {
-        saveName(inputValue)
+        if(inputValueName.length > 1 && (inputValueMail.length > 6 && inputValueMail.includes("@"))){
+        saveName(inputValueName)
+        saveMail(inputValueMail)
         navigation.navigate('OnBoardingCity')
+        }
     };
 
     return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'height' : 'height'}>
         <View style={stylesOnBoarding.global}>
             <View style={stylesOnBoarding.containerName}>
+                
                 <View style={stylesOnBoarding.containerTextName}>
-                    <Text style={stylesOnBoarding.textNameTitle}>What's your name?</Text>
-                    <Text style={stylesOnBoarding.textName}>Let's personalize your expérience.</Text>                               
+                    <Text style={stylesOnBoarding.textNameTitle}>Make it yours.</Text>     
                 </View>
+                
                 <View style={stylesOnBoarding.containerInput}>
+                    <Text style={stylesOnBoarding.textName}>What's your name?</Text> 
                     <TextInput 
                     placeholder="Enter your name here"
                     returnKeyType="done"
                     maxLength={15} 
-                    onChangeText={(e) => setInputValue(e)}
-                    value={inputValue}
+                    onFocus={() => setFocus(true)}
+                    onChangeText={(e) => setInputValueName(e)}
+                    onSubmitEditing={() => setFocus(false)}
+                    value={inputValueName}
                     style={stylesOnBoarding.inputName} />
                 </View>
+                <View style={stylesOnBoarding.containerInput}>
+                    <Text style={stylesOnBoarding.textName}>What's your mail?</Text> 
+                    <TextInput 
+                    placeholder="Enter your mail here"
+                    returnKeyType="done"
+                    maxLength={15} 
+                    onChangeText={(e) => setInputValueMail(e)}
+                    onFocus={() => setFocus(true)}
+                    onSubmitEditing={() => setFocus(false)}
+                    value={inputValueMail}
+                    style={stylesOnBoarding.inputName} />
+                </View>
+                { !focus &&
                 <View style={stylesOnBoarding.containerButton}>
                     <Pressable  
                     style={({ pressed }) => [
@@ -44,12 +67,8 @@ export default function OnBoardingName({ navigation }:{
                     onPress={handlePressButtonName}> 
                         <ButtonGradient texte="Confirm" />
                     </Pressable>
-                    <Pressable style={({ pressed }) => [
-                         pressed ? stylesOnBoarding.buttonNameSkipPressed : stylesOnBoarding.buttonNameSkip]}
-                         onPress={() => navigation.navigate('OnBoardingCity')}>                    
-                        <Text style={stylesOnBoarding.buttonSkipText}>Skip</Text>
-                    </Pressable> 
                 </View>
+                }
             </View>
         </View>
     </KeyboardAvoidingView>
