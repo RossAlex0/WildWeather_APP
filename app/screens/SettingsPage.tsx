@@ -11,6 +11,8 @@ import UserContext from "../services/context/UserContext";
 
 import stylesSettings from "../styles/styleSettings";
 import colors from "../styles/colors";
+import handleMailContact from "../services/mailContact";
+import ConfirmBox from "../components/ConfirmBox";
 
 export default function SettingsPage({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
@@ -18,12 +20,18 @@ export default function SettingsPage({ navigation }:{
 
     const { clearStorage } = storage;
     const { setIsSignedIn } = useContext(WeatherContext)
-    const { setUserCity } = useContext(UserContext);
+    const { setUserCity, userName } = useContext(UserContext);
 
     const [isEnabled, setIsEnabled] = useState(false);
+    const [isActived, setIsactived] = useState(false)
 
-    const toggleSwitch = () => setIsEnabled(!isEnabled);
-
+    const toggleSwitch = () => {
+        setIsEnabled(!isEnabled);
+        setIsactived(true)
+        setTimeout(() => {
+            setIsactived(false)
+        }, 2500);
+    }
     const handleClear = () => {
         console.info("Cleaned")
         setIsSignedIn(false)
@@ -38,7 +46,9 @@ export default function SettingsPage({ navigation }:{
                 <Pressable 
                 key={setting.name} 
                 style={stylesSettings.containTitleNav}
-                onPress={setting.navigate ? () => navigation.navigate(setting.navigateTo) : null}
+                onPress={setting.name === 'Contact' ?
+                    () => handleMailContact(userName)
+                    : setting.navigate ? () => navigation.navigate(setting.navigateTo) : null}
                 >
                     <Icon
                     name={setting.nameIcon}
@@ -77,6 +87,13 @@ export default function SettingsPage({ navigation }:{
                 <Text style={stylesSettings.textCopy}>All rights reserved</Text>
                 <Text style={stylesSettings.textCopy}>© WildWeather 2024 - Rossignol Alex</Text>
             </View>
+            { isActived &&
+                <ConfirmBox text={isEnabled 
+                    ? "Notifications on your phone is actived!"
+                    : "Notifications on your phone is deactivated!"
+                }
+                />
+            }
         </View>
     )
 }

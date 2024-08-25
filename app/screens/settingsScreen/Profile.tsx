@@ -2,25 +2,36 @@ import { KeyboardAvoidingView, Platform, Pressable, ScrollView, Text, TextInput,
 import Icon from "react-native-vector-icons/Ionicons";
 import { useState, useContext } from "react";
 
-import storage from "../../services/storage";
 import ButtonGradient from "../../components/ButtonGradient";
+import ConfirmBox from "../../components/ConfirmBox";
+import EditName from "../../components/profile/EditName";
 
 import UserContext from "../../services/context/UserContext";
+import storage from "../../services/storage";
 
 import stylesProfile from "../../styles/styleSettingsScreen/styleProfile";
 import colors from "../../styles/colors";
+import EditMail from "../../components/profile/EditMail";
+import EditPassword from "../../components/profile/EditPassword";
+
 
 export default function Profile(){
 
     const { saveName } = storage;
-    const { userName, setUserName} = useContext(UserContext)
+    const { setUserName} = useContext(UserContext)
 
     const [isOpen, setIsOpen] = useState("");
+    // For ConfirmBox =>
+    const [msgConfirm, setMsgConfirm] = useState("");
+    const [isConfirmed, setIsConfirmed] = useState(false);
+    // For check current password
     const [confirmPassword, setConfirmPassword] = useState(false);
 
-    const [value, setValue] = useState("");
+    const [valueMail, setValueMail] = useState("");
     const [valueName, setValueName] = useState("");
+    const [valuePassword, setValuePassword] = useState("");
     const [valueCurrentPassword, setValueCurrentPassword] = useState("");
+    
 
     const handleConfirmCurrentPassword = () => {
         if( valueCurrentPassword === "1234"){
@@ -32,7 +43,32 @@ export default function Profile(){
         setIsOpen(""); 
         setUserName(valueName);
         saveName(valueName);
-        setValueName("")
+        setValueName("");
+        setMsgConfirm("name");
+        setIsConfirmed(true);
+        setTimeout(() => {
+            setIsConfirmed(false);
+        }, 2500);
+    }
+    const handleConfirmMail = () => {
+        setIsOpen(""); 
+        setValueMail("");
+        setMsgConfirm("mail");
+        setIsConfirmed(true);
+        setTimeout(() => {
+            setIsConfirmed(false);
+        }, 2500);
+    }
+    const handleConfirmPassword = () => {
+        setIsOpen(""); 
+        setValuePassword("");
+        setValueCurrentPassword("");
+        setMsgConfirm("password");
+        setIsConfirmed(true);
+        setConfirmPassword(false);
+        setTimeout(() => {
+            setIsConfirmed(false);
+        }, 2500);
     }
 
 
@@ -40,138 +76,29 @@ export default function Profile(){
         
         <KeyboardAvoidingView style={stylesProfile.container}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            { isOpen === "name"
-            ? (
-                <View style={stylesProfile.containerInput}>
-                    <Text style={stylesProfile.label}>Change your name:</Text>
-                    <TextInput 
-                        placeholder="Enter your name here"
-                        returnKeyType="done"
-                        maxLength={15} 
-                        onChangeText={(e) => setValueName(e)}
-                        value={valueName} 
-                        style={stylesProfile.input} 
-                    />
-                    <Pressable 
-                    style={stylesProfile.btnConfirm} 
-                    onPress={handleConfirmName}>
-                        <ButtonGradient texte="Confirm"/>
-                    </Pressable>
-                </View>
-            ):(
-                <View style={stylesProfile.containerInputClose}>
-                    <Text style={stylesProfile.label}>
-                        Your name:{'  '}
-                        <Text style={stylesProfile.textUser}>
-                            {userName}</Text>
-                    </Text>
-                    <Pressable onPress={() => setIsOpen("name")}>
-                        <Icon
-                            name="pencil-sharp"
-                            size={24}
-                            color={colors.primaryColor}
-                        />
-                    </Pressable>
-                </View>
-            )}
+            <EditName 
+            open={{isOpen, setIsOpen}}
+            name={{valueName, setValueName}} 
+            handleConfirmName={handleConfirmName}
+            />
 
-            { isOpen === "mail"
-            ?(
-                <View style={stylesProfile.containerInput}>
-                    <Text style={stylesProfile.label}>Change your mail:</Text>
-                    <TextInput 
-                        placeholder="Enter your mail here"
-                        returnKeyType="done"
-                        maxLength={15} 
-                        onChangeText={(e) => setValue(e)}
-                        value={value} 
-                        style={stylesProfile.input} 
-                    />
-                    <Pressable style={stylesProfile.btnConfirm} onPress={() => setIsOpen("")}>
-                        <ButtonGradient texte="Confirm"/>
-                    </Pressable>
-                </View>
-            ):(
-                <View style={stylesProfile.containerInputClose}>
-                    <Text style={stylesProfile.label}>
-                        Your mail:{'  '}
-                        <Text style={stylesProfile.textUser}>alexnw33910@gmail.com</Text>
-                    </Text>
-                    <Pressable onPress={() => setIsOpen("mail")}>
-                        <Icon
-                            name="pencil-sharp"
-                            size={24}
-                            color={colors.primaryColor}
-                        />
-                    </Pressable>
-                </View>
-            )}
+            <EditMail
+            open={{isOpen, setIsOpen}}
+            mail={{valueMail, setValueMail}} 
+            handleConfirmMail={handleConfirmMail}
+            /> 
 
-            {isOpen === "password"
-                ? ( 
-                    <View style={stylesProfile.containerInput}>
-                    {confirmPassword ?
-                    (
-                        <>
-                            <Text style={stylesProfile.label}>Changed your password:</Text>
-                            <TextInput 
-                                placeholder="Enter your new password here"
-                                returnKeyType="done"
-                                maxLength={15} 
-                                onChangeText={(e) => setValue(e)}
-                                value={value} 
-                                style={stylesProfile.input} 
-                            />
-                            <Text style={[stylesProfile.label, {marginTop: 12}]}>Confirm your password:</Text>
-                            <TextInput 
-                                placeholder="Confirm your new password here"
-                                returnKeyType="done"
-                                maxLength={15} 
-                                onChangeText={(e) => setValue(e)}
-                                value={value} 
-                                style={stylesProfile.input} 
-                            />
-                            <Pressable style={stylesProfile.btnConfirm} onPress={() => {setConfirmPassword(false); setIsOpen("")}}>
-                                <ButtonGradient texte="Confirm"/>
-                            </Pressable>
-                        </>
-
-                    ) : (
-
-                        <>
-                            <Text style={stylesProfile.label}>Enter your password to authorize the change:</Text>
-                            <TextInput 
-                                placeholder="Enter your current password here"
-                                returnKeyType="done"
-                                maxLength={15}
-                                onChangeText={(e) => setValueCurrentPassword(e)}
-                                value={valueCurrentPassword} 
-                                style={stylesProfile.input} 
-                            />
-                            <Pressable style={stylesProfile.btnConfirm} onPress={handleConfirmCurrentPassword}>
-                                <ButtonGradient texte="Confirm"/>
-                            </Pressable>
-                        </>
-                    )}
-                    </View>
-
-            ):(
-
-                <View style={stylesProfile.containerInputClose}>
-                    <Text style={stylesProfile.label}>
-                        Your password:{'  '}  
-                        <Text style={stylesProfile.textUser}>***********</Text>
-                    </Text>
-                    <Pressable onPress={() => setIsOpen("password")}>
-                        <Icon
-                            name="pencil-sharp"
-                            size={24}
-                            color={colors.primaryColor}
-                        />
-                    </Pressable>
-                </View>
-
-            )}
+            <EditPassword 
+            confirmPassword={confirmPassword}
+            open={{isOpen, setIsOpen}}
+            password={{valuePassword, setValuePassword}}  
+            currentPassword={{valueCurrentPassword, setValueCurrentPassword}} 
+            functions={{handleConfirmPassword, handleConfirmCurrentPassword}}
+            />
+            
             </ScrollView>
+            {isConfirmed &&
+                <ConfirmBox text={`Your new ${msgConfirm} is confirmed!`} />
+            }
         </KeyboardAvoidingView>
 )}
