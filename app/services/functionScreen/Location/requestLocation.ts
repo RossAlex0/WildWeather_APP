@@ -1,5 +1,5 @@
 import * as Location from 'expo-location';
-import { locationInterface } from '../types/interfaces/locationInterfaces';
+import { locationInterface } from '../../../types/interfaces/locationInterfaces';
 
 export default function requestLocation(
     setErrorMsg:(errorMsg: string)=> void,

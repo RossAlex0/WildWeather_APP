@@ -3,8 +3,11 @@ import { useState } from "react";
 import { Text, View } from "react-native";
 
 import stylesLanguage from "../../styles/styleSettingsScreen/styleLanguage";
+import ConfirmBox from "../../components/ConfirmBox";
 
 export default function Language(){
+
+    const [isConfirmed, setIsConfirmed] = useState(false)
 
     const [isFrChecked, setIsFrChecked] = useState(false)
     const [isEnChecked, setIsEnChecked] = useState(true)
@@ -15,6 +18,10 @@ export default function Language(){
           setIsFrChecked(true);
           setIsEnChecked(false);
           setIsAlChecked(false);
+          setIsConfirmed(true);
+          setTimeout(() => {
+            setIsConfirmed(false);
+          }, 2500);
         }
       };
     
@@ -23,6 +30,10 @@ export default function Language(){
           setIsEnChecked(true);
           setIsFrChecked(false);
           setIsAlChecked(false);
+          setIsConfirmed(true);
+          setTimeout(() => {
+            setIsConfirmed(false);
+          }, 2500);
         }
       };
     
@@ -31,6 +42,10 @@ export default function Language(){
           setIsAlChecked(true);
           setIsFrChecked(false);
           setIsEnChecked(false);
+          setIsConfirmed(true);
+          setTimeout(() => {
+            setIsConfirmed(false);
+          }, 2500);
         }
       };
 
@@ -57,6 +72,9 @@ export default function Language(){
                 style={stylesLanguage.checkbox} />
                 <Text style={stylesLanguage.labelCheckbox}>🇩🇪 Deutsch</Text>
             </View>
+            { isConfirmed &&
+                <ConfirmBox text="The language is changed" />
+            }
         </View>
     )
 }

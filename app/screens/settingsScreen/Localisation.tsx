@@ -10,9 +10,10 @@ import getWeather from "../../services/fetchData/getWeather";
 import getWeatherWithLoc from "../../services/fetchData/getWeatherWithLoc";
 import { locationInterface } from "../../types/interfaces/locationInterfaces";
 import stylesLocalisation from "../../styles/styleSettingsScreen/styleLocalisation";
-import requestLocation from "../../services/requestLocation";
+import requestLocation from "../../services/functionScreen/Location/requestLocation";
 
 import ButtonGradient from "../../components/ButtonGradient";
+import ConfirmBox from "../../components/ConfirmBox";
 
 
 export default function Localisation(){
@@ -25,6 +26,7 @@ export default function Localisation(){
 
     const [messageError, setMessageError] = useState("");
     const [errorMsgLocation, setErrorMsgLocation] = useState("");
+    const [isConfirmed, setIsConfirmed] = useState(false)
 
     const [location, setLocation] = useState<locationInterface | null>(null);
 
@@ -33,12 +35,20 @@ export default function Localisation(){
 
     const handleConfirm = () => {
         getWeather(newCity, setData, setMessageError);
-        setInputValue("")
+        setInputValue("");
         setNewCity("");
+        setIsConfirmed(true);
+          setTimeout(() => {
+            setIsConfirmed(false);
+          }, 2500);
     }
     const handleGeoLoc = () => {
       if(location){
-      getWeatherWithLoc(`${location.coords.latitude}`, `${location.coords.longitude}`, setData, setMessageError)
+      getWeatherWithLoc(`${location.coords.latitude}`, `${location.coords.longitude}`, setData, setMessageError);
+      setIsConfirmed(true);
+          setTimeout(() => {
+            setIsConfirmed(false);
+          }, 2500);
       }
     }
 
@@ -48,6 +58,9 @@ export default function Localisation(){
 
     return(
         <View style={stylesLocalisation.container}>
+            { isConfirmed &&
+                <ConfirmBox text="Your new localisation is confirmed!" />
+            }
             <View style={stylesLocalisation.sectionText}>
                 <Text style={stylesLocalisation.text}>
                 The selected city will be displayed by default when you open your space.
