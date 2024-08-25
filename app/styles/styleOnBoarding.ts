@@ -141,7 +141,8 @@ const stylesOnBoarding = StyleSheet.create({
           width: '100%',
           borderTopLeftRadius: 40,
           borderTopRightRadius: 40,
-          padding: 32,
+          paddingHorizontal: 32,
+          paddingBottom: 32,
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -150,13 +151,11 @@ const stylesOnBoarding = StyleSheet.create({
           marginTop: '20%',
           width: '100%',
           display: 'flex',
-          marginBottom: 16,
-          gap: 8
         },
         textNameTitle:{
           color: colors.primaryColor,
           fontSize: 32,
-          fontWeight: 'bold'
+          fontWeight: '800'
         },
         textName:{
           color: colors.primaryColor,
@@ -167,9 +166,8 @@ const stylesOnBoarding = StyleSheet.create({
           height: 48,
           width: '100%',
           display: 'flex',
-          alignItems: 'center',
           justifyContent: 'center',
-          marginBottom: 120
+          marginTop: -64
         },
         inputName:{
           height: 48,
@@ -178,30 +176,14 @@ const stylesOnBoarding = StyleSheet.create({
           borderWidth: 1,
           borderRadius: 8,
           paddingLeft: 12,
-          fontSize: 18
+          fontSize: 18,
+          marginVertical: 8
         },
         containerButton:{
           width: '100%',
           display: 'flex',
           alignItems: 'center',
           gap: 24
-        },
-        buttonNameSkip:{
-          height: 48,
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        },
-        buttonNameSkipPressed:{
-          height: 48,
-          width: '100%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderColor: colors.primaryColor,
-          borderRadius: 12,
-          borderWidth: 1
         },
         buttonSkipText:{
           fontSize: 20,

@@ -20,7 +20,7 @@ export default function SettingsPage({ navigation }:{
 
     const { clearStorage } = storage;
     const { setIsSignedIn } = useContext(WeatherContext)
-    const { setUserCity, userName } = useContext(UserContext);
+    const { setUserCity, userName, setUserName } = useContext(UserContext);
 
     const [isEnabled, setIsEnabled] = useState(false);
     const [isActived, setIsactived] = useState(false)
@@ -37,6 +37,7 @@ export default function SettingsPage({ navigation }:{
         setIsSignedIn(false)
         clearStorage()
         setUserCity("")
+        setUserName("")
     }
 
     return(
