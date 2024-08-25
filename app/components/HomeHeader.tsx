@@ -13,7 +13,7 @@ export default function HomeHeader(){
 
     return (
         <View style={stylesHome.header}>
-            <Text style={stylesHome.headerTxt}>Hi {userName}, {data.weather[0].description} now!</Text>
+            <Text style={stylesHome.headerTxt}>Hi {userName}, {data && data.weather[0].description} now!</Text>
             <View style={stylesHome.headerLine}/>
         </View>
     )

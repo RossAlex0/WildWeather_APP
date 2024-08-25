@@ -31,40 +31,41 @@ export default function HomeNavigate(){
             }
         }}>
             <Tab.Screen name='Home' component={HomePage} 
-            options={{ 
-                headerShown: false,
-                tabBarIcon: ({ focused }) => (
-                    <Icon 
-                      name={focused ? 'home' : 'home-outline'} 
-                      size={28} 
-                      color={focused ? colors.orangeColor : colors.primaryColor} 
-                    />
-                ),
-            }}
+                options={{ 
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => (
+                        <Icon 
+                        name={focused ? 'home' : 'home-outline'} 
+                        size={28} 
+                        color={focused ? colors.orangeColor : colors.primaryColor} 
+                        />
+                    ),
+                }}
             />
             <Tab.Screen name='Celestial Events' component={AstronomyPage} 
-            options={{ 
-                headerShown: false,
-                tabBarIcon: ({ focused }) => (
-                    <Icon 
-                      name={focused ? 'moon' : 'moon-outline'} 
-                      size={28} 
-                      color={focused ? colors.orangeColor : colors.primaryColor} 
-                    />
-                ),
-            }}
+                options={{ 
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => (
+                        <Icon 
+                        name={focused ? 'moon' : 'moon-outline'} 
+                        size={28} 
+                        color={focused ? colors.orangeColor : colors.primaryColor} 
+                        />
+                    ),
+                }}
             />
             <Tab.Screen name='Settings' component={SettingsNavigate} 
-            options={{ 
-                headerShown: false,
-                tabBarIcon: ({ focused }) => (
-                    <Icon 
-                      name={focused ? 'settings' : 'settings-outline'} 
-                      size={28} 
-                      color={focused ? colors.orangeColor : colors.primaryColor} 
-                    />
-                ),
-        }}/>
+                options={{ 
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) => (
+                        <Icon 
+                        name={focused ? 'settings' : 'settings-outline'} 
+                        size={28} 
+                        color={focused ? colors.orangeColor : colors.primaryColor} 
+                        />
+                    ),
+                }}
+            />
         </Tab.Navigator>
         
     )
