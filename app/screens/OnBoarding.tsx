@@ -27,13 +27,20 @@ export default function OnBoarding({ navigation }:{
                                
                 <Text style={stylesOnBoarding.texte} >Don't let the weather surprise you.</Text>                
             </View>
-            <View style={stylesOnBoarding.button}>
+            <View style={stylesOnBoarding.sectionbutton}>
                 <Pressable  
                 style={({ pressed }) => [
                 stylesOnBoarding.button,
+                { opacity: pressed ? 0.2 : 1},{marginBottom: 16}]} 
+                onPress={() => navigation.navigate('OnBoardingLog')}>
+                    <ButtonGradient texte="Log In" />
+                </Pressable>
+                <Pressable  
+                style={({ pressed }) => [
+                stylesOnBoarding.buttonWhite,
                 { opacity: pressed ? 0.2 : 1}]} 
                 onPress={() => navigation.navigate('OnBoardingName')}>
-                    <ButtonGradient texte="Let's go !" />
+                    <Text style={stylesOnBoarding.textBtn}>Create account</Text>
                 </Pressable>
             </View>
         </View>

@@ -13,7 +13,6 @@ const stylesHome = StyleSheet.create({
     header:{
         display: 'flex',
         width: '100%',
-        height: '5%',
         marginTop: 8,
         flexDirection: 'column',
         alignItems: 'center',

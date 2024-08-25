@@ -19,7 +19,6 @@ const stylesOnBoarding = StyleSheet.create({
             display: 'flex',
             justifyContent: 'space-around',
             alignItems: 'center',
-            gap: 16
         },
         containerText:{
           height: '80%',
@@ -48,9 +47,90 @@ const stylesOnBoarding = StyleSheet.create({
           color: colors.primaryColor,
           fontSize: 24
         },
+        sectionbutton:{
+          width: '100%',
+          marginTop: -16,
+          marginBottom: 8
+        },
         button:{
           height: 48,
           width: '100%'
+        },
+        buttonWhite:{
+          height: 48,
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          borderRadius: 12,
+          borderWidth: 1,
+          borderColor: colors.orangeColor
+        },
+        textBtn:{
+          color: colors.orangeColor,
+          fontSize: 20,
+          fontWeight: "bold"
+        },
+        // SECTION OnboardingLOG
+        containerTextLog:{
+          width: '100%',
+          display: 'flex',
+          marginBottom: '30%'
+        },
+        titleLog:{
+          fontSize: 32,
+          fontWeight: 'bold',
+          color: colors.orangeColor,
+          marginTop: -8,
+          marginBottom: 8
+        },
+        sectionInput:{
+          width: '100%',
+          marginTop: -72,
+          marginBottom: 8
+        },
+        inputLog:{
+          height: 48,
+          width: '100%',
+          borderWidth: 1,
+          borderRadius: 8,
+          borderColor: '#E4E4E4',
+          padding: 8,
+          backgroundColor: '#FFF',
+          fontSize: 16,
+          paddingLeft: 16,
+          marginTop: 4,
+          marginBottom: 16
+        },
+        buttonLog:{
+          height: 48,
+          width: '100%',
+          marginTop: 16
+        },
+        labelLog:{
+          fontSize: 16,
+          color: colors.primaryColor,
+          fontWeight: '600'
+        },
+        containerTxtSign:{
+          height: 40,
+          marginTop: -8,
+          width: '100%',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center'
+        },
+        textSignUp:{
+          color: colors.primaryColor,
+          fontSize: 15
+        },
+        textSignNav:{
+          color: colors.primaryColor,
+          textDecorationLine: 'underline',
+          paddingLeft: 4,
+          fontSize: 15
+        },
+        btnSignUp:{
         },
         // SECTION onBoardingName
         containerName:{
