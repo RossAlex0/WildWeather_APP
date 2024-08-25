@@ -15,27 +15,22 @@ const stylesHome = StyleSheet.create({
         width: '100%',
         height: '5%',
         marginTop: 8,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+        flexDirection: 'column',
         alignItems: 'center',
-        marginBottom: 16
+        marginBottom: 16,
+        overflow: 'visible'
     },
     headerTxt:{
         fontSize: 26,
         fontWeight: 'bold',
         color: colors.primaryColor
     },
-    headerBtn:{
-        display:'flex',
-        flexDirection:'row',
-        alignItems:'center',
-        gap: 28,
-
-    },
-    headerImg:{
-        height: 32,
-        width: 32,
-        overflow: 'visible'
+    headerLine:{
+        width: '70%',
+        borderTopWidth: 1,
+        borderTopColor: colors.orangeColor,
+        opacity: 0.5,
+        marginTop: 16
     },
     containerInput:{
         width: '100%',
