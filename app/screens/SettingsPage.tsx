@@ -91,7 +91,7 @@ export default function SettingsPage({ navigation }:{
             { isActived &&
                 <ConfirmBox text={isEnabled 
                     ? "Notifications on your phone is actived!"
-                    : "Notifications on your phone is deactivated!"
+                    : "Notifications on your phone is desactivated!"
                 }
                 />
             }

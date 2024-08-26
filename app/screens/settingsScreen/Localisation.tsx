@@ -93,11 +93,11 @@ export default function Localisation(){
                 <Marker coordinate={{ latitude: lat, longitude: lon }}>
                     <Callout tooltip>
                         <View style={stylesLocalisation.calloutContainer}>
-                        <Text style={stylesLocalisation.calloutTitle}>{cityFromArrondissement(data.name)}</Text>
-                        <Text style={stylesLocalisation.calloutDescription}>{codeCountry[data.sys.country]}</Text>
-                        <View style={stylesLocalisation.calloutLine} />
-                        <Text style={stylesLocalisation.calloutDescription}>Lat: {lat} | Lon: {lon}</Text>
-                        <Text style={stylesLocalisation.calloutDescription}>Weather: "{data.weather[0].description}"</Text>
+                          <Text style={stylesLocalisation.calloutTitle}>{cityFromArrondissement(data.name)}</Text>
+                          <Text style={stylesLocalisation.calloutDescription}>{codeCountry[data.sys.country]}</Text>
+                          <View style={stylesLocalisation.calloutLine} />
+                          <Text style={stylesLocalisation.calloutDescription}>Lat: {lat} | Lon: {lon}</Text>
+                          <Text style={stylesLocalisation.calloutDescription}>Weather: "{data.weather[0].description}"</Text>
                         </View>
                     </Callout>
                 </Marker>

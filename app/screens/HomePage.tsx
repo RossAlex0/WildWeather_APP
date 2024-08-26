@@ -72,7 +72,7 @@ export default function HomePage() {
             :   <>
                     <View style={stylesHome.containerError}>
                         <View style={stylesHome.containerTextError}>
-                            <Icon name="flash-outline" style={stylesHome.iconError}/>
+                            <Icon name="search-circle-outline" style={stylesHome.iconError}/>
                             <Text style={stylesHome.textError}>{messageError}</Text>
                         </View>
                     </View>

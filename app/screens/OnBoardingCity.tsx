@@ -17,6 +17,8 @@ export default function OnBoardingName() {
     const { saveCity, loadName} = storageData;
     
     const [warningOpacity] = useState(new Animated.Value(0));
+
+    const [isFocus, setIsFocus] = useState(false);
     const [inputValue, setInputValue] = useState<string>("");
 
     const handlePressButtonCity = () => {
@@ -57,9 +59,12 @@ export default function OnBoardingName() {
                         placeholder="Research"
                         returnKeyType="done" 
                         onChangeText={(e) => setInputValue(e)}
+                        onFocus={() => setIsFocus(true)}
+                        onSubmitEditing={() => setIsFocus(false)}
                         value={inputValue}
                         style={stylesOnBoarding.inputCity} />
                     </View>
+                    { !isFocus &&
                     <View style={stylesOnBoarding.containerButtonCity}>
                         <Pressable 
                         style={({ pressed }) => [
@@ -75,6 +80,7 @@ export default function OnBoardingName() {
                             ⚠️ Please enter a city ! ⚠️
                         </Animated.Text >
                     </View>
+                    }
                 </View>
             </View>
         </KeyboardAvoidingView>
