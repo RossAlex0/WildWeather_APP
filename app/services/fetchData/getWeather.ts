@@ -20,7 +20,6 @@ export default function getWeather(
     })
 
     .catch((err) => {
-        console.error(err);
         if(err.response.status === 404){
             setMessageError("OOPS!!!\n\n Sorry, but this city does not exist.\n Please enter a new city.")
         }else if(err.response.status === 400 || 

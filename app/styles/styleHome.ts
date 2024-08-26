@@ -12,24 +12,23 @@ const stylesHome = StyleSheet.create({
     },
     header:{
         display: 'flex',
-        width: '100%',
-        marginTop: 8,
+        marginTop: 12,
         flexDirection: 'column',
-        alignItems: 'center',
         marginBottom: 16,
-        overflow: 'visible'
     },
     headerTxt:{
         fontSize: 26,
         fontWeight: 'bold',
-        color: colors.primaryColor
+        color: colors.primaryColor,
+        textAlign: 'center'
     },
     headerLine:{
         width: '70%',
         borderTopWidth: 1,
         borderTopColor: colors.orangeColor,
         opacity: 0.5,
-        marginTop: 16
+        marginTop: 16,
+        marginHorizontal: 'auto'
     },
     containerInput:{
         width: '100%',
@@ -63,7 +62,7 @@ const stylesHome = StyleSheet.create({
       },
       iconError:{
         textAlign: 'center',
-        fontSize: 48,
+        fontSize: 72,
         fontWeight: '900',
         color: colors.orangeColor,
         marginBottom: 24,
