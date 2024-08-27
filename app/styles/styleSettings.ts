@@ -7,12 +7,9 @@ const stylesSettings = StyleSheet.create({
         height: '100%',
         flex: 1,
         padding: 28,
-        borderTopColor: colors.secondaryColor,
-        borderTopWidth: 1
     },
     containerTitleNav:{
         marginTop: 64,
-        
     },
     containTitleNav:{
         width: '100%',

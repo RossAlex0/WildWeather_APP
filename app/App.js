@@ -7,6 +7,7 @@ import OnBoarding from './screens/OnBoarding';
 import OnBoardingName from './screens/OnBoardingName';
 import OnBoardingCity from './screens/OnBoardingCity';
 import OnBoardingLog from './screens/OnBoardingLog';
+import OnBoardingPassword from './screens/OnBoardingPassword';
 import HomeNavigate from './navigation/HomeNavigate';
 import LoadingPage from './components/LoadingPage';
 
@@ -50,6 +51,7 @@ export default function App() {
               <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
               <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
               <Stack.Screen name='OnBoardingLog' component={OnBoardingLog} options={{ headerShown: false }}/>
+              <Stack.Screen name='OnBoardingPassword' component={OnBoardingPassword} options={{ headerShown: false }}/>
             </>
           ):(
             <>

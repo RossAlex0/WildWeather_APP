@@ -54,7 +54,7 @@ export default function SettingsPage({ navigation }:{
                     <Icon
                     name={setting.nameIcon}
                     size={setting.sizeIcon} 
-                    color={colors.orangeColor}
+                    color={colors.flashColor}
                     />
                     <Text style={stylesSettings.textTitleNav}>
                     {setting.name}
@@ -70,8 +70,8 @@ export default function SettingsPage({ navigation }:{
                     ) : (
                         <Switch
                         style={stylesSettings.imageTitleNav}
-                        trackColor={{ false: '#F3F7FD', true: colors.orangeColor }}
-                        thumbColor={isEnabled ? '#F3F7FD' : colors.orangeColor}
+                        trackColor={{ false: '#F3F7FD', true: colors.flashColor }}
+                        thumbColor={isEnabled ? '#F3F7FD' : colors.flashColor}
                         ios_backgroundColor= '#F3F7FD'
                         onValueChange={toggleSwitch}
                         value={isEnabled}

@@ -66,7 +66,7 @@ const styleLoading = StyleSheet.create({
     },
     text:{
       fontSize: 32,
-      color: colors.orangeColor,
+      color: colors.flashColor,
       fontWeight: 'bold',
     }
 })
