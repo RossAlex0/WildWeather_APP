@@ -47,15 +47,15 @@ export default function App() {
           <Stack.Navigator >
           {!isSignedIn && userCity === "" ? (
             <>
-            <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
-            <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
-            <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-            <Stack.Screen name='OnBoardingLog' component={OnBoardingLog} options={{ headerShown: false }}/>
-            <Stack.Screen name='OnBoardingPassword' component={OnBoardingPassword} options={{ headerShown: false }}/>
+              <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
+              <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
+              <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
+              <Stack.Screen name='OnBoardingLog' component={OnBoardingLog} options={{ headerShown: false }}/>
+              <Stack.Screen name='OnBoardingPassword' component={OnBoardingPassword} options={{ headerShown: false }}/>
             </>
           ):(
             <>
-            <Stack.Screen name='HomeNav' component={HomeNavigate} options={{ headerShown: false}} />
+              <Stack.Screen name='HomeNav' component={HomeNavigate} options={{ headerShown: false}} />
             </>
           )}
           </Stack.Navigator>  
