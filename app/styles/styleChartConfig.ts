@@ -1,9 +1,11 @@
+import colors from "./colors";
+
 const chartConfig = {
     backgroundGradientFrom: '#F1F8FF',
     backgroundGradientFromOpacity: 1,
     backgroundGradientTo: '#F1F8FF',
     backgroundGradientToOpacity: 1,
-    fillShadowGradientFrom: '#0E0C5E',
+    fillShadowGradientFrom: colors.primaryColor,
     fillShadowGradientFromOpacity: 0.6,
     fillShadowGradientFromOffset: 0.3,
     fillShadowGradientTo: '#F1F8FF',
@@ -19,7 +21,7 @@ const chartConfig = {
     propsForDots: {
         r: '5',
         strokeWidth: 4,
-        stroke: '#0E0C5E',
+        stroke: colors.primaryColor,
         fill: `#D5E8FF`
     }
 };

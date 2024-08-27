@@ -34,7 +34,7 @@ const stylesOnBoarding = StyleSheet.create({
         title:{
           fontSize: 32,
           fontWeight: 'bold',
-          color: colors.orangeColor
+          color: colors.flashColor
         },
         titleSecondary:{
           width: '100%',
@@ -64,10 +64,10 @@ const stylesOnBoarding = StyleSheet.create({
           alignItems: "center",
           borderRadius: 12,
           borderWidth: 1,
-          borderColor: colors.orangeColor
+          borderColor: colors.flashColor
         },
         textBtn:{
-          color: colors.orangeColor,
+          color: colors.flashColor,
           fontSize: 20,
           fontWeight: "bold"
         },
@@ -80,7 +80,7 @@ const stylesOnBoarding = StyleSheet.create({
         titleLog:{
           fontSize: 32,
           fontWeight: 'bold',
-          color: colors.orangeColor,
+          color: colors.flashColor,
           marginTop: -8,
           marginBottom: 8
         },
@@ -94,7 +94,7 @@ const stylesOnBoarding = StyleSheet.create({
           width: '100%',
           borderWidth: 1,
           borderRadius: 8,
-          borderColor: '#E4E4E4',
+          borderColor: colors.borderInput,
           padding: 8,
           backgroundColor: '#FFF',
           fontSize: 16,
@@ -132,7 +132,7 @@ const stylesOnBoarding = StyleSheet.create({
         },
         btnSignUp:{
         },
-        // SECTION onBoardingName
+        // SECTION onBoardingName && password
         containerName:{
           backgroundColor: '#FFF',
           position: 'absolute',
@@ -144,18 +144,23 @@ const stylesOnBoarding = StyleSheet.create({
           paddingHorizontal: 32,
           paddingBottom: 32,
           display: 'flex',
-          justifyContent: 'space-between',
           alignItems: 'center',
         },
         containerTextName:{
           marginTop: '20%',
           width: '100%',
           display: 'flex',
+          borderBottomWidth: 1,
+          borderBottomColor: colors.flashColor,
+          borderBottomLeftRadius: 100,
+          borderBottomRightRadius: 100,
+          paddingBottom: 12
         },
         textNameTitle:{
           color: colors.primaryColor,
           fontSize: 32,
-          fontWeight: '800'
+          fontWeight: '800',
+          textAlign: 'center'
         },
         textName:{
           color: colors.primaryColor,
@@ -163,16 +168,24 @@ const stylesOnBoarding = StyleSheet.create({
           fontWeight: 'regular'
         },
         containerInput:{
-          height: 48,
+          height: 80,
           width: '100%',
           display: 'flex',
           justifyContent: 'center',
-          marginTop: -64
+          marginTop: 56
+        },
+        containerInputBottom:{
+          height: 80,
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          marginTop: 10,
+          paddingTop: 24,
         },
         inputName:{
           height: 48,
           width: '100%',
-          borderColor: '#E4E4E4',
+          borderColor: colors.borderInput,
           borderWidth: 1,
           borderRadius: 8,
           paddingLeft: 12,
@@ -183,12 +196,25 @@ const stylesOnBoarding = StyleSheet.create({
           width: '100%',
           display: 'flex',
           alignItems: 'center',
-          gap: 24
+          position: 'absolute',
+          bottom: 50
         },
-        buttonSkipText:{
-          fontSize: 20,
-          fontWeight: "bold",
-          color: colors.primaryColor
+        iconPassword:{
+          position: 'absolute',
+          top: 38,
+          right: 12
+        },
+        iconPasswordBottom:{
+          position: 'absolute',
+          top: 50,
+          right: 12
+        },
+        errorPassword:{
+          position: 'absolute',
+          bottom: '30%',
+          color: colors.flashColor,
+          fontSize: 15,
+          fontWeight: '700'
         },
         // SECTION onBoardingCity        
         containerTextCity:{
@@ -196,10 +222,16 @@ const stylesOnBoarding = StyleSheet.create({
           width: '100%',
           display: 'flex',
           marginBottom: 16,
+          borderBottomWidth: 1,
+          borderBottomColor: colors.flashColor,
+          borderBottomLeftRadius: 100,
+          borderBottomRightRadius: 100,
+          paddingBottom: 12
         },
         containerButtonCity:{
           width: '100%',
-          marginBottom: 72,
+          position: 'absolute',
+          bottom: 50
         },
         searchIcon:{
           position: 'absolute',
@@ -208,7 +240,7 @@ const stylesOnBoarding = StyleSheet.create({
         inputCity:{
           height: 48,
           width: '100%',
-          borderColor: '#E4E4E4',
+          borderColor: colors.borderInput,
           borderWidth: 1,
           borderRadius: 8,
           paddingLeft: 48,
@@ -219,7 +251,7 @@ const stylesOnBoarding = StyleSheet.create({
           position: 'absolute',
           padding: 8,
           marginTop: 56,
-          color: colors.orangeColor,
+          color: colors.flashColor,
           fontSize: 16,
           fontWeight: '700',
           textAlign: 'center',

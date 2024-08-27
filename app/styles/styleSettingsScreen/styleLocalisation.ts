@@ -34,7 +34,7 @@ const stylesLocalisation = StyleSheet.create({
         width: '100%',
         borderWidth: 1,
         borderRadius: 8,
-        borderColor: '#E4E4E4',
+        borderColor: colors.borderInput,
         padding: 8,
         backgroundColor: '#FFF',
         fontSize: 16,
@@ -46,7 +46,7 @@ const stylesLocalisation = StyleSheet.create({
         padding: 8,
         alignItems: 'center',
         borderWidth: 1,
-        borderColor: '#E4E4E4',
+        borderColor: colors.borderInput,
         borderRadius: 8,
         marginTop: 12
     },

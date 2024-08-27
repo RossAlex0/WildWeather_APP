@@ -37,7 +37,7 @@ export default function HomeNavigate(){
                         <Icon 
                         name={focused ? 'home' : 'home-outline'} 
                         size={28} 
-                        color={focused ? colors.orangeColor : colors.primaryColor} 
+                        color={focused ? colors.flashColor : colors.primaryColor} 
                         />
                     ),
                 }}
@@ -49,7 +49,7 @@ export default function HomeNavigate(){
                         <Icon 
                         name={focused ? 'moon' : 'moon-outline'} 
                         size={28} 
-                        color={focused ? colors.orangeColor : colors.primaryColor} 
+                        color={focused ? colors.flashColor : colors.primaryColor} 
                         />
                     ),
                 }}
@@ -61,7 +61,7 @@ export default function HomeNavigate(){
                         <Icon 
                         name={focused ? 'settings' : 'settings-outline'} 
                         size={28} 
-                        color={focused ? colors.orangeColor : colors.primaryColor} 
+                        color={focused ? colors.flashColor : colors.primaryColor} 
                         />
                     ),
                 }}

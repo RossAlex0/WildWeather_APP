@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         flexDirection: 'row',
-        backgroundColor: '#40E0C3',
-        borderRadius: 4
+        backgroundColor: colors.confirmBox,
+        borderRadius: 4,
+        zIndex: 4
     },
     text:{
         color: colors.primaryColor,

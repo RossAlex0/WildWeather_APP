@@ -39,7 +39,7 @@ const stylesProfile = StyleSheet.create({
     input:{
         height: 48,
         width: '100%',
-        borderColor: '#E4E4E4',
+        borderColor: colors.borderInput,
         backgroundColor: '#F3F7FD',
         borderWidth: 1,
         borderRadius: 12,

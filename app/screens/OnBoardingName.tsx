@@ -21,7 +21,7 @@ export default function OnBoardingName({ navigation }:{
         if(inputValueName.length > 1 && (inputValueMail.length > 6 && inputValueMail.includes("@"))){
         saveName(inputValueName)
         saveMail(inputValueMail)
-        navigation.navigate('OnBoardingCity')
+        navigation.navigate('OnBoardingPassword')
         }
     };
 
@@ -31,7 +31,7 @@ export default function OnBoardingName({ navigation }:{
             <View style={stylesOnBoarding.containerName}>
                 
                 <View style={stylesOnBoarding.containerTextName}>
-                    <Text style={stylesOnBoarding.textNameTitle}>Make it yours.</Text>     
+                    <Text style={stylesOnBoarding.textNameTitle}>Let's Get to Know You!</Text>     
                 </View>
                 
                 <View style={stylesOnBoarding.containerInput}>
@@ -39,6 +39,7 @@ export default function OnBoardingName({ navigation }:{
                     <TextInput 
                     placeholder="Enter your name here"
                     returnKeyType="done"
+                    autoCapitalize="words"
                     maxLength={15} 
                     onFocus={() => setFocus(true)}
                     onChangeText={(e) => setInputValueName(e)}
@@ -46,12 +47,13 @@ export default function OnBoardingName({ navigation }:{
                     value={inputValueName}
                     style={stylesOnBoarding.inputName} />
                 </View>
-                <View style={stylesOnBoarding.containerInput}>
+                <View style={stylesOnBoarding.containerInputBottom}>
                     <Text style={stylesOnBoarding.textName}>What's your mail?</Text> 
                     <TextInput 
                     placeholder="Enter your mail here"
                     returnKeyType="done"
-                    maxLength={15} 
+                    keyboardType="email-address" 
+                    autoCapitalize="none"
                     onChangeText={(e) => setInputValueMail(e)}
                     onFocus={() => setFocus(true)}
                     onSubmitEditing={() => setFocus(false)}

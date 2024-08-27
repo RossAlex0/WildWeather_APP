@@ -25,7 +25,7 @@ const stylesHome = StyleSheet.create({
     headerLine:{
         width: '70%',
         borderTopWidth: 1,
-        borderTopColor: colors.orangeColor,
+        borderTopColor: colors.flashColor,
         opacity: 0.5,
         marginTop: 16,
         marginHorizontal: 'auto'
@@ -39,7 +39,7 @@ const stylesHome = StyleSheet.create({
         width: '100%',
         borderWidth: 1,
         borderRadius: 8,
-        borderColor: '#E4E4E4',
+        borderColor: colors.borderInput,
         padding: 8,
         backgroundColor: '#FFF',
         fontSize: 16,
@@ -64,7 +64,7 @@ const stylesHome = StyleSheet.create({
         textAlign: 'center',
         fontSize: 72,
         fontWeight: '900',
-        color: colors.orangeColor,
+        color: colors.flashColor,
         marginBottom: 24,
         
       },

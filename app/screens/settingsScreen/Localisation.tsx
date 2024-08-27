@@ -58,10 +58,11 @@ export default function Localisation(){
 
     return(
         <View style={stylesLocalisation.container}>
+            
+            <View style={stylesLocalisation.sectionText}>
             { isConfirmed &&
                 <ConfirmBox text="Your new localisation is confirmed!" />
             }
-            <View style={stylesLocalisation.sectionText}>
                 <Text style={stylesLocalisation.text}>
                 The selected city will be displayed by default when you open your space.
                 </Text>
