@@ -48,6 +48,36 @@
       "The fog shrouds everything in a mysterious veil, making every moment feel more serene and introspective.",
       "A foggy morning like this transforms the landscape into an ethereal canvas, perfect for a quiet stroll.",
       "The gentle mist settling over the city creates a soothing, almost magical atmosphere, ideal for a reflective day."
+    ],
+    "Haze": [
+      "The haze is rolling in, making it feel like the world is wearing its favorite pair of foggy pajamas.",
+      "Today's haze has turned everything into a blurry mess—perfect weather for pretending you're in a spy movie!",
+      "The haze is so thick today, you might need a GPS just to find your coffee cup!"
+    ],
+    "Dust": [
+      "The dust is so thick today, it looks like the whole city decided to take a nap under a cozy blanket of grime.",
+      "With all this dust in the air, it's like Mother Nature is giving the world a free, unsolicited makeover!",
+      "Today's dust storm is so dramatic, it’s as if the wind is auditioning for a role in a sci-fi epic!"
+    ],
+    "Sand": [
+      "The sand is blowing everywhere today—looks like the beach decided to move inland for a change of scenery!",
+      "With all this sand in the air, it’s like the universe is giving us an extra-large, free exfoliation treatment!",
+      "Today’s sandstorm has made everything look like a giant desert—just remember to keep your sunscreen handy!"
+    ],
+    "Ash": [
+      "The ash is falling like confetti today—it's like the sky decided to throw a surprise party for the whole city!",
+      "With all this ash in the air, it feels like Mother Nature's experimenting with a new shade of gray for the landscape!",
+      "Today’s ash storm makes everything look like a giant charcoal sketch—perfect for a dramatic backdrop in a black-and-white movie!"
+    ],
+    "Squall": [
+      "Expect surprise showers today – keep that umbrella handy or enjoy a free rinse!",
+      "Clouds and lightning are in the forecast. Time to test those new rubber boots in the puddles!",
+      "The heat is on: grab your sunglasses and sunscreen, because the sun’s not taking a break!"
+    ],
+    "Tornado": [
+      "Tornado alert: secure your outdoor gear and hold onto your hats – it's going to be a wild ride!",
+      "Brace yourself for a twister! If you see cows flying by, it’s time to head indoors.",
+      "A tornado's on the way – it's a good day to practice your tornado drill and maybe tidy up your storm shelter!"
     ]
   }
   
