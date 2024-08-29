@@ -41,8 +41,8 @@ export default function App() {
   };
   
   return (
-    <WeatherContext.Provider value={{data: data, setData: setData, setIsSignedIn: setIsSignedIn }}>
-      <UserContext.Provider value={{userName: userName, userCity: userCity, setUserName: setUserName, setUserCity: setUserCity}}>
+    <WeatherContext.Provider value={{data, setData, setIsSignedIn}}>
+      <UserContext.Provider value={{userName, userCity, setUserName, setUserCity}}>
         <NavigationContainer>
           <Stack.Navigator >
           {!isSignedIn && userCity === "" ? (
