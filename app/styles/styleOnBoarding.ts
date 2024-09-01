@@ -20,6 +20,11 @@ const stylesOnBoarding = StyleSheet.create({
             justifyContent: 'space-around',
             alignItems: 'center',
         },
+        backButton:{
+          position: 'absolute',
+          top: 50,
+          left: 20
+        },
         containerText:{
           height: '80%',
           width: '100%',
