@@ -15,8 +15,8 @@ export default {
       backgroundColor: "#ffffff"
     },
     extra: {
-      TEST: process.env.TEST,
-      API_KEY: process.env.API_KEY 
+      API_KEY: process.env.API_KEY,
+      BACK_URL: process.env.BACK_URL 
     },
     ios: {
       supportsTablet: true

@@ -9,6 +9,7 @@ import ButtonGradient from "../components/ButtonGradient";
 import BackButton from "../components/BackButton";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
+import addUser from "../services/backApi/postApi";
 
 export default function OnBoardingName() {
 
@@ -20,11 +21,16 @@ export default function OnBoardingName() {
     const [isFocus, setIsFocus] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
+    const handleKeyBoardDone = () => {
+        setIsFocus(false);
+        setUserInfo({ ...userInfo, city: inputValue });
+    }
+
     const handlePressButtonCity = () => {
         if(inputValue.length > 3){
-            setUserInfo({...userInfo, city: inputValue})
-            setIsSignedIn(true)
-        }else {
+            addUser(userInfo);
+            setIsSignedIn(true);
+        }else{
             Animated.timing(warningOpacity, {
                 toValue: 1,
                 duration: 800,
@@ -32,9 +38,7 @@ export default function OnBoardingName() {
             }).start();
         }
     };
-
     
-
     return (
         <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -60,7 +64,7 @@ export default function OnBoardingName() {
                         returnKeyType="done" 
                         onChangeText={(e) => setInputValue(e)}
                         onFocus={() => setIsFocus(true)}
-                        onSubmitEditing={() => setIsFocus(false)}
+                        onSubmitEditing={handleKeyBoardDone}
                         value={inputValue}
                         style={stylesOnBoarding.inputCity} />
                     </View>
