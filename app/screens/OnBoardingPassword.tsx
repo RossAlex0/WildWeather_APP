@@ -1,5 +1,5 @@
 import { KeyboardAvoidingView, Platform, View, Text, TextInput,Pressable } from "react-native";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ButtonGradient from "../components/ButtonGradient";
@@ -7,11 +7,13 @@ import BackButton from "../components/BackButton";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 import colors from "../styles/colors";
+import UserContext from "../services/context/UserContext";
 
 export default function OnBoardingPassword({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
 }){
     // const { savePassword } = storage;
+    const { userInfo, setUserInfo } = useContext(UserContext)
 
     const [focus, setFocus] = useState(false);
     const [isValid, setIsValid] = useState(true)
@@ -29,7 +31,7 @@ export default function OnBoardingPassword({ navigation }:{
             }, 6000);
         }
         if(inputPassword === inputConfirmPassword && inputPassword.length > 6){
-        // savePassword(inputValuePassword)
+        setUserInfo({...userInfo, password: inputPassword})
         navigation.navigate('OnBoardingCity')
         }
     };

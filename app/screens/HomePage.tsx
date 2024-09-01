@@ -19,24 +19,22 @@ import UserContext from "../services/context/UserContext";
 export default function HomePage() {
 
     const { data, setData } = useContext(WeatherContext);
-    const { userCity, setUserCity} = useContext(UserContext);
-    const { loadCity, saveCity } = storage;
+    const { userInfo, setUserInfo} = useContext(UserContext);
 
     const [inputSearchValue, setInputSearchValue] = useState("");
     const [messageError, setMessageError] = useState("")
 
-    useEffect(() => {loadCity(setUserCity)},[])
+    // useEffect(() => {loadCity(setUserCity)},[])
     useEffect(() => {(
         async() => {
-            if(userCity){
-        getWeather(userCity, setData, setMessageError);
+            if(userInfo.city){
+        getWeather(userInfo.city, setData, setMessageError);
         }})
     ()
-    },[userCity])
+    },[userInfo.city])
 
     const handleSubmit = () =>  {
-        setUserCity(inputSearchValue)
-        saveCity(inputSearchValue)
+        setUserInfo({...userInfo, city: inputSearchValue})
         setInputSearchValue("")
     }
 

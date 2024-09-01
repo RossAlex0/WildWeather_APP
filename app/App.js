@@ -18,13 +18,17 @@ import storage from './services/storage';
 export default function App() {
   const Stack = createNativeStackNavigator();
 
-  const { loadCity, loadName } = storage
+  const { loadCity, loadName } = storage;
+  const [userInfo, setUserInfo] = useState({name: "", mail: "", city: "", password: ""});
 
   const [data, setData] = useState()
   const [userCity, setUserCity] = useState("");
   const [userName, setUserName] = useState("")
   const [loading, setLoading] = useState(true);
   const [isSignedIn, setIsSignedIn] = useState(false);
+
+  useEffect(()=> {
+  console.info(userInfo)},[userInfo])
 
 
   useEffect(() => {
@@ -42,7 +46,8 @@ export default function App() {
   
   return (
     <WeatherContext.Provider value={{data, setData, setIsSignedIn}}>
-      <UserContext.Provider value={{userName, userCity, setUserName, setUserCity}}>
+      {/* <UserContext.Provider value={{userName, userCity, setUserName, setUserCity}}> */}
+      <UserContext.Provider value={{userInfo, setUserInfo}}>
         <NavigationContainer>
           <Stack.Navigator >
           {!isSignedIn && userCity === "" ? (
