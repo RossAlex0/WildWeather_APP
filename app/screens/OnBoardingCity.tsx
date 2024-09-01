@@ -7,6 +7,7 @@ import UserContext from "../services/context/UserContext";
 import storageData from "../services/storage";
 
 import ButtonGradient from "../components/ButtonGradient";
+import BackButton from "../components/BackButton";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 
@@ -43,6 +44,9 @@ export default function OnBoardingName() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
             <View style={stylesOnBoarding.global}>
+                <Pressable style={stylesOnBoarding.backButton}>
+                    <BackButton />
+                </Pressable>
                 <View style={stylesOnBoarding.containerName}>
                     <View style={stylesOnBoarding.containerTextCity}>
                         <Text style={stylesOnBoarding.textNameTitle}>

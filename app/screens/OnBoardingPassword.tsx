@@ -3,7 +3,7 @@ import { useState } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ButtonGradient from "../components/ButtonGradient";
-import storage from "../services/storage";
+import BackButton from "../components/BackButton";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 import colors from "../styles/colors";
@@ -37,6 +37,9 @@ export default function OnBoardingPassword({ navigation }:{
     return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'height' : 'height'}>
         <View style={stylesOnBoarding.global}>
+            <Pressable style={stylesOnBoarding.backButton}>
+                <BackButton />
+            </Pressable>
             <View style={stylesOnBoarding.containerName}>
                 <View style={stylesOnBoarding.containerTextName}>
                     <Text style={stylesOnBoarding.textNameTitle}>Secure Your Account!</Text>     

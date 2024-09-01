@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import WeatherContext from "../services/context/WeatherContext";
 
 import ButtonGradient from "../components/ButtonGradient";
+import BackButton from "../components/BackButton";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 
@@ -22,6 +23,9 @@ export default function OnBoardingLog({ navigation }:{
     return(
         <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'height' : 'height'}>
             <View style={stylesOnBoarding.global}>
+                <Pressable style={stylesOnBoarding.backButton}>
+                    <BackButton />
+                </Pressable>
                 <View style={stylesOnBoarding.container}>
                     <View style={stylesOnBoarding.containerTextLog}>
                         { !focus &&

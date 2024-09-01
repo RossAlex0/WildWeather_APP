@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform } from "react-native";
 
 import storageData from "../services/storage";
+
+import BackButton from "../components/BackButton";
 import ButtonGradient from "../components/ButtonGradient";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
@@ -28,6 +30,9 @@ export default function OnBoardingName({ navigation }:{
     return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'height' : 'height'}>
         <View style={stylesOnBoarding.global}>
+            <Pressable style={stylesOnBoarding.backButton}>
+                <BackButton />
+            </Pressable>
             <View style={stylesOnBoarding.containerName}>
                 
                 <View style={stylesOnBoarding.containerTextName}>
