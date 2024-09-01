@@ -9,11 +9,11 @@ import stylesHome from "../styles/styleHome";
 export default function HomeHeader(){
 
     const { data } = useContext(WeatherContext)
-    const { userName } = useContext(UserContext)
+    const { userInfo } = useContext(UserContext)
 
     return (
         <View style={stylesHome.header}>
-            <Text style={stylesHome.headerTxt}>Hi {userName}, {data && data.weather[0].description} now!</Text>
+            <Text style={stylesHome.headerTxt}>Hi {userInfo.name}, {data && data.weather[0].description} now!</Text>
             <View style={stylesHome.headerLine}/>
         </View>
     )

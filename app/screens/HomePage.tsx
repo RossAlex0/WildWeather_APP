@@ -24,13 +24,10 @@ export default function HomePage() {
     const [inputSearchValue, setInputSearchValue] = useState("");
     const [messageError, setMessageError] = useState("")
 
-    // useEffect(() => {loadCity(setUserCity)},[])
-    useEffect(() => {(
-        async() => {
-            if(userInfo.city){
-        getWeather(userInfo.city, setData, setMessageError);
-        }})
-    ()
+    useEffect(() => {
+        if(userInfo.city){
+            getWeather(userInfo.city, setData, setMessageError);
+        }
     },[userInfo.city])
 
     const handleSubmit = () =>  {

@@ -12,7 +12,7 @@ import UserContext from "../services/context/UserContext";
 export default function OnBoardingPassword({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
 }){
-    // const { savePassword } = storage;
+    
     const { userInfo, setUserInfo } = useContext(UserContext)
 
     const [focus, setFocus] = useState(false);
