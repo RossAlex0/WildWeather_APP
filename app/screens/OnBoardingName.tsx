@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform } from "react-native";
 
-import storageData from "../services/storage";
 import UserContext from "../services/context/UserContext";
 
 import BackButton from "../components/BackButton";
@@ -12,8 +11,6 @@ import stylesOnBoarding from "../styles/styleOnBoarding";
 export default function OnBoardingName({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
 }) {
-
-    // const { saveName, saveMail } = storageData;
 
     const { userInfo, setUserInfo } = useContext(UserContext)
 
