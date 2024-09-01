@@ -4,7 +4,6 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import WeatherContext from "../services/context/WeatherContext";
 import UserContext from "../services/context/UserContext";
-import storageData from "../services/storage";
 
 import ButtonGradient from "../components/ButtonGradient";
 import BackButton from "../components/BackButton";
@@ -14,17 +13,16 @@ import stylesOnBoarding from "../styles/styleOnBoarding";
 export default function OnBoardingName() {
 
     const { setIsSignedIn } = useContext(WeatherContext)
-    const { userName, setUserName} = useContext(UserContext);
-    const { saveCity, loadName} = storageData;
+    const { userInfo, setUserInfo} = useContext(UserContext);
     
     const [warningOpacity] = useState(new Animated.Value(0));
 
     const [isFocus, setIsFocus] = useState(false);
-    const [inputValue, setInputValue] = useState<string>("");
+    const [inputValue, setInputValue] = useState("");
 
     const handlePressButtonCity = () => {
         if(inputValue.length > 3){
-            saveCity(inputValue)
+            setUserInfo({...userInfo, city: inputValue})
             setIsSignedIn(true)
         }else {
             Animated.timing(warningOpacity, {
@@ -35,9 +33,7 @@ export default function OnBoardingName() {
         }
     };
 
-    useEffect(() => {
-        loadName(setUserName)
-    }, [userName]);
+    
 
     return (
         <KeyboardAvoidingView 
@@ -50,8 +46,8 @@ export default function OnBoardingName() {
                 <View style={stylesOnBoarding.containerName}>
                     <View style={stylesOnBoarding.containerTextCity}>
                         <Text style={stylesOnBoarding.textNameTitle}>
-                            {userName !== null 
-                            ? `Thank you, ${userName}.`
+                            {userInfo.name !== null 
+                            ? `Thank you, ${userInfo.name}.`
                             : 'Thank you.'
                             }                            
                         </Text>

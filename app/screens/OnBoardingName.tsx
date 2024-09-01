@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Text, View, TextInput, Pressable, KeyboardAvoidingView, Platform } from "react-native";
 
 import storageData from "../services/storage";
+import UserContext from "../services/context/UserContext";
 
 import BackButton from "../components/BackButton";
 import ButtonGradient from "../components/ButtonGradient";
@@ -12,7 +13,9 @@ export default function OnBoardingName({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
 }) {
 
-    const { saveName, saveMail } = storageData;
+    // const { saveName, saveMail } = storageData;
+
+    const { userInfo, setUserInfo } = useContext(UserContext)
 
     const [focus, setFocus] = useState(false);
 
@@ -21,8 +24,7 @@ export default function OnBoardingName({ navigation }:{
 
     const handlePressButtonName = () => {
         if(inputValueName.length > 1 && (inputValueMail.length > 6 && inputValueMail.includes("@"))){
-        saveName(inputValueName)
-        saveMail(inputValueMail)
+        setUserInfo({...userInfo, name: inputValueName, mail: inputValueMail})
         navigation.navigate('OnBoardingPassword')
         }
     };
