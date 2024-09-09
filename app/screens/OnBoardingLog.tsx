@@ -7,6 +7,7 @@ import ButtonGradient from "../components/ButtonGradient";
 import BackButton from "../components/BackButton";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
+import CloudAnimate from "../components/animateBackground/CloudAnimate";
 
 export default function OnBoardingLog({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
@@ -26,6 +27,7 @@ export default function OnBoardingLog({ navigation }:{
                 <Pressable style={stylesOnBoarding.backButton}>
                     <BackButton />
                 </Pressable>
+                <CloudAnimate/>
                 <View style={stylesOnBoarding.container}>
                     <View style={stylesOnBoarding.containerTextLog}>
                         { !focus &&

@@ -10,6 +10,7 @@ import BackButton from "../components/BackButton";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
 import addUser from "../services/backApi/postApi";
+import CloudAnimate from "../components/animateBackground/CloudAnimate";
 
 export default function OnBoardingName() {
 
@@ -47,6 +48,7 @@ export default function OnBoardingName() {
                 <Pressable style={stylesOnBoarding.backButton}>
                     <BackButton />
                 </Pressable>
+                <CloudAnimate/>
                 <View style={stylesOnBoarding.containerName}>
                     <View style={stylesOnBoarding.containerTextCity}>
                         <Text style={stylesOnBoarding.textNameTitle}>

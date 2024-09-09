@@ -8,6 +8,7 @@ import BackButton from "../components/BackButton";
 import stylesOnBoarding from "../styles/styleOnBoarding";
 import colors from "../styles/colors";
 import UserContext from "../services/context/UserContext";
+import CloudAnimate from "../components/animateBackground/CloudAnimate";
 
 export default function OnBoardingPassword({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
@@ -42,6 +43,7 @@ export default function OnBoardingPassword({ navigation }:{
             <Pressable style={stylesOnBoarding.backButton}>
                 <BackButton />
             </Pressable>
+            <CloudAnimate/>
             <View style={stylesOnBoarding.containerName}>
                 <View style={stylesOnBoarding.containerTextName}>
                     <Text style={stylesOnBoarding.textNameTitle}>Secure Your Account!</Text>     
