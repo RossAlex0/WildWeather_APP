@@ -23,7 +23,8 @@ const stylesOnBoarding = StyleSheet.create({
         backButton:{
           position: 'absolute',
           top: 50,
-          left: 20
+          left: 20,
+          zIndex: 10
         },
         containerText:{
           height: '80%',

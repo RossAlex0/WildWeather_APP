@@ -1,8 +1,9 @@
-import { Image, Text, View, Pressable } from 'react-native';
+import { Image, Text, View, Pressable, Animated, Dimensions } from 'react-native';
 
 import ButtonGradient from '../components/ButtonGradient';
 
 import stylesOnBoarding from '../styles/styleOnBoarding';
+import CloudAnimate from '../components/animateBackground/CloudAnimate';
 
 export default function OnBoarding({ navigation }:{
     navigation :{ navigate : (screen: string) => void }
@@ -10,6 +11,7 @@ export default function OnBoarding({ navigation }:{
     
     return(
     <View style={stylesOnBoarding.global}>
+        <CloudAnimate />
         <View style={stylesOnBoarding.container}>
             <View style={stylesOnBoarding.containerText}>
                 <Image
