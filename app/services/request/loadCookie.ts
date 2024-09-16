@@ -9,5 +9,5 @@ export default async function loadUserCookie(setter: (state: any) => void) {
       withCredentials: true,
     })
     .then((res) => setter(res.data))
-    .catch((err) => console.error("Error fetching user data:", err.message));
+    .catch((err) => console.error("Error fetching user data:", err));
 }
