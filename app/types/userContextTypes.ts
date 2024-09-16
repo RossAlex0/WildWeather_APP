@@ -1,4 +1,5 @@
 export interface UserInfo {
+  id: string;
   name: string;
   mail: string;
   city: string;
@@ -7,11 +8,6 @@ export interface UserInfo {
 
 export interface UserContextTypes {
   userInfo: UserInfo;
-  setUserInfo: (userInfo: UserInfo) => void; // Utilisation de UserInfo ici
+  setUserInfo: (userInfo: UserInfo) => void;
+  setIsSigned: (isSigned: boolean) => void;
 }
-// export interface UserContextTypes{
-//     userName: string,
-//     setUserName: (userName: string) => void,
-//     userCity: string,
-//     setUserCity: (userCity: string) => void
-//   }
