@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import { useContext, useState } from "react";
 
-import WeatherContext from "../services/context/WeatherContext";
+import UserContext from "../services/context/UserContext";
 import login from "../services/request/login";
+import { postDataStorage } from "../services/storage";
 
 import ButtonGradient from "../components/ButtonGradient";
 import BackButton from "../components/BackButton";
@@ -23,7 +24,7 @@ export default function OnBoardingLog({
 }: {
   navigation: { navigate: (screen: string) => void };
 }) {
-  const { setIsSignedIn } = useContext(WeatherContext);
+  const { setUserInfo, setIsSigned } = useContext(UserContext);
 
   const [focus, setFocus] = useState(false);
 
@@ -32,9 +33,13 @@ export default function OnBoardingLog({
 
   const handleLog = async () => {
     try {
-      console.info("mail:", inputMail, "..pass:", inputPassword);
-      await login(inputMail, inputPassword);
-      setIsSignedIn(true);
+      const { id, name, mail, city, token } = await login(
+        inputMail,
+        inputPassword,
+        setUserInfo
+      );
+      await postDataStorage(id, name, mail, city, token);
+      setIsSigned(true);
     } catch (error) {
       console.error(error);
     }
