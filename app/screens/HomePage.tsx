@@ -1,11 +1,4 @@
-import {
-  Pressable,
-  ScrollView,
-  StatusBar,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { ScrollView, Text, TextInput, View } from "react-native";
 import { useEffect, useState, useContext } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -16,7 +9,7 @@ import HomeCloud from "../components/HomeCloud";
 import HomeStat from "../components/HomeStat";
 import HomeCarousel from "../components/HomeCarousel";
 
-import loadUserCookie from "../services/request/loadCookie";
+import { getDataStorage } from "../services/storage";
 import getWeather from "../services/fetchData/getWeather";
 
 import stylesHome from "../styles/styleHome";
@@ -31,10 +24,7 @@ export default function HomePage() {
   const [messageError, setMessageError] = useState("");
 
   useEffect(() => {
-    loadUserCookie(setUserInfo);
-  }, []);
-  useEffect(() => {
-    if (userInfo.city) {
+    if (userInfo.city !== "") {
       getWeather(userInfo.city, setData, setMessageError);
     }
   }, [userInfo.city]);
@@ -50,48 +40,50 @@ export default function HomePage() {
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
     >
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        style={stylesHome.container}
-      >
-        <HomeHeader />
-        <View style={stylesHome.containerInput}>
-          <Icon
-            style={stylesHome.searchIcon}
-            name="search"
-            size={31}
-            color="#0E0C5E"
-          />
-          <TextInput
-            value={inputSearchValue}
-            placeholder="Search for a city"
-            returnKeyType="search"
-            onChangeText={(e) => setInputSearchValue(e)}
-            onSubmitEditing={handleSubmit}
-            style={stylesHome.input}
-          />
-        </View>
-        {data && messageError === "" ? (
-          <>
-            <HomeCitySentences />
-            <HomeCloud />
-            <HomeStat />
-            <HomeCarousel />
-          </>
-        ) : (
-          <>
-            <View style={stylesHome.containerError}>
-              <View style={stylesHome.containerTextError}>
-                <Icon
-                  name="search-circle-outline"
-                  style={stylesHome.iconError}
-                />
-                <Text style={stylesHome.textError}>{messageError}</Text>
+      {userInfo && (
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={stylesHome.container}
+        >
+          <HomeHeader />
+          <View style={stylesHome.containerInput}>
+            <Icon
+              style={stylesHome.searchIcon}
+              name="search"
+              size={31}
+              color="#0E0C5E"
+            />
+            <TextInput
+              value={inputSearchValue}
+              placeholder="Search for a city"
+              returnKeyType="search"
+              onChangeText={(e) => setInputSearchValue(e)}
+              onSubmitEditing={handleSubmit}
+              style={stylesHome.input}
+            />
+          </View>
+          {data && messageError === "" ? (
+            <>
+              <HomeCitySentences />
+              <HomeCloud />
+              <HomeStat />
+              <HomeCarousel />
+            </>
+          ) : (
+            <>
+              <View style={stylesHome.containerError}>
+                <View style={stylesHome.containerTextError}>
+                  <Icon
+                    name="search-circle-outline"
+                    style={stylesHome.iconError}
+                  />
+                  <Text style={stylesHome.textError}>{messageError}</Text>
+                </View>
               </View>
-            </View>
-          </>
-        )}
-      </ScrollView>
+            </>
+          )}
+        </ScrollView>
+      )}
     </LinearGradient>
   );
 }

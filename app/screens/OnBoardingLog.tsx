@@ -24,7 +24,7 @@ export default function OnBoardingLog({
 }: {
   navigation: { navigate: (screen: string) => void };
 }) {
-  const { setUserInfo, setIsSigned } = useContext(UserContext);
+  const { setIsSigned } = useContext(UserContext);
 
   const [focus, setFocus] = useState(false);
 
@@ -35,8 +35,7 @@ export default function OnBoardingLog({
     try {
       const { id, name, mail, city, token } = await login(
         inputMail,
-        inputPassword,
-        setUserInfo
+        inputPassword
       );
       await postDataStorage(id, name, mail, city, token);
       setIsSigned(true);
