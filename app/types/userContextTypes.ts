@@ -3,7 +3,7 @@ export interface UserInfo {
   name: string;
   mail: string;
   city: string;
-  password: string;
+  token: string;
 }
 
 export interface UserContextTypes {

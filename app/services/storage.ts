@@ -1,5 +1,7 @@
 import * as SecureStore from "expo-secure-store";
 
+const storageKeys = ["id", "name", "mail", "city", "token"];
+
 const postDataStorage = async (
   id: string,
   name: string,
@@ -19,55 +21,31 @@ const postDataStorage = async (
 };
 
 const getDataStorage = async (): Promise<{
-  name: string | null;
-  mail: string | null;
-  city: string | null;
-} | null> => {
+  id: string;
+  name: string;
+  mail: string;
+  city: string;
+  token: string;
+}> => {
   try {
-    const name = await SecureStore.getItemAsync("name");
-    const mail = await SecureStore.getItemAsync("mail");
-    const city = await SecureStore.getItemAsync("city");
-    if (!city && !mail && !city) {
-      return null;
-    }
-    return { name, mail, city };
+    const name = (await SecureStore.getItemAsync("name")) || "";
+    const mail = (await SecureStore.getItemAsync("mail")) || "";
+    const city = (await SecureStore.getItemAsync("city")) || "";
+    const id = (await SecureStore.getItemAsync("id")) || "";
+    const token = (await SecureStore.getItemAsync("token")) || "";
+
+    return { id: id, name: name, mail: mail, city: city, token: token };
   } catch (error) {
     console.error(error);
-    return null;
-  }
-};
-
-const getPrivateData = async (
-  key: string | null
-): Promise<string | { id: string | null; token: string | null } | null> => {
-  try {
-    if (key == null) {
-      const id = await SecureStore.getItemAsync("id");
-      const token = await SecureStore.getItemAsync("token");
-      return { id, token };
-    }
-    if (key === "token" || key === "id") {
-      return await SecureStore.getItemAsync(key);
-    }
-    return null;
-  } catch (error) {
-    console.error("Error retrieving private data:", error);
-    return null;
+    return { id: "", name: "", mail: "", city: "", token: "" };
   }
 };
 
 const destroyDataStorage = async () => {
-  const storageKeys = ["id", "name", "mail", "city", "token"];
   try {
     storageKeys.map(async (key) => await SecureStore.deleteItemAsync(key));
-    console.log("All items deleted");
   } catch (error) {
     console.error("Error deleting items:", error);
   }
 };
-export default {
-  postDataStorage,
-  getDataStorage,
-  getPrivateData,
-  destroyDataStorage,
-};
+export { postDataStorage, getDataStorage, destroyDataStorage };
