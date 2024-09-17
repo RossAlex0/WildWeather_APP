@@ -1,76 +1,92 @@
-import { useEffect, useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useEffect, useState } from "react";
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import OnBoarding from './screens/OnBoarding';
-import OnBoardingName from './screens/OnBoardingName';
-import OnBoardingCity from './screens/OnBoardingCity';
-import OnBoardingLog from './screens/OnBoardingLog';
-import OnBoardingPassword from './screens/OnBoardingPassword';
-import HomeNavigate from './navigation/HomeNavigate';
-import LoadingPage from './components/LoadingPage';
+import OnBoarding from "./screens/OnBoarding";
+import OnBoardingName from "./screens/OnBoardingName";
+import OnBoardingCity from "./screens/OnBoardingCity";
+import OnBoardingLog from "./screens/OnBoardingLog";
+import OnBoardingPassword from "./screens/OnBoardingPassword";
+import HomeNavigate from "./navigation/HomeNavigate";
+import LoadingPage from "./components/LoadingPage";
 
-import UserContext from './services/context/UserContext';
-import WeatherContext from './services/context/WeatherContext';
-import storage from './services/storage';
+import UserContext from "./services/context/UserContext";
+import WeatherContext from "./services/context/WeatherContext";
 
+import { getDataStorage } from "./services/storage";
 export default function App() {
   const Stack = createNativeStackNavigator();
 
-  const { loadCity, loadName } = storage;
-  const [userInfo, setUserInfo] = useState({name: "", mail: "", city: "", password: ""});
+  const [userInfo, setUserInfo] = useState();
 
-  const [data, setData] = useState()
-  const [userCity, setUserCity] = useState("");
-  const [userName, setUserName] = useState("")
-  const [loading, setLoading] = useState(true);
-  const [isSignedIn, setIsSignedIn] = useState(false);
-
-  useEffect(()=> {
-  console.info(userInfo)},[userInfo])
-
+  const [data, setData] = useState();
+  const [isSigned, setIsSigned] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loadCityData = async () => {
-      await loadCity(setUserCity);
-      await loadName(setUserName);
+    const getStorage = async () => {
+      setLoading(true);
+      const dataStorage = await getDataStorage();
+      setUserInfo(dataStorage);
       setLoading(false);
+      if (dataStorage) {
+        setIsSigned(true);
+      }
     };
-    loadCityData();
-  }, []);
+    getStorage();
+  }, [isSigned]);
 
-  if(loading){
-    return <LoadingPage/>
-  };
-  
+  if (loading) {
+    return <LoadingPage />;
+  }
+
   return (
-    <WeatherContext.Provider value={{data, setData, setIsSignedIn}}>
-      {/* <UserContext.Provider value={{userName, userCity, setUserName, setUserCity}}> */}
-      <UserContext.Provider value={{userInfo, setUserInfo}}>
+    <WeatherContext.Provider value={{ data, setData }}>
+      <UserContext.Provider value={{ userInfo, setUserInfo, setIsSigned }}>
         <NavigationContainer>
-          <Stack.Navigator >
-          {!isSignedIn && userCity === "" ? (
-            <>
-              <Stack.Screen name='OnBoarding' component={OnBoarding} options={{ headerShown: false }}/>
-              <Stack.Screen name='OnBoardingName' component={OnBoardingName} options={{ headerShown: false }}/>
-              <Stack.Screen name='OnBoardingCity' component={OnBoardingCity} options={{ headerShown: false }}/>
-              <Stack.Screen name='OnBoardingLog' component={OnBoardingLog} options={{ headerShown: false }}/>
-              <Stack.Screen name='OnBoardingPassword' component={OnBoardingPassword} options={{ headerShown: false }}/>
-            </>
-          ):(
-            <>
-              <Stack.Screen name='HomeNav' component={HomeNavigate} options={{ headerShown: false}} />
-            </>
-          )}
-          </Stack.Navigator>  
+          <Stack.Navigator>
+            {userInfo.city === "" || !isSigned ? (
+              <>
+                <Stack.Screen
+                  name="OnBoarding"
+                  component={OnBoarding}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="OnBoardingName"
+                  component={OnBoardingName}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="OnBoardingCity"
+                  component={OnBoardingCity}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="OnBoardingLog"
+                  component={OnBoardingLog}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="OnBoardingPassword"
+                  component={OnBoardingPassword}
+                  options={{ headerShown: false }}
+                />
+              </>
+            ) : (
+              <>
+                <Stack.Screen
+                  name="HomeNav"
+                  component={HomeNavigate}
+                  options={{ headerShown: false }}
+                />
+              </>
+            )}
+          </Stack.Navigator>
           <StatusBar />
         </NavigationContainer>
       </UserContext.Provider>
     </WeatherContext.Provider>
-  )
+  );
 }
-
-
-
-
