@@ -1,64 +1,73 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from "expo-secure-store";
 
-  const loadCity = async (setCity: (value: string) => void) => {
-    try {
-      const city = await AsyncStorage.getItem('userCity');
-      if (city !== null) {
-        setCity(city);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-  const loadName = async (setName: (value: string) => void) => {
-    try{
-      const name = await AsyncStorage.getItem('userName');
-      if (name !== null) {
-        setName(name);
-      }
-    } catch (err){
-      console.error(err)
-    }
+const postDataStorage = async (
+  id: string,
+  name: string,
+  mail: string,
+  city: string,
+  token: string
+) => {
+  try {
+    await SecureStore.setItemAsync("token", token);
+    await SecureStore.setItemAsync("id", id);
+    await SecureStore.setItemAsync("mail", mail);
+    await SecureStore.setItemAsync("city", city);
+    await SecureStore.setItemAsync("name", name);
+  } catch (error) {
+    console.error("Error storing data:", error);
   }
-  const loadMail = async (setMail: (value: string) => void) => {
-    try{
-      const mail = await AsyncStorage.getItem('userMail');
-      if (mail !== null) {
-        setMail(mail);
-      }
-    } catch (err){
-      console.error(err)
+};
+
+const getDataStorage = async (): Promise<{
+  name: string | null;
+  mail: string | null;
+  city: string | null;
+} | null> => {
+  try {
+    const name = await SecureStore.getItemAsync("name");
+    const mail = await SecureStore.getItemAsync("mail");
+    const city = await SecureStore.getItemAsync("city");
+    if (!city && !mail && !city) {
+      return null;
     }
+    return { name, mail, city };
+  } catch (error) {
+    console.error(error);
+    return null;
   }
+};
 
-  const saveName = async (value : string) => {
-    try {
-      await AsyncStorage.setItem('userName', value);
-    } catch (err) {
-      console.error(err);
+const getPrivateData = async (
+  key: string | null
+): Promise<string | { id: string | null; token: string | null } | null> => {
+  try {
+    if (key == null) {
+      const id = await SecureStore.getItemAsync("id");
+      const token = await SecureStore.getItemAsync("token");
+      return { id, token };
     }
-  };
-  const saveCity = async (value : string) => {
-    try {
-      await AsyncStorage.setItem('userCity', value);
-    } catch (err) {
-      console.error(err);
+    if (key === "token" || key === "id") {
+      return await SecureStore.getItemAsync(key);
     }
-  };
-  const saveMail = async (value : string) => {
-    try {
-      await AsyncStorage.setItem('userMail', value);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+    return null;
+  } catch (error) {
+    console.error("Error retrieving private data:", error);
+    return null;
+  }
+};
 
-  const clearStorage = async () => {
-    try {
-      await AsyncStorage.clear();
-    } catch (err) {
-      console.error('Failed to clear AsyncStorage:', err);
-    }
-  };
-
-  export default { saveName, saveCity, saveMail, loadName, loadCity, loadMail, clearStorage};
+const destroyDataStorage = async () => {
+  const storageKeys = ["id", "name", "mail", "city", "token"];
+  try {
+    storageKeys.map(async (key) => await SecureStore.deleteItemAsync(key));
+    console.log("All items deleted");
+  } catch (error) {
+    console.error("Error deleting items:", error);
+  }
+};
+export default {
+  postDataStorage,
+  getDataStorage,
+  getPrivateData,
+  destroyDataStorage,
+};
