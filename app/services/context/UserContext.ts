@@ -9,6 +9,13 @@ const UserContext = createContext<UserContextTypes>({
     city: "",
     token: "",
   },
+  createUser: {
+    name: "",
+    mail: "",
+    city: "",
+    password: "",
+  },
+  setCreateUser: () => {},
   setUserInfo: () => {},
   setIsSigned: () => {},
 });

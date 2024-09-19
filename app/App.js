@@ -19,6 +19,7 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   const [userInfo, setUserInfo] = useState();
+  const [createUser, setCreateUser] = useState();
 
   const [data, setData] = useState();
   const [isSigned, setIsSigned] = useState(false);
@@ -29,10 +30,10 @@ export default function App() {
       setLoading(true);
       const dataStorage = await getDataStorage();
       setUserInfo(dataStorage);
-      setLoading(false);
-      if (dataStorage) {
+      if (dataStorage.city !== "") {
         setIsSigned(true);
       }
+      setLoading(false);
     };
     getStorage();
   }, [isSigned]);
@@ -40,13 +41,20 @@ export default function App() {
   if (loading) {
     return <LoadingPage />;
   }
-
   return (
     <WeatherContext.Provider value={{ data, setData }}>
-      <UserContext.Provider value={{ userInfo, setUserInfo, setIsSigned }}>
+      <UserContext.Provider
+        value={{
+          userInfo,
+          setUserInfo,
+          createUser,
+          setCreateUser,
+          setIsSigned,
+        }}
+      >
         <NavigationContainer>
           <Stack.Navigator>
-            {userInfo.city === "" || !isSigned ? (
+            {(!userInfo || userInfo.city === "") && !isSigned ? (
               <>
                 <Stack.Screen
                   name="OnBoarding"

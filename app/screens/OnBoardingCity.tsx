@@ -24,7 +24,7 @@ export default function OnBoardingName({
 }: {
   navigation: { navigate: (screen: string) => void };
 }) {
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { createUser, setCreateUser } = useContext(UserContext);
 
   const [warningOpacity] = useState(new Animated.Value(0));
 
@@ -33,13 +33,13 @@ export default function OnBoardingName({
 
   const handleKeyBoardDone = () => {
     setIsFocus(false);
-    setUserInfo({ ...userInfo, city: inputValue });
+    setCreateUser({ ...createUser, city: inputValue });
   };
 
   const handlePressButtonCity = async () => {
     try {
       if (inputValue.length > 3) {
-        await addUser(userInfo);
+        await addUser(createUser);
         navigation.navigate("OnBoardingLog");
       } else {
         Animated.timing(warningOpacity, {
@@ -65,8 +65,8 @@ export default function OnBoardingName({
         <View style={stylesOnBoarding.containerName}>
           <View style={stylesOnBoarding.containerTextCity}>
             <Text style={stylesOnBoarding.textNameTitle}>
-              {userInfo.name !== null
-                ? `Thank you, ${userInfo.name}.`
+              {createUser.name !== null
+                ? `Thank you, ${createUser.name}.`
                 : "Thank you."}
             </Text>
             <Text style={stylesOnBoarding.textNameTitle}>
