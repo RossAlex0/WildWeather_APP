@@ -41,6 +41,21 @@ const getDataStorage = async (): Promise<{
   }
 };
 
+const getPrivateStorage = async (): Promise<{
+  id: string | null;
+  token: string | null;
+}> => {
+  try {
+    const id = (await SecureStore.getItemAsync("id")) || null;
+    const token = (await SecureStore.getItemAsync("token")) || null;
+
+    return { id, token };
+  } catch (error) {
+    console.error(error);
+    return { id: null, token: null };
+  }
+};
+
 const destroyDataStorage = async () => {
   try {
     storageKeys.map(async (key) => await SecureStore.deleteItemAsync(key));
@@ -48,4 +63,9 @@ const destroyDataStorage = async () => {
     console.error("Error deleting items:", error);
   }
 };
-export { postDataStorage, getDataStorage, destroyDataStorage };
+export {
+  postDataStorage,
+  getDataStorage,
+  getPrivateStorage,
+  destroyDataStorage,
+};
