@@ -30,7 +30,7 @@ export default function SettingsPage({
       setIsactived(false);
     }, 2500);
   };
-  const handleClear = () => {
+  const handleClear = async () => {
     console.info("Cleaned");
     setUserInfo({
       id: "",
@@ -39,7 +39,7 @@ export default function SettingsPage({
       city: "",
       token: "",
     });
-    destroyDataStorage();
+    await destroyDataStorage();
     setIsSigned(false);
   };
 
