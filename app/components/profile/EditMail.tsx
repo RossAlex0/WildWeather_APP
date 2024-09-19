@@ -1,31 +1,44 @@
 import { View, Text, TextInput, Pressable } from "react-native";
+import { useContext, useState } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import ButtonGradient from "../ButtonGradient";
-
-import { EditMailProps } from "../../types/interfaces/profilePropsInterfaces";
+import { updateUserMail } from "../../services/request/updateUser";
+import EditProps from "../../types/interfaces/profilePropsInterfaces";
+import UserContext from "../../services/context/UserContext";
 
 import colors from "../../styles/colors";
 import stylesProfile from "../../styles/styleSettingsScreen/styleProfile";
-import { useContext } from "react";
-import UserContext from "../../services/context/UserContext";
 
-export default function EditMail({
-  open,
-  mail,
-  handleConfirmMail,
-}: EditMailProps) {
-  const { userInfo } = useContext(UserContext);
+export default function EditMail({ open, setTextConfirm }: EditProps) {
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { isOpen, setIsOpen } = open;
 
-  return open.isOpen === "mail" ? (
+  const [valueMail, setValueMail] = useState("");
+
+  const handleConfirmMail = async () => {
+    const newMail = await updateUserMail(valueMail);
+    if (newMail) {
+      setIsOpen("");
+      setTextConfirm("mail");
+      setUserInfo({ ...userInfo, mail: valueMail });
+      setValueMail("");
+
+      setTimeout(() => {
+        setTextConfirm("");
+      }, 2500);
+    }
+  };
+
+  return isOpen === "mail" ? (
     <View style={stylesProfile.containerInput}>
       <Text style={stylesProfile.label}>Change your mail:</Text>
       <TextInput
         placeholder="Enter your mail here"
         returnKeyType="done"
         maxLength={15}
-        onChangeText={(e) => mail.setValueMail(e)}
-        value={mail.valueMail}
+        onChangeText={(e) => setValueMail(e)}
+        value={valueMail}
         style={stylesProfile.input}
       />
       <Pressable style={stylesProfile.btnConfirm} onPress={handleConfirmMail}>
@@ -38,7 +51,7 @@ export default function EditMail({
         Your mail:{"  "}
         <Text style={stylesProfile.textUser}>{userInfo.mail}</Text>
       </Text>
-      <Pressable onPress={() => open.setIsOpen("mail")}>
+      <Pressable onPress={() => setIsOpen("mail")}>
         <Icon name="pencil-sharp" size={24} color={colors.primaryColor} />
       </Pressable>
     </View>
