@@ -16,7 +16,7 @@ export async function updateUserCity(city: string) {
     .put(`${BACK_URL}/users/${id}`, userData, {
       headers: { "Content-Type": "application/json" },
     })
-    .then((res) => console.log("User updated:", res.data))
+    .then((res) => console.log("City update:", res.data))
     .catch((err) => console.error("Error updating user:", err.message));
 }
 
@@ -27,11 +27,14 @@ export async function updateUserName(name: string) {
     name: name,
     token: token,
   };
-  axios
+  return axios
     .put(`${BACK_URL}/users/${id}`, userData, {
       headers: { "Content-Type": "application/json" },
     })
-    .then((res) => console.log("User updated:", res.data))
+    .then((res) => {
+      console.log("Name update:", res.data);
+      return true;
+    })
     .catch((err) => console.error("Error updating user:", err.message));
 }
 
@@ -42,10 +45,13 @@ export async function updateUserMail(mail: string) {
     mail: mail,
     token: token,
   };
-  axios
+  return axios
     .put(`${BACK_URL}/users/${id}`, userData, {
       headers: { "Content-Type": "application/json" },
     })
-    .then((res) => console.log("User updated:", res.data))
+    .then((res) => {
+      console.log("Mail update:", res.data);
+      return true;
+    })
     .catch((err) => console.error("Error updating user:", err.message));
 }
