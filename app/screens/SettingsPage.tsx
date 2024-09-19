@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import ButtonGradient from "../components/ButtonGradient";
 
 import settings from "../services/data/dataSettings";
-import WeatherContext from "../services/context/WeatherContext";
+import { destroyDataStorage } from "../services/storage";
 import UserContext from "../services/context/UserContext";
 
 import stylesSettings from "../styles/styleSettings";
@@ -18,7 +18,7 @@ export default function SettingsPage({
 }: {
   navigation: { navigate: (screen: string) => void };
 }) {
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { userInfo, setUserInfo, setIsSigned } = useContext(UserContext);
 
   const [isEnabled, setIsEnabled] = useState(false);
   const [isActived, setIsactived] = useState(false);
@@ -39,6 +39,8 @@ export default function SettingsPage({
       city: "",
       token: "",
     });
+    destroyDataStorage();
+    setIsSigned(false);
   };
 
   return (

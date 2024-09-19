@@ -25,16 +25,15 @@ export default function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const getStorage = async () => {
-      setLoading(true);
-      const dataStorage = await getDataStorage();
-      setUserInfo(dataStorage);
-      setLoading(false);
-      if (dataStorage) {
-        setIsSigned(true);
-      }
-    };
-    getStorage();
+    if (isSigned) {
+      const getStorage = async () => {
+        setLoading(true);
+        const dataStorage = await getDataStorage();
+        setUserInfo(dataStorage);
+        setLoading(false);
+      };
+      getStorage();
+    }
   }, [isSigned]);
 
   if (loading) {
@@ -46,7 +45,7 @@ export default function App() {
       <UserContext.Provider value={{ userInfo, setUserInfo, setIsSigned }}>
         <NavigationContainer>
           <Stack.Navigator>
-            {userInfo.city === "" || !isSigned ? (
+            {!userInfo || (userInfo.city === "" && !isSigned) ? (
               <>
                 <Stack.Screen
                   name="OnBoarding"
