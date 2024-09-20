@@ -4,6 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 import ButtonGradient from "../ButtonGradient";
 import EditProps from "../../types/interfaces/profilePropsInterfaces";
+import { verifyPassword } from "../../services/request/password";
 
 import colors from "../../styles/colors";
 import stylesProfile from "../../styles/styleSettingsScreen/styleProfile";
@@ -26,11 +27,13 @@ export default function EditPassword({ open, setTextConfirm }: EditProps) {
     }, 2500);
   };
 
-  const handleCheckCurrentPassword = () => {
-    if (valueCurrentPassword === "1234") {
+  const handleCheckCurrentPassword = async () => {
+    const response = await verifyPassword(valueCurrentPassword);
+    if (response) {
       setConfirmPassword(true);
     }
   };
+
   return isOpen === "password" ? (
     <View style={stylesProfile.containerInput}>
       {confirmPassword ? (
