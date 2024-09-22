@@ -8,6 +8,7 @@ import {
   Platform,
 } from "react-native";
 import { useContext, useState } from "react";
+import Icon from "react-native-vector-icons/Ionicons";
 
 import UserContext from "../services/context/UserContext";
 import login from "../services/request/login";
@@ -15,9 +16,10 @@ import { postDataStorage } from "../services/storage";
 
 import ButtonGradient from "../components/ButtonGradient";
 import BackButton from "../components/BackButton";
+import CloudAnimate from "../components/animateBackground/CloudAnimate";
 
 import stylesOnBoarding from "../styles/styleOnBoarding";
-import CloudAnimate from "../components/animateBackground/CloudAnimate";
+import colors from "../styles/colors";
 
 export default function OnBoardingLog({
   navigation,
@@ -27,6 +29,7 @@ export default function OnBoardingLog({
   const { setIsSigned } = useContext(UserContext);
 
   const [focus, setFocus] = useState(false);
+  const [isSecure, setIsSecure] = useState(true);
 
   const [inputMail, setInputMail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
@@ -87,8 +90,19 @@ export default function OnBoardingLog({
               onChangeText={(e) => setInputPassword(e)}
               onFocus={() => setFocus(true)}
               onSubmitEditing={() => setFocus(false)}
+              secureTextEntry={isSecure}
               style={stylesOnBoarding.inputLog}
             />
+            <Pressable
+              style={stylesOnBoarding.iconPasswordLog}
+              onPress={() => setIsSecure(!isSecure)}
+            >
+              <Icon
+                name={isSecure ? "eye-outline" : "eye-off-outline"}
+                size={28}
+                color={colors.primaryColor}
+              />
+            </Pressable>
             {!focus && (
               <>
                 <Pressable
