@@ -81,7 +81,7 @@ export default function OnBoardingPassword({
               onPress={() => setIsVisibleFirst(!isVisibleFirst)}
             >
               <Icon
-                name="eye-off-outline"
+                name={isVisibleFirst ? "eye-outline" : "eye-off-outline"}
                 size={28}
                 color={colors.primaryColor}
               />
@@ -108,7 +108,7 @@ export default function OnBoardingPassword({
               onPress={() => setIsVisibleLast(!isVisibleLast)}
             >
               <Icon
-                name="eye-off-outline"
+                name={isVisibleLast ? "eye-outline" : "eye-off-outline"}
                 size={28}
                 color={colors.primaryColor}
               />
