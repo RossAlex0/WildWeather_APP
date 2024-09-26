@@ -9,10 +9,16 @@ export default async function addUser(userInfo: {
   city: string;
   password: string;
 }) {
-  axios
+  return axios
     .post(`${BACK_URL}/users`, userInfo, {
       headers: { "Content-Type": "application/json" },
     })
-    .then((res) => console.log("User created:", res.data))
-    .catch((err) => console.error("Error creating user:", err.message));
+    .then((res) => {
+      console.log("User created:", res.data);
+      return res.data;
+    })
+    .catch((err) => {
+      console.error("Error creating user:", err.message);
+      return "error";
+    });
 }
