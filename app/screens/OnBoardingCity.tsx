@@ -18,6 +18,7 @@ import BackButton from "../components/BackButton";
 import stylesOnBoarding from "../styles/styleOnBoarding";
 import addUser from "../services/request/createUser";
 import CloudAnimate from "../components/animateBackground/CloudAnimate";
+import ConfirmBox from "../components/ConfirmBox";
 
 export default function OnBoardingName({
   navigation,
@@ -29,6 +30,7 @@ export default function OnBoardingName({
   const [warningOpacity] = useState(new Animated.Value(0));
 
   const [isFocus, setIsFocus] = useState(false);
+  const [isValide, setIsValid] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyBoardDone = () => {
@@ -39,8 +41,14 @@ export default function OnBoardingName({
   const handlePressButtonCity = async () => {
     try {
       if (inputValue.length > 3) {
-        await addUser(createUser);
-        navigation.navigate("OnBoardingLog");
+        const response = await addUser(createUser);
+        if (response !== "error") {
+          setIsValid(true);
+          setTimeout(() => {
+            setIsValid(false);
+            navigation.navigate("OnBoardingLog");
+          }, 1700);
+        }
       } else {
         Animated.timing(warningOpacity, {
           toValue: 1,
@@ -112,6 +120,11 @@ export default function OnBoardingName({
             </View>
           )}
         </View>
+        {isValide && (
+          <View style={stylesOnBoarding.confirmAccount}>
+            <ConfirmBox text="Your account has been created!" />
+          </View>
+        )}
       </View>
     </KeyboardAvoidingView>
   );

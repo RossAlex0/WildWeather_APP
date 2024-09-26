@@ -139,7 +139,7 @@ const stylesOnBoarding = StyleSheet.create({
   btnSignUp: {},
   iconPasswordLog: {
     position: "absolute",
-    bottom: 24,
+    top: 120,
     right: 12,
   },
   // SECTION onBoardingName && password
@@ -265,6 +265,12 @@ const stylesOnBoarding = StyleSheet.create({
     fontSize: 16,
     fontWeight: "700",
     textAlign: "center",
+  },
+  confirmAccount: {
+    left: 60,
+    top: 520,
+    zIndex: 6,
+    width: "80%",
   },
 });
 
