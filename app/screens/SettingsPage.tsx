@@ -89,7 +89,7 @@ export default function SettingsPage({
         <ButtonGradient texte="Logout" />
       </Pressable>
       <View style={stylesSettings.containerCopy}>
-        <Text style={stylesSettings.textCopy}>V.1.0.0</Text>
+        <Text style={stylesSettings.textCopy}>V.1.1.0</Text>
         <Text style={stylesSettings.textCopy}>All rights reserved</Text>
         <Text style={stylesSettings.textCopy}>
           © WildWeather 2024 - Rossignol Alex
