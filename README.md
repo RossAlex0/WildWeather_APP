@@ -1,16 +1,16 @@
-# WildWeather
-## with React-Native & Expo
+# ☁☁ WildWeather ☁☁
+## ⚙️ with React-Native & Expo
 
-## APIs used:
+## 📈 APIs used:
  - Weather Data: [OpenWeather](https://openweathermap.org/)
  - Moon Phase Data: [Astronomical Applications - USNO](https://aa.usno.navy.mil/data/api)
  - User Data Management: [WildWeather_SERVER](https://github.com/RossAlex0/WildWeather_SERVER)
 
 ---
 
-## Screen
+## 🎨 Screen
 
-   - ### Home Page:
+   - ### 🏠 Home Page:
       - Weather (Cloud, Temperature, Humidity, Wind, Pressure, etc.)
       - Weather Forecast
       - Humidity Forecast
@@ -20,7 +20,7 @@
 
 ---
 
-   - ### Login:
+   - ### 👩‍💻 Login:
       - Account Creation (Name, Email, City, Password)
       - User Login
 
@@ -28,7 +28,7 @@
 
 ---
 
-   - ### Moon Phase:
+   - ### 🌛 🌞 Moon Phase:
       - Sunrise & Sunset
       - Calendar Moon Phase
       - Precise Time and Date Calculated Based on the Time Zone of the Selected City
@@ -37,7 +37,7 @@
 
 ---
     
-   - ### Settings:
+   - ### ✍️ Settings:
       - User Profile Modification
       - Change Default City (Geolocation or City Search)
       - Language Change (In Progress)
