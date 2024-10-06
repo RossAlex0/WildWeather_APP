@@ -1,5 +1,5 @@
 # ☁☁ WildWeather ☁☁
-## ⚙️ with React-Native & Expo
+## ⚙️ with React-Native & Expo / IOS/Android
 
 ## 📈 APIs used:
  - Weather Data: [OpenWeather](https://openweathermap.org/)
