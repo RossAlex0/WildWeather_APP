@@ -46,4 +46,6 @@
     
   <img src="https://github.com/RossAlex0/WildWeather_APP/blob/main/assets/readme/settings.png" alt="Cover" width="180"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/RossAlex0/WildWeather_APP/blob/main/assets/readme/popconfirm.PNG" alt="Cover" width="180"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/RossAlex0/WildWeather_APP/blob/main/assets/readme/localisation.png" alt="Cover" width="180"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/RossAlex0/WildWeather_APP/blob/main/assets/readme/localisation2.png" alt="Cover" width="180"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/RossAlex0/WildWeather_APP/blob/main/assets/readme/profile.png" alt="Cover" width="180"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/RossAlex0/WildWeather_APP/blob/main/assets/readme/contact.PNG" alt="Cover" width="180"/> 
 
+## License
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/RossAlex0/WildWeather_APP/blob/main/license.txt) file for details.
 
